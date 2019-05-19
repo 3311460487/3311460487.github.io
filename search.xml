@@ -1,66 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>hexo+GitHub+域名搭建的心路历程</title>
-      <link href="/2019/05/18/hexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
-      <url>/2019/05/18/hexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/</url>
-      
-        <content type="html"><![CDATA[<h6 id="本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功"><a href="#本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功" class="headerlink" title="本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功"></a>本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功</h6><p>   大概花了一天时间，又重新摸索着在网上学习怎么利用hexo配合GitHub搭建个人博客。博主这方面一片空白，也是东边学一点西边学一点，所以本文不提供系统的怎么搭建的过程，只是记录一下中间出现的问题和解决办法。</p><h5 id="基础环境安装"><a href="#基础环境安装" class="headerlink" title="基础环境安装"></a>基础环境安装</h5><p>   这一方面其实博主本人到现在为止都不知道是做什么的，只知道都安装好就能搭成博客，至于怎么安装，还是参考其他技术大牛们的教程吧。但是这里有需要提醒的：<br>   安装的内容有：<br>       1.git<br>       2.node.js<br>       3.hexo<br>    三者的顺序一般hexo在最后，前两个根据具体教程来<br>    注意hexo文件夹和blog文件夹不是一个东西<br>    安装完之后可以先去申请注册一个GitHub账号，然后按照教程创建一个仓库</p><h5 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h5><p>   博主一开始根据教程很快搭好了博客，但是发现主题theme是默认的landscape，因此想换一下，但是问题就在于，博主已经按照教程在landscape的基础上对页面进行了很多的修改，之后突然将主题更换，导致网站直接崩塌(…)因此这里提醒大家，想要什么主题早早找好，然后在网上找对口的教程。由于博主技术不精，所以选择了使用最多的NexT主题，因为相关教程多嘛(捂脸)</p><h5 id="博文编写"><a href="#博文编写" class="headerlink" title="博文编写"></a>博文编写</h5><p>   博主在一开始打好博客之后也激动了好一会，然后突然发现了一个问题：以后想写心得博客怎么办？难道创建一篇心得博客都需要代码创建吗？当然这个问题很快就能解决，博主最后采用了hexo-admin，因为它目前使用起来还算比较顺手，管理的时候也比较方便，具体如何安装以及设置密码请移步其他大佬的技术博客。</p><h5 id="域名设置"><a href="#域名设置" class="headerlink" title="域名设置"></a>域名设置</h5><p>   强烈建议在前面安装基础环境的时候就在网上提前买好域名，否则就会像博主这样在万事俱备只欠域名的情况下猴急猴急的等待域名实名认证通过和GitHub的配置。博主的域名是在阿里云购买的，大家可以根据自己的喜好来。<br>   有几点是需要注意的：<br>   1.有的域名购买需要认证，因此不会购买之后立刻就能用；<br>   2.域名的控制台那里解析的ip，就是你github仓库的ip地址，可以在cmd命令行里面ping一下进行查看；<br>   3.GitHub仓库的settings里面也是需要配置域名的，写上你申请到的域名就可以，例如“xxxx.top”，记得前面不要私自加www，反正我的没有加没有出错；<br>   4.blog/source文件夹下是需要创建一个名为CNAME并且没有后缀名的文件，里面写上自己的域名，这里是需要在前面加上“www”的；<br>   5.在域名这些设置都配置好之后，就可以通过域名在公网上对博客进行访问了，不过刚配置完不要慌(真的这些可以在搭建之前配好，免得后面坐在电脑前静静等待…)，一般过几分钟之后就可以看到自己搭建好的博客和信发布的文章啦！</p><h5 id="后期编写博客和发布"><a href="#后期编写博客和发布" class="headerlink" title="后期编写博客和发布"></a>后期编写博客和发布</h5><p>   前面已经写到，博主使用的的是hexo-admin，一般在自己的本地进行编辑之后，觉得博文没有问题，直接在blog根目录下输入：    </p><pre><code>hexo g &amp;&amp; hexo d        </code></pre><p> 然后在黑色的命令框里就能看到输出的一堆东西，一般第一次进行这样的GitHub更新，是需要和GitHub上进行ssh设置的，在之后就不需要了。在命令框中显示上传成功之后，博客更新的工作也就完成了。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[关于Hexo里RSS的添加和取消]]></title>
+    <url>%2F2019%2F05%2F19%2F%E5%85%B3%E4%BA%8EHexo%E9%87%8CRSS%E7%9A%84%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%8F%96%E6%B6%88%2F</url>
+    <content type="text"><![CDATA[博主在搭建好博客之后心血来潮添加了RSS订阅，后来有发现与主题不符导致界面不美观又找了许多经验贴才去掉…(no zuo no die)，这里整理一下RSS的添加和取消。 RSS添加1.feed插件安装1.首先在blog所在目录下运行Git Bash Here2.输入指令进行插件安装： npm install hexo-generator-feed 2.配置文件打开站点配置文件_config.yml,在Extension下方添加： #Extensions plugins: hexo-generator-feed #Feed Atom feed: type: atom path: atom.xml limit: 20 打开主题配置文件_config.yml，搜索rss，在后面追加： rss: /atom.xml RSS取消1.配置文件删除首先将添加RSS时配置的文件代码都删去 2.卸载feed插件按理来说将配置的代码删去之后页面就不会再显示了，但是博主在删去之后发现RSS仍然顽强的存在，进行了debug调试和服务器重启都没有用最后博主发现在卸载feed插件之后页面上的RSS才消失 注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载同样在根目录下启动Git Bash Here： npm uninstall hexo-generator-feed 卸载之后就可以发现页面山已经没有RSS的标志啦！]]></content>
       <categories>
-          
-          <category> 汇总记录 </category>
-          
+        <category>汇总记录</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-            <tag> 经验 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>一些好玩又有用的网站</title>
-      <link href="/2019/05/18/%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E6%B1%87%E9%9B%86/"/>
-      <url>/2019/05/18/%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E6%B1%87%E9%9B%86/</url>
-      
-        <content type="html"><![CDATA[<p>  这里集合很多好玩又冷门的网站，各具特色，包括图片转换到计算机学习，博主持续更新中…</p><h2 id="图表icon类"><a href="#图表icon类" class="headerlink" title="图表icon类"></a>图表icon类</h2><h3 id="easyicon"><a href="#easyicon" class="headerlink" title="easyicon"></a>easyicon</h3><p>  网站提供大量的图标，还提供在线的图片-图标转换。<br>  <a href="https://www.easyicon.net/" target="_blank" rel="noopener">快速访问</a></p><h3 id="阿里巴巴矢量图标库"><a href="#阿里巴巴矢量图标库" class="headerlink" title="阿里巴巴矢量图标库"></a>阿里巴巴矢量图标库</h3><p>   这是由阿里巴巴提供的图标库，在这里可以搜索到大量的图标，不过有些有可能并不免费。<br>   <a href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2" target="_blank" rel="noopener">快速访问</a></p><h2 id="计算机学习类"><a href="#计算机学习类" class="headerlink" title="计算机学习类"></a>计算机学习类</h2><h3 id="VisuAlgo"><a href="#VisuAlgo" class="headerlink" title="VisuAlgo"></a>VisuAlgo</h3><p>  网站提供很多数据结构与算法的实现动画，可以很形象的先输出内部的实现过程，可以帮助加深理解。<br>  <a href="https://visualgo.net/en" target="_blank" rel="noopener">快速访问</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 网站汇总 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2019/05/17/hello-world/"/>
-      <url>/2019/05/17/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="创建一篇新的博客"><a href="#创建一篇新的博客" class="headerlink" title="创建一篇新的博客"></a>创建一篇新的博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>hexo</tag>
+        <tag>RSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[不蒜子文章阅读量显示的问题]]></title>
+    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1%2F</url>
+    <content type="text"><![CDATA[博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。 于是博主按照网上教程，将文章阅读量这一行改为true：路径为: /themes/next/_config.yml 将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛： busuanzi_count: enable: true #这里需要改为true site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; site_uv_footer:# 本站总访问量次数 site_pv: false site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; site_pv_footer: page_pv: true #这里博主改为了true page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye page_pv_footer: 修改完之后发现它竟然竟然显示不在一行，如图：于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。有兴趣的朋友可以看一下官网的通知：不蒜子统计官网想直接解决的朋友可以不用看官网，简单点就是更新域名的问题： 修改办法：打开不蒜子的统计文件，路径为： /theme/next/layout/_third-party/analytics/busuanzi-counter.swig 你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了： &quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot; 在修改后进行调试： 问题解决！这是参考的博客连接： hexo博客解决不蒜子统计无法显示问题]]></content>
+      <categories>
+        <category>汇总记录</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>不蒜子</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo+GitHub+域名搭建的心路历程]]></title>
+    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功 大概花了一天时间，又重新摸索着在网上学习怎么利用hexo配合GitHub搭建个人博客。博主这方面一片空白，也是东边学一点西边学一点，所以本文不提供系统的怎么搭建的过程，只是记录一下中间出现的问题和解决办法。 基础环境安装 这一方面其实博主本人到现在为止都不知道是做什么的，只知道都安装好就能搭成博客，至于怎么安装，还是参考其他技术大牛们的教程吧。但是这里有需要提醒的： 安装的内容有： 1.git 2.node.js 3.hexo 三者的顺序一般hexo在最后，前两个根据具体教程来 注意hexo文件夹和blog文件夹不是一个东西 安装完之后可以先去申请注册一个GitHub账号，然后按照教程创建一个仓库 主题设置 博主一开始根据教程很快搭好了博客，但是发现主题theme是默认的landscape，因此想换一下，但是问题就在于，博主已经按照教程在landscape的基础上对页面进行了很多的修改，之后突然将主题更换，导致网站直接崩塌(…)因此这里提醒大家，想要什么主题早早找好，然后在网上找对口的教程。由于博主技术不精，所以选择了使用最多的NexT主题，因为相关教程多嘛(捂脸) 博文编写 博主在一开始打好博客之后也激动了好一会，然后突然发现了一个问题：以后想写心得博客怎么办？难道创建一篇心得博客都需要代码创建吗？当然这个问题很快就能解决，博主最后采用了hexo-admin，因为它目前使用起来还算比较顺手，管理的时候也比较方便，具体如何安装以及设置密码请移步其他大佬的技术博客。 域名设置 强烈建议在前面安装基础环境的时候就在网上提前买好域名，否则就会像博主这样在万事俱备只欠域名的情况下猴急猴急的等待域名实名认证通过和GitHub的配置。博主的域名是在阿里云购买的，大家可以根据自己的喜好来。 有几点是需要注意的： 1.有的域名购买需要认证，因此不会购买之后立刻就能用； 2.域名的控制台那里解析的ip，就是你github仓库的ip地址，可以在cmd命令行里面ping一下进行查看； 3.GitHub仓库的settings里面也是需要配置域名的，写上你申请到的域名就可以，例如“xxxx.top”，记得前面不要私自加www，反正我的没有加没有出错； 4.blog/source文件夹下是需要创建一个名为CNAME并且没有后缀名的文件，里面写上自己的域名，这里是需要在前面加上“www”的； 5.在域名这些设置都配置好之后，就可以通过域名在公网上对博客进行访问了，不过刚配置完不要慌(真的这些可以在搭建之前配好，免得后面坐在电脑前静静等待…)，一般过几分钟之后就可以看到自己搭建好的博客和信发布的文章啦！ 后期编写博客和发布 前面已经写到，博主使用的的是hexo-admin，一般在自己的本地进行编辑之后，觉得博文没有问题，直接在blog根目录下输入： hexo g &amp;&amp; hexo d 然后在黑色的命令框里就能看到输出的一堆东西，一般第一次进行这样的GitHub更新，是需要和GitHub上进行ssh设置的，在之后就不需要了。在命令框中显示上传成功之后，博客更新的工作也就完成了。]]></content>
+      <categories>
+        <category>汇总记录</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[一些好玩又有用的网站]]></title>
+    <url>%2F2019%2F05%2F18%2F%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E6%B1%87%E9%9B%86%2F</url>
+    <content type="text"><![CDATA[这里集合很多好玩又冷门的网站，各具特色，包括图片转换到计算机学习，博主持续更新中… 图表icon类easyicon 网站提供大量的图标，还提供在线的图片-图标转换。 快速访问 阿里巴巴矢量图标库 这是由阿里巴巴提供的图标库，在这里可以搜索到大量的图标，不过有些有可能并不免费。 快速访问 计算机学习类VisuAlgo 网站提供很多数据结构与算法的实现动画，可以很形象的先输出内部的实现过程，可以帮助加深理解。 快速访问]]></content>
+      <tags>
+        <tag>网站汇总</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F05%2F17%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. 快速启动创建一篇新的博客1$ hexo new "My New Post" More info: Writing 启动服务器1$ hexo server More info: Server 生成静态文件1$ hexo generate More info: Generating 部署1$ hexo deploy More info: Deployment]]></content>
+  </entry>
 </search>
