@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[利用Hexo Admin发布博文]]></title>
+    <url>%2F2019%2F06%2F28%2F%E4%BD%95%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E6%96%87%2F</url>
+    <content type="text"><![CDATA[前言博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起结果在激动的连发三片博文之后的一个月内就再也没了动静…终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑） 发布工具博主的发布工具为Hexo-Admin，详情可以参考它的官方网站Admin并不是一开始自带的，因此在搭建好之后，需要单独再去卸载安装，不要嫌麻烦，毕竟后面发博客用它还是很方便的，至于安装教程，博主懒得写，大家可以自行搜索，有很多大神有教程的 界面介绍打开admin主页后事这样的：这里介绍一下各个选项： Post：博客文章的列表，包括已经发布的和尚未发布仍是草稿状态的 Pages：对词云图、归档等的管理，有兴趣的朋友可以去博主的about看看 About：这是关于admin插件从说明 Deploy：可以直接部署到github上去 Settings：这里可以设置admin登录密码，当然还有其他的一些配置 博文发布好！到目前为止基本重新熟悉了环境，那么现在设想你打开电脑，决定进行博文，编写，应该如何去做呢？ step 1首先需要在存放博文的文件夹下右键打开Git Bash Here，需要强调的是，这个文件夹不是存放Hexo下载和安装的文件夹，而是那个专门存放blog的文件夹，比如博主安装Hexo的文件夹名为“Hexo”，而存放博客的文件夹就叫“blog”。博主在重返个人博客的第一天，竟然大脑空空的在Hexo安装文件夹下调试了很久… step 2首先需要将本机上的服务器打开，否则你打开admin主页时看到的就是美丽的404输入命令： hexo server -d 这回服务器运行起来了，现在就阔以打开进行博文编写和发布啦 step 3在博文编写结束之后，可以先看一下效果，如果没有问题，就可以上传到服务器上了。这里需要输入命令： hexo g &amp;&amp; hexo d 当然输入这条语句的前提是你之前得在github和这上面输入过自己的账号，这样之后就可以在固定的位置进行发布了。 小结总之，本博文的目的主要还是在于让博主本人不要忘了怎么发博文，里面省去了很多的细节部分，如果各位朋友想对admin-Hexo了解更多，可以去看我在写此篇博客是的参考博文]]></content>
+      <categories>
+        <category>Hexo操作汇总记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>博文发布</tag>
+        <tag>Hexo-Admin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于Hexo里RSS的添加和取消]]></title>
     <url>%2F2019%2F05%2F19%2F%E5%85%B3%E4%BA%8EHexo%E9%87%8CRSS%E7%9A%84%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%8F%96%E6%B6%88%2F</url>
     <content type="text"><![CDATA[博主在搭建好博客之后心血来潮添加了RSS订阅，后来有发现与主题不符导致界面不美观又找了许多经验贴才去掉…(no zuo no die)，这里整理一下RSS的添加和取消。 RSS添加1.feed插件安装1.首先在blog所在目录下运行Git Bash Here2.输入指令进行插件安装： npm install hexo-generator-feed 2.配置文件打开站点配置文件_config.yml,在Extension下方添加： #Extensions plugins: hexo-generator-feed #Feed Atom feed: type: atom path: atom.xml limit: 20 打开主题配置文件_config.yml，搜索rss，在后面追加： rss: /atom.xml RSS取消1.配置文件删除首先将添加RSS时配置的文件代码都删去 2.卸载feed插件按理来说将配置的代码删去之后页面就不会再显示了，但是博主在删去之后发现RSS仍然顽强的存在，进行了debug调试和服务器重启都没有用最后博主发现在卸载feed插件之后页面上的RSS才消失 注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载同样在根目录下启动Git Bash Here： npm uninstall hexo-generator-feed 卸载之后就可以发现页面山已经没有RSS的标志啦！]]></content>
