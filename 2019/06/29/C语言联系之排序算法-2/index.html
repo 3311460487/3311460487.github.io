@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="数据结构,排序算法,快速排序,">
 
 
 
@@ -79,19 +79,18 @@
 
 
 
-<meta name="description" content="时间很短，生活很长life is beautiful like sunshy不愿意做程序员的计算机学习者总是在半睡半醒时敲代码假二次元爱好者看起来在思考其实脑袋里空空如也的学习爱好人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="前言这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解： 正文冒泡排序关键词：双重循环、前后比较、相邻交换；思路：冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。 #include&amp;lt;stdio.h&amp;gt">
+<meta name="keywords" content="数据结构,排序算法,快速排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言数据结构之排序算法">
+<meta property="og:url" content="http://yoursite.com/2019/06/29/C语言联系之排序算法-2/index.html">
 <meta property="og:site_name" content="Carsel的个人博客">
-<meta property="og:description" content="时间很短，生活很长life is beautiful like sunshy不愿意做程序员的计算机学习者总是在半睡半醒时敲代码假二次元爱好者看起来在思考其实脑袋里空空如也的学习爱好人">
+<meta property="og:description" content="前言这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解： 正文冒泡排序关键词：双重循环、前后比较、相邻交换；思路：冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。 #include&amp;lt;stdio.h&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/Das.jpg">
-<meta property="og:updated_time" content="2019-05-19T09:38:46.120Z">
+<meta property="og:updated_time" content="2019-06-29T16:38:06.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="时间很短，生活很长life is beautiful like sunshy不愿意做程序员的计算机学习者总是在半睡半醒时敲代码假二次元爱好者看起来在思考其实脑袋里空空如也的学习爱好人">
-<meta name="twitter:image" content="http://yoursite.com/images/Das.jpg">
+<meta name="twitter:title" content="C语言数据结构之排序算法">
+<meta name="twitter:description" content="前言这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解： 正文冒泡排序关键词：双重循环、前后比较、相邻交换；思路：冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。 #include&amp;lt;stdio.h&amp;gt">
 
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/29/C语言联系之排序算法-2/">
 
 
 
 
 
-  <title>about | Carsel的个人博客</title>
+  <title>C语言数据结构之排序算法 | Carsel的个人博客</title>
   
 
 
@@ -284,35 +283,367 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/C语言联系之排序算法-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carsel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carsel的个人博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h4 id="时间很短，生活很长"><a href="#时间很短，生活很长" class="headerlink" title="时间很短，生活很长"></a>时间很短，生活很长</h4><h6 id="life-is-beautiful-like-sunshy"><a href="#life-is-beautiful-like-sunshy" class="headerlink" title="life is beautiful like sunshy"></a>life is beautiful like sunshy</h6><p>不愿意做程序员的计算机学习者<br>总是在半睡半醒时敲代码<br>假二次元爱好者<br>看起来在思考其实脑袋里空空如也的学习爱好人</p>
-<p><img src="/images/Das.jpg" alt="best wishes!"></p>
+          <h1 class="post-title" itemprop="name headline">C语言数据结构之排序算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-29T15:28:00+08:00">
+                2019-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言总结/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言总结</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言总结/C语言/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
 
         
-      </div>
+
       
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解：</p>
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><p><strong>关键词</strong>：<strong><em>双重循环、前后比较、相邻交换</em></strong>；<br><strong>思路：</strong>冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。</p>
+<pre><code>#include&lt;stdio.h&gt; 
+void bubble(int arr[],int len){
+    int i=0;
+    int j=0;
+    int temp=0;
+    for(i=0;i&lt;len-1;i++){
+        for(j=i+1;j&lt;len;j++){
+            if(arr[i]&lt;arr[j]){
+                   temp=arr[i];
+                   arr[i]=arr[j];
+                   arr[j]=temp;
+             }
+        }
+    }
+}
+int main(){
+    int arr[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70};
+    int len=0;
+    int i=0; 
+    len=(int)sizeof(arr)/(int)sizeof(arr[0]);
+    bubble(arr,len);
+    for(i=0;i&lt;len;i++)
+        printf(&quot;%3d&quot;,arr[i]);
+}
+</code></pre><p><strong>注意：</strong><br>1.数组长度的计算会使用到<strong>sizeo()</strong>函数，由于sizeof这里计算的是所占的字节数，因此还需要除以每个元素的长度；</p>
+<h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><p><strong>关键词</strong>：<strong><em>双重循环、最值挑选，非相邻交换</em></strong><br><strong>思路：</strong>顾名思义，选择排序即不断地在乱序的数组中寻找出最值（最小或最大），然后将它放在数组里。以升序为例，通常思路为：先以乱序数组第一个为最小值，将其与后面每个数字挨个比较，如果发现有更小的，则更新对最小值的记录并记下这个更小值的位置，以此循环直至数组结束。</p>
+<pre><code>#include&lt;stdio.h&gt; 
+void select(int arr[],int len){
+    int i=0,j=0;
+    int temp=0;
+    int min;
+    int flag=0;
+    for(i=0;i&lt;len-1;i++){
+        min=arr[i];
+        for(j=i+1;j&lt;len;j++){
+            if(arr[j]&lt;min){
+                min=arr[j];
+                flag=j;
+            }
+        }
+        temp=arr[i];
+        arr[i]=min;
+        arr[flag]=temp;
+    } 
+}
+int main(){
+    int arr[] = {22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70};
+    int len=(int)sizeof(arr)/(int)sizeof(arr[0]);
+    int i=0;
+    select(arr,len);
+    for(i=0;i&lt;len;i++)
+        printf(&quot;%3d&quot;,arr[i]);
+return 0;
+}
+</code></pre><p><strong>注意</strong>：<br>1.为了避免频繁的使用数组交换，可以将当前最小值存放在一个变量中，另外需要flag记下位置，在遍历完所有乱序数字后再进行位置交换，这样一个长度为n的数组最多交换n次。</p>
+<h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p><strong>关键词</strong>：<strong><em>双重循环、前后比较、挪位、相邻交换</em></strong><br><strong>思路</strong>：插入排序需要记住的最大特点就在于，它会出现大量的元素向前或者向后挪位，这取决于乱序数组的数据结构，一般来讲如果不是链表，那么这样的重复操作就不能省去了。<br>另外一个需要记忆的地方就是，它的大循环是从左到右的正循环，但是子循环则是以大循环为起始点的逆向扫描，因此大循环不能从0开始，需要从1开始。<br>本代码在编写过程中，选择采用了一次对比一次交换的方法，严格意义上这不是插入操作，但最终效果时相同的。    </p>
+<pre><code>#include&lt;stdio.h&gt; 
+void insert1(int arr[],int len){
+    int i=0,j=0;
+    int temp;
+    for(i=1;i&lt;len;i++){
+        for(j=i;j&gt;=1 &amp;&amp; arr[j-1]&lt;arr[j];j--){//要求后面小于签一个才能开始进行插入操作 
+            temp=arr[j-1];//这里是交换操作，但最终效果等价于插入操作 
+            arr[j-1]=arr[j];
+            arr[j]=temp;
+        }
+    }
+} 
+void insert2(int arr[],int len){
+    int i=1,j=0,k=1,flag=0;//这里需要格外注意初始值赋值 
+    int temp=arr[0];
+    for(i=1;i&lt;len;i++){
+        j=i;
+        while(j&gt;0 &amp; arr[j-1]&gt;arr[i])
+            j=j-1;
+        flag=j;//找到插入点 
+        temp=arr[i];//保存向后移动时的最后一个元素 
+        k=i;//起始挪动位置 
+        while(k&gt;=flag){
+            arr[k]=arr[k-1];//以此挪动覆盖 
+            k--;
+        }
+        arr[flag]=temp;//最后一个覆盖插入点 
+    }
+}
+int main(){
+    int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 };
+    int len = (int) sizeof(arr) / sizeof(*arr);
+    int i=0;
+    insert2(arr,len);
+    for(i=0;i&lt;len;i++){
+        printf(&quot;%3d&quot;,arr[i]);
+    }
+return 0;
+}
+</code></pre><p><strong>注意</strong>：<br>1.上面的排序算法中，并没有严格遵守插入操作的定义。按照插入的思想，应该是在多次对比结束后进行数组元素依次移动并插入，而不是<strong>insert1()</strong>函数中的比较一次插入一次。博主在完成上面的代码之后也尝试了先比较再挪动插入的算法<strong>insert2()</strong>，亲测代码体验极差：虽然减少了赋值的次数，但是编写起来却不简单。另外，如果想要少操作，那么这里肯定就需要更多的变量了，因此这两种算法在性能上不是一眼就能分出高低的，个人推荐使用<strong>insert1()</strong>。<br>2.博主亲测，这种算法需要格外注意父循环和子循环的上下界。</p>
+<h5 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h5><p><strong>关键词</strong>：<strong><em>下标、递归、左小右大</em></strong><br><strong>思路</strong>：快速排序是众多排序算法中及其重要和优秀的算法，尤其适用于对大数据的排序，但是其逻辑和程序编写也相对要复杂一些，因为会涉及到递归或者迭代。<br>快速排序采用了分而治之的思想：<br>1.以一个数为基准，将序列中的<br>其他数往它两边扔，例如将所有小于的都扔到左边，大于的扔到右边，至于扔过去之后左右两边是否是有序则暂且不管。<br>2.对于“扔”这个动作，这里采用的是交换，而不是插入。因为对于数组来说，插入是它不擅长的工作。<br>3.1-2步骤完成之后，接下来就是将分好的两组继续按照上述步骤进行折半“扔”的操作，这里一般采用递归比较好理解。<br>以下是源代码，博主这里参考了一篇教程，附上<a href="http://c.biancheng.net/view/198.html" target="_blank" rel="noopener">链接</a>    </p>
+<pre><code># include &lt;stdio.h&gt;
+//递归算法 
+void Swap(int *p, int *q);  //交换函数 
+void QuickSort(int *a, int low, int high);  
+int main(void)
+{
+    int i;  
+    int a[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70};
+    int len=(int)sizeof(a)/(int)sizeof(a[0]);
+    QuickSort(a, 0, len-1);
+    for (i=0; i&lt;len; ++i)
+        printf(&quot;%d &quot;, a[i]);
+return 0;
+}
+void Swap(int *p, int *q)
+{
+    int temp;
+    temp = *p;
+    *p = *q;
+    *q = temp;
+}
+void QuickSort(int *a, int low, int high){//数组、数组起始下标、数组结尾下标 
+    int i = low;
+    int j = high;
+    int key = a[low];//初始化以第一个为关键数字 
+
+    if (low &gt;= high){  //递归结束条件 
+        return ;
+    } 
+    while (low &lt; high){//循环一次，比较一轮 
+        while (low &lt; high &amp;&amp; key &lt;= a[high]){
+        --high; //下标前移 
+        }
+        if (key &gt; a[high]){//大的扔到右边 
+            Swap(&amp;a[low], &amp;a[high]);
+            ++low;
+        }
+        while (low &lt; high &amp;&amp; key &gt;= a[low]){
+             ++low;  //下标后移 
+         }
+        if (key &lt; a[low]){//小的扔到左边 
+            Swap(&amp;a[low], &amp;a[high]);
+               --high;
+        }
+       }
+    QuickSort(a, i, low-1);  //左递归 
+    QuickSort(a, low+1, j);  //右递归 
+}
+</code></pre><h5 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h5><p><strong>关键词</strong>：<strong><em>步长、插入排序、不稳定</em></strong><br><strong>思路</strong>：讲真这里博主并不想介绍它的思路，因为相对于其他算法，该算法确实要更难一些，但是它却是首个突破n^2的排序算法。<br>1.将整个乱序数组切割为若干个子序列（通过规定好的步长，隔几个数字选一个，最终得到若干个子序列）；<br>2.对这几个子序列分别直接进行插入排序；<br>3.缩小步长（又称增量），重复1-2步骤，直到步长足够小，这个是哦户序列中的圆度基本有序；<br>4.对全体元素进行一次直接插入排序；<br>以下实现代码来自于<a href="https://www.runoob.com/cprogramming/c-sort-algorithm.html" target="_blank" rel="noopener">菜鸟教程</a></p>
+<pre><code>#include&lt;stdio.h&gt; 
+void shell_sort(int arr[], int len) {
+    int gap=len, i, j;
+        int temp;
+    for (gap = len&gt;&gt;2; gap &gt; 0; gap = gap&gt;&gt;2)
+        for (i = gap; i &lt; len; i++) {
+            temp = arr[i];
+            for (j = i - gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j -= gap)
+                arr[j + gap] = arr[j];
+            arr[j + gap] = temp;
+        }
+}
+int main(){
+    int i=0;
+    int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 };
+    int len = (int) sizeof(arr) / sizeof(*arr);
+    shell_sort(arr, len);
+    for(i=0;i&lt;len;i++)
+        printf(&quot;%3d&quot;,arr[i]);
+    printf(&quot;\n&quot;); 
+}
+</code></pre>
       
-      
+    </div>
+    <div>
+        
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">—————————————本文结束—————————————</div>
+    
+</div>
+         
     </div>
     
     
     
+     
+    
+
+    
+
+    
+     
+    <footer class="post-footer">
+      
+        
+        
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          
+            <a href="/tags/排序算法/" rel="tag"><i class="fa fa-tag"></i> 排序算法</a>
+          
+            <a href="/tags/快速排序/" rel="tag"><i class="fa fa-tag"></i> 快速排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/29/网站使用之poj/" rel="next" title="网站使用之poj">
+                <i class="fa fa-chevron-left"></i> 网站使用之poj
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -427,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#时间很短，生活很长"><span class="nav-number">1.</span> <span class="nav-text">时间很短，生活很长</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#life-is-beautiful-like-sunshy"><span class="nav-number">1.0.1.</span> <span class="nav-text">life is beautiful like sunshy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择排序"><span class="nav-number">2.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#插入排序"><span class="nav-number">2.3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速排序"><span class="nav-number">2.4.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#希尔排序"><span class="nav-number">2.5.</span> <span class="nav-text">希尔排序</span></a></li></ol></li></ol></div>
             
 
           </div>

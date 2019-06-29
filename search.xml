@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C语言数据结构之排序算法]]></title>
+    <url>%2F2019%2F06%2F29%2FC%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-2%2F</url>
+    <content type="text"><![CDATA[前言这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解： 正文冒泡排序关键词：双重循环、前后比较、相邻交换；思路：冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。 #include&lt;stdio.h&gt; void bubble(int arr[],int len){ int i=0; int j=0; int temp=0; for(i=0;i&lt;len-1;i++){ for(j=i+1;j&lt;len;j++){ if(arr[i]&lt;arr[j]){ temp=arr[i]; arr[i]=arr[j]; arr[j]=temp; } } } } int main(){ int arr[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70}; int len=0; int i=0; len=(int)sizeof(arr)/(int)sizeof(arr[0]); bubble(arr,len); for(i=0;i&lt;len;i++) printf(&quot;%3d&quot;,arr[i]); } 注意：1.数组长度的计算会使用到sizeo()函数，由于sizeof这里计算的是所占的字节数，因此还需要除以每个元素的长度； 选择排序关键词：双重循环、最值挑选，非相邻交换思路：顾名思义，选择排序即不断地在乱序的数组中寻找出最值（最小或最大），然后将它放在数组里。以升序为例，通常思路为：先以乱序数组第一个为最小值，将其与后面每个数字挨个比较，如果发现有更小的，则更新对最小值的记录并记下这个更小值的位置，以此循环直至数组结束。 #include&lt;stdio.h&gt; void select(int arr[],int len){ int i=0,j=0; int temp=0; int min; int flag=0; for(i=0;i&lt;len-1;i++){ min=arr[i]; for(j=i+1;j&lt;len;j++){ if(arr[j]&lt;min){ min=arr[j]; flag=j; } } temp=arr[i]; arr[i]=min; arr[flag]=temp; } } int main(){ int arr[] = {22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70}; int len=(int)sizeof(arr)/(int)sizeof(arr[0]); int i=0; select(arr,len); for(i=0;i&lt;len;i++) printf(&quot;%3d&quot;,arr[i]); return 0; } 注意：1.为了避免频繁的使用数组交换，可以将当前最小值存放在一个变量中，另外需要flag记下位置，在遍历完所有乱序数字后再进行位置交换，这样一个长度为n的数组最多交换n次。 插入排序关键词：双重循环、前后比较、挪位、相邻交换思路：插入排序需要记住的最大特点就在于，它会出现大量的元素向前或者向后挪位，这取决于乱序数组的数据结构，一般来讲如果不是链表，那么这样的重复操作就不能省去了。另外一个需要记忆的地方就是，它的大循环是从左到右的正循环，但是子循环则是以大循环为起始点的逆向扫描，因此大循环不能从0开始，需要从1开始。本代码在编写过程中，选择采用了一次对比一次交换的方法，严格意义上这不是插入操作，但最终效果时相同的。 #include&lt;stdio.h&gt; void insert1(int arr[],int len){ int i=0,j=0; int temp; for(i=1;i&lt;len;i++){ for(j=i;j&gt;=1 &amp;&amp; arr[j-1]&lt;arr[j];j--){//要求后面小于签一个才能开始进行插入操作 temp=arr[j-1];//这里是交换操作，但最终效果等价于插入操作 arr[j-1]=arr[j]; arr[j]=temp; } } } void insert2(int arr[],int len){ int i=1,j=0,k=1,flag=0;//这里需要格外注意初始值赋值 int temp=arr[0]; for(i=1;i&lt;len;i++){ j=i; while(j&gt;0 &amp; arr[j-1]&gt;arr[i]) j=j-1; flag=j;//找到插入点 temp=arr[i];//保存向后移动时的最后一个元素 k=i;//起始挪动位置 while(k&gt;=flag){ arr[k]=arr[k-1];//以此挪动覆盖 k--; } arr[flag]=temp;//最后一个覆盖插入点 } } int main(){ int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 }; int len = (int) sizeof(arr) / sizeof(*arr); int i=0; insert2(arr,len); for(i=0;i&lt;len;i++){ printf(&quot;%3d&quot;,arr[i]); } return 0; } 注意：1.上面的排序算法中，并没有严格遵守插入操作的定义。按照插入的思想，应该是在多次对比结束后进行数组元素依次移动并插入，而不是insert1()函数中的比较一次插入一次。博主在完成上面的代码之后也尝试了先比较再挪动插入的算法insert2()，亲测代码体验极差：虽然减少了赋值的次数，但是编写起来却不简单。另外，如果想要少操作，那么这里肯定就需要更多的变量了，因此这两种算法在性能上不是一眼就能分出高低的，个人推荐使用insert1()。2.博主亲测，这种算法需要格外注意父循环和子循环的上下界。 快速排序关键词：下标、递归、左小右大思路：快速排序是众多排序算法中及其重要和优秀的算法，尤其适用于对大数据的排序，但是其逻辑和程序编写也相对要复杂一些，因为会涉及到递归或者迭代。快速排序采用了分而治之的思想：1.以一个数为基准，将序列中的其他数往它两边扔，例如将所有小于的都扔到左边，大于的扔到右边，至于扔过去之后左右两边是否是有序则暂且不管。2.对于“扔”这个动作，这里采用的是交换，而不是插入。因为对于数组来说，插入是它不擅长的工作。3.1-2步骤完成之后，接下来就是将分好的两组继续按照上述步骤进行折半“扔”的操作，这里一般采用递归比较好理解。以下是源代码，博主这里参考了一篇教程，附上链接 # include &lt;stdio.h&gt; //递归算法 void Swap(int *p, int *q); //交换函数 void QuickSort(int *a, int low, int high); int main(void) { int i; int a[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70}; int len=(int)sizeof(a)/(int)sizeof(a[0]); QuickSort(a, 0, len-1); for (i=0; i&lt;len; ++i) printf(&quot;%d &quot;, a[i]); return 0; } void Swap(int *p, int *q) { int temp; temp = *p; *p = *q; *q = temp; } void QuickSort(int *a, int low, int high){//数组、数组起始下标、数组结尾下标 int i = low; int j = high; int key = a[low];//初始化以第一个为关键数字 if (low &gt;= high){ //递归结束条件 return ; } while (low &lt; high){//循环一次，比较一轮 while (low &lt; high &amp;&amp; key &lt;= a[high]){ --high; //下标前移 } if (key &gt; a[high]){//大的扔到右边 Swap(&amp;a[low], &amp;a[high]); ++low; } while (low &lt; high &amp;&amp; key &gt;= a[low]){ ++low; //下标后移 } if (key &lt; a[low]){//小的扔到左边 Swap(&amp;a[low], &amp;a[high]); --high; } } QuickSort(a, i, low-1); //左递归 QuickSort(a, low+1, j); //右递归 } 希尔排序关键词：步长、插入排序、不稳定思路：讲真这里博主并不想介绍它的思路，因为相对于其他算法，该算法确实要更难一些，但是它却是首个突破n^2的排序算法。1.将整个乱序数组切割为若干个子序列（通过规定好的步长，隔几个数字选一个，最终得到若干个子序列）；2.对这几个子序列分别直接进行插入排序；3.缩小步长（又称增量），重复1-2步骤，直到步长足够小，这个是哦户序列中的圆度基本有序；4.对全体元素进行一次直接插入排序；以下实现代码来自于菜鸟教程 #include&lt;stdio.h&gt; void shell_sort(int arr[], int len) { int gap=len, i, j; int temp; for (gap = len&gt;&gt;2; gap &gt; 0; gap = gap&gt;&gt;2) for (i = gap; i &lt; len; i++) { temp = arr[i]; for (j = i - gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j -= gap) arr[j + gap] = arr[j]; arr[j + gap] = temp; } } int main(){ int i=0; int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 }; int len = (int) sizeof(arr) / sizeof(*arr); shell_sort(arr, len); for(i=0;i&lt;len;i++) printf(&quot;%3d&quot;,arr[i]); printf(&quot;\n&quot;); }]]></content>
+      <categories>
+        <category>编程语言总结</category>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>排序算法</tag>
+        <tag>快速排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网站使用之poj]]></title>
+    <url>%2F2019%2F06%2F29%2F%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%B9%8Bpoj%2F</url>
+    <content type="text"><![CDATA[前言博主为了提升自己的算法能力，决定空闲时间刷一刷算法题，关于算法题的题库和练习网站，之前在“一些好玩又有用的网站”这篇博文里面有提到过，可以选择在力扣或者北大的poj上面进行练习，博主本次选择了poj进行尝试。另外，由于poj更多提供的是检测，因此博主是现在dev C++上写好程序之后再复制上去提交的。 环境检测系统: 北大poj开发环境: dev C++ 使用过程dev C++关于dev的安装和使用这里就不再多说了，各位编程的朋友们首先肯定擅长各种软件的安装，语言的话dev是提供中文，不过这里需要说明一下，在调试的过程中注意不要对同一个程序打开试图打开两个调试窗口，这个之前博主常用的CodeBlocks有很大的区别。一旦上一个程序调试的黑框框没有关掉还继续进行编译运行，那么是会出错的。博主初次使用时没有注意，也是反应了很长时间才找到原因。 北大poj北京大学程序在线评测系统，这里不再多做介绍，博主主要使用C语言进行题目答案提交，答题者需要注册一个账号。 test之1000题一般来讲，初次使用该系统都会直接复制第一题进行系统熟悉，具体题目就是一个简单的加法题，不过在提交的时候注意一定要选对语言，针对于C语言，在编译语言里面可以选择GCC或者C： 值得注意的是，poj系统非常严格（或者说对于输入考虑不周），多一个空格都会报错，博主在重复提交的时候命名选对了语言敲对了代码但是就是报错，后来才发现是因为在题号后面多跟了一个空格……提交完成之后就可以看到自己的提交状态了： 实战之1003题在完成了对系统的初步测试和熟悉之后，就可以来进行题目解答和提交啦！]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[利用Hexo Admin发布博文]]></title>
     <url>%2F2019%2F06%2F28%2F%E4%BD%95%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E6%96%87%2F</url>
     <content type="text"><![CDATA[前言博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起结果在激动的连发三片博文之后的一个月内就再也没了动静…终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑） 发布工具博主的发布工具为Hexo-Admin，详情可以参考它的官方网站Admin并不是一开始自带的，因此在搭建好之后，需要单独再去卸载安装，不要嫌麻烦，毕竟后面发博客用它还是很方便的，至于安装教程，博主懒得写，大家可以自行搜索，有很多大神有教程的 界面介绍打开admin主页后事这样的：这里介绍一下各个选项： Post：博客文章的列表，包括已经发布的和尚未发布仍是草稿状态的 Pages：对词云图、归档等的管理，有兴趣的朋友可以去博主的about看看 About：这是关于admin插件从说明 Deploy：可以直接部署到github上去 Settings：这里可以设置admin登录密码，当然还有其他的一些配置 博文发布好！到目前为止基本重新熟悉了环境，那么现在设想你打开电脑，决定进行博文，编写，应该如何去做呢？ step 1首先需要在存放博文的文件夹下右键打开Git Bash Here，需要强调的是，这个文件夹不是存放Hexo下载和安装的文件夹，而是那个专门存放blog的文件夹，比如博主安装Hexo的文件夹名为“Hexo”，而存放博客的文件夹就叫“blog”。博主在重返个人博客的第一天，竟然大脑空空的在Hexo安装文件夹下调试了很久… step 2首先需要将本机上的服务器打开，否则你打开admin主页时看到的就是美丽的404输入命令： hexo server -d 这回服务器运行起来了，现在就阔以打开进行博文编写和发布啦 step 3在博文编写结束之后，可以先看一下效果，如果没有问题，就可以上传到服务器上了。这里需要输入命令： hexo g &amp;&amp; hexo d 当然输入这条语句的前提是你之前得在github和这上面输入过自己的账号，这样之后就可以在固定的位置进行发布了。 小结总之，本博文的目的主要还是在于让博主本人不要忘了怎么发博文，里面省去了很多的细节部分，如果各位朋友想对admin-Hexo了解更多，可以去看我在写此篇博客是的参考博文]]></content>
@@ -33,8 +52,8 @@
         <category>汇总记录</category>
       </categories>
       <tags>
-        <tag>不蒜子</tag>
         <tag>Hexo</tag>
+        <tag>不蒜子</tag>
       </tags>
   </entry>
   <entry>
@@ -45,8 +64,8 @@
         <category>汇总记录</category>
       </categories>
       <tags>
-        <tag>经验</tag>
         <tag>Hexo</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
