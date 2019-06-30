@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="回文数,素数,数字倒置,">
 
 
 
@@ -79,19 +79,23 @@
 
 
 
-<meta name="description" content="时间很短，生活很长life is beautiful like sunshy不愿意做程序员的计算机学习者总是在半睡半醒时敲代码假二次元爱好者看起来在思考其实脑袋里空空如也的学习爱好人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="前言&amp;emsp;利用C语言解答一些趣味问题，学一学练一练。 回文数介绍&amp;emsp;回文数指具有对称性质的数字，例如12321,569965等等。回文数不仅是一个C语言的经典题目，也是一个数学上的问题。&amp;emsp;从例子中我们可以看出，有些回文数已经超出了int类型的范围（博主平常在编程时偏好int），因此在这进行程序设计时需要格外注意。 回文数程序设计&amp;emsp;本博文程序题目来自于《C语言趣味编">
+<meta name="keywords" content="回文数,素数,数字倒置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言趣味编程之回文数">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/C/index.html">
 <meta property="og:site_name" content="Carsel的个人博客">
-<meta property="og:description" content="时间很短，生活很长life is beautiful like sunshy不愿意做程序员的计算机学习者总是在半睡半醒时敲代码假二次元爱好者看起来在思考其实脑袋里空空如也的学习爱好人">
+<meta property="og:description" content="前言&amp;emsp;利用C语言解答一些趣味问题，学一学练一练。 回文数介绍&amp;emsp;回文数指具有对称性质的数字，例如12321,569965等等。回文数不仅是一个C语言的经典题目，也是一个数学上的问题。&amp;emsp;从例子中我们可以看出，有些回文数已经超出了int类型的范围（博主平常在编程时偏好int），因此在这进行程序设计时需要格外注意。 回文数程序设计&amp;emsp;本博文程序题目来自于《C语言趣味编">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/Das.jpg">
-<meta property="og:updated_time" content="2019-05-19T09:38:46.120Z">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-6/huiwen1.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-6/huiwen2.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-6/huiwen31.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-6/huiwen32.png">
+<meta property="og:updated_time" content="2019-06-30T11:34:49.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="时间很短，生活很长life is beautiful like sunshy不愿意做程序员的计算机学习者总是在半睡半醒时敲代码假二次元爱好者看起来在思考其实脑袋里空空如也的学习爱好人">
-<meta name="twitter:image" content="http://yoursite.com/images/Das.jpg">
+<meta name="twitter:title" content="C语言趣味编程之回文数">
+<meta name="twitter:description" content="前言&amp;emsp;利用C语言解答一些趣味问题，学一学练一练。 回文数介绍&amp;emsp;回文数指具有对称性质的数字，例如12321,569965等等。回文数不仅是一个C语言的经典题目，也是一个数学上的问题。&amp;emsp;从例子中我们可以看出，有些回文数已经超出了int类型的范围（博主平常在编程时偏好int），因此在这进行程序设计时需要格外注意。 回文数程序设计&amp;emsp;本博文程序题目来自于《C语言趣味编">
+<meta name="twitter:image" content="http://yoursite.com/images/blog2019-6/huiwen1.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/30/C/">
 
 
 
 
 
-  <title>about | Carsel的个人博客</title>
+  <title>C语言趣味编程之回文数 | Carsel的个人博客</title>
   
 
 
@@ -284,35 +288,386 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carsel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carsel的个人博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h4 id="时间很短，生活很长"><a href="#时间很短，生活很长" class="headerlink" title="时间很短，生活很长"></a>时间很短，生活很长</h4><h6 id="life-is-beautiful-like-sunshy"><a href="#life-is-beautiful-like-sunshy" class="headerlink" title="life is beautiful like sunshy"></a>life is beautiful like sunshy</h6><p>不愿意做程序员的计算机学习者<br>总是在半睡半醒时敲代码<br>假二次元爱好者<br>看起来在思考其实脑袋里空空如也的学习爱好人</p>
-<p><img src="/images/Das.jpg" alt="best wishes!"></p>
+          <h1 class="post-title" itemprop="name headline">C语言趣味编程之回文数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T18:47:00+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言总结/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言总结</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言总结/C语言/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言总结/C语言/趣味编程/" itemprop="url" rel="index">
+                    <span itemprop="name">趣味编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
 
         
-      </div>
+
       
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;利用C语言解答一些趣味问题，学一学练一练。</p>
+<h3 id="回文数介绍"><a href="#回文数介绍" class="headerlink" title="回文数介绍"></a>回文数介绍</h3><p>&emsp;回文数指具有对称性质的数字，例如12321,569965等等。回文数不仅是一个C语言的经典题目，也是一个数学上的问题。<br>&emsp;从例子中我们可以看出，有些回文数已经超出了int类型的范围（博主平常在编程时偏好int），因此在这进行程序设计时需要格外注意。</p>
+<h3 id="回文数程序设计"><a href="#回文数程序设计" class="headerlink" title="回文数程序设计"></a>回文数程序设计</h3><p>&emsp;本博文程序题目来自于《C语言趣味编程100例》，代码为本人自己编写。</p>
+<h4 id="普通回文数判断"><a href="#普通回文数判断" class="headerlink" title="普通回文数判断"></a>普通回文数判断</h4><p><strong>问题：</strong>打印所有不超过n的其平方具有对称性质的数（即回文数）<br><strong>思路：</strong>以12321为例，要想判断它对称，就需要一位一位的将数字单个取出来。<br>1.逆向取数字可以采用不断除以10取余数的方法，得到1、2..<br>2.正向取则需要用原数字除以10的四次方、三次方并取商，从而得到1、2..<br><strong>关键点</strong>：怎样得到最高次方数，跳出循环的条件是什么，调出后又需要注意什么。<br>参考书籍中采用了数组的方法，本文没有采用，相对应的，需要注意的点就会多一些。<br><strong>代码：</strong></p>
+<pre><code>#include&lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int juje(long res){
+    int size=0;//记录长度 
+    int i=0;//循环比较 
+    long resT=res;//尾部逆向扫描 
+    long resH=res;//手部正向扫描 
+    int tail=0;//逆向取值 
+    int head=0; //正向取值 
+    long down=0;//正向取值时的除数 
+    resH=res;//初始化赋值 
+    resT=res;
+    while(res&gt;=10){//计算数字有几位，实际上有size+1位 
+        size++;
+        res=res/10;
+    }
+    for(i=size;i&gt;=0;i--){
+        tail=resT%10;//逆向取余数 
+        resT=resT/10;//逆向保存商 
+        down=pow(10,i);
+        head=resH/down;//正向取商 
+        resH=resH%down;//正向保存余数 
+//        printf(&quot;head=%d    &quot;,head);
+//        printf(&quot;tail=%d\n&quot;,tail);
+        if(tail!=head)//如果不相等就跳出 
+            break;
+    }
+    if(i==-1)//说明前后对称 
+        return 1; 
+    else
+        return 0;    
+}
+int main(){
+    int i=1;
+    for(i=1;i&lt;=256;i++){
+        if(juje(i*i)){        
+            printf(&quot;%5d&quot;,i);
+            printf(&quot;%8d\n&quot;,i*i);
+        }
+    } 
+return 0;
+}
+</code></pre><p><strong>结果：</strong><br><img src="\images\blog2019-6\huiwen1.png" alt></p>
+<p>&emsp;注释已经说得足够明确，这里就不在过多解释。很显然，正向除法着重取商，逆向除法着重取余。另外<strong>size</strong>的计算非常重要，决定了次方的计算，因此是逃不掉的。</p>
+<h4 id="回文素数的判断"><a href="#回文素数的判断" class="headerlink" title="回文素数的判断"></a>回文素数的判断</h4><p><strong>问题描述：</strong>找出1000以内既是回文数又是素数的数字<br><strong>思路</strong>：相比于上一道题，本题就是在上一题的基础上增加了对素数的判断。<br><strong>代码：</strong></p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int pri(int pri);
+int juje(long res); 
+int main(){
+    int i=0;
+    int x=0;
+    int y=0;
+    for(i=11;i&lt;1000;i++){
+        x=pri(i);
+        if(x==1){
+            y=juje(i);
+            if(y==1)
+                printf(&quot;%d\n&quot;,i);
+        }    
+    } 
+return 0;
+}
+int pri(int pri){//判断是否为素数，如果是则返回1 
+    int i=0;
+    for(i=pri-1;i&gt;1;i--){
+        if(pri%i==0)
+            break;
+    }
+    if(i==1)
+        return 1;
+    else 
+        return 0;
+}
+int juje(long res){//判断是否为回文数，是则返回1 
+    int size=0;//记录长度 
+    int i=0;//循环比较 
+    long resT=res;//尾部逆向扫描 
+    long resH=res;//手部正向扫描 
+    int tail=0;//逆向取值 
+    int head=0; //正向取值 
+    long down=0;//正向取值时的除数 
+    resH=res;//初始化赋值 
+    resT=res;
+    while(res&gt;=10){//计算数字有几位，实际上有size+1位 
+        size++;
+        res=res/10;
+    }
+    for(i=size;i&gt;=0;i--){
+        tail=resT%10;//逆向取余数 
+        resT=resT/10;//逆向保存商 
+        down=pow(10,i);
+        head=resH/down;//正向取商 
+        resH=resH%down;//正向保存余数 
+        if(tail!=head)//如果不相等就跳出 
+            break;
+    }
+    if(i==-1)//说明前后对称 
+        return 1; 
+    else
+        return 0;    
+}
+</code></pre><p> <strong>结果：</strong><br><img src="\images\blog2019-6\huiwen2.png" alt><br>为了防止有过多的计算，上述程序选择在已知是素数的情况下再进行是否回文数的判断。</p>
+<h4 id="回文数的形成"><a href="#回文数的形成" class="headerlink" title="回文数的形成"></a>回文数的形成</h4><p>&emsp;回文数这一行程规则目前还未得到数学上的验证，目前还属于一个猜想，但是可以知道：任取一个整数，将其倒过来后与原来的正整数相加，会得到一个新的正整数，重复这样的步骤，最终会得到一个回文数。有些数字经过几步就可以形成回文数，而有些数字则需要上百个步骤。<br><strong>问题</strong>：任选择一个整数，写出其形成回文数的过程。<br><strong>思路</strong>：前面的代码中已经有如何判断一个数是回文数的函数了，本题的重点在于，怎样实现将一个数字reverse（倒过来），下面程序中，函数reverse()完成了这个问题。<br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+long reverse(long num);
+int juje(long res);
+int main(){
+    int base=78;
+    int juj=0;
+    int REbase;c/
+    while(juj==0){
+        REbase=reverse(base);//得到逆向数 
+        printf(&quot;%d+%d=&quot;,base,REbase);
+        base=base+REbase;//两数相加 
+        printf(&quot;%d\n&quot;,base) ;
+        juj=juje(base);
+    }
+}
+long reverse(long num){//计算num倒过来的数字
+    int size=0;
+    int i=0;
+    int bit=0;
+    int down=0;
+    long reverse=0;
+    long temp=0;
+    temp=num;
+    while(temp&gt;0){//仍然采取除法取数字每一位的思想
+        temp=temp/10;//因此计算size不能避免
+        size++;
+    }
+    i=size;
+    for(i=size-1;i&gt;=0;i--){
+        bit=num%10;
+        num=num/10;
+//        printf(&quot;%3d&quot;,bit);
+        down=pow(10,i);
+//        printf(&quot;%9d\n&quot;,down);
+        reverse=reverse+bit*down;//一边取出一边不断相乘
+    }
+    return reverse;
+} 
+int juje(long res){
+    int size=0;//记录长度 
+    int i=0;//循环比较 
+    long resT=res;//尾部逆向扫描 
+    long resH=res;//手部正向扫描 
+    int tail=0;//逆向取值 
+    int head=0; //正向取值 
+    long down=0;//正向取值时的除数 
+    resH=res;//初始化赋值 
+    resT=res;
+    while(res&gt;=10){//计算数字有几位，实际上有size+1位 
+        size++;
+        res=res/10;
+    }
+    for(i=size;i&gt;=0;i--){
+        tail=resT%10;//逆向取余数 
+        resT=resT/10;//逆向保存商 
+        down=pow(10,i);
+        head=resH/down;//正向取商 
+        resH=resH%down;//正向保存余数 
+        if(tail!=head)//如果不相等就跳出 
+            break;
+    }
+    if(i==-1)//说明前后对称 
+        return 1; 
+    else
+        return 0;    
+}
+</code></pre><p>为了防止程序陷入未解数学之谜，这里选择了已知需要四步形成回文数的78，输出如下：<br><img src="\images\blog2019-6\huiwen31.png" alt><br>后来博主又充满好奇的尝试了一下99：<br><img src="\images\blog2019-6\huiwen32.png" alt><br>还是比较幸运的，博主在尝试98时，就发现它需要的步骤过多导致溢出了…</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>1.回文数的判断，最简单的可以采用除法取数字位数的方法；<br>2.在利用除法取数字位数时，正向取时计算数字的长度是不可避免的；<br>3.本类问题需要多多注意循环跳出条件；</p>
+
       
-      
+    </div>
+    <div>
+        
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">—————————————本文结束—————————————</div>
+    
+</div>
+         
     </div>
     
     
     
+     
+    
+
+    
+
+    
+     
+    <footer class="post-footer">
+      
+        
+        
+        <div class="post-tags">
+          
+            <a href="/tags/回文数/" rel="tag"><i class="fa fa-tag"></i> 回文数</a>
+          
+            <a href="/tags/素数/" rel="tag"><i class="fa fa-tag"></i> 素数</a>
+          
+            <a href="/tags/数字倒置/" rel="tag"><i class="fa fa-tag"></i> 数字倒置</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/30/言联系之排序算法/" rel="next" title="C语言文件读写总结（二）">
+                <i class="fa fa-chevron-left"></i> C语言文件读写总结（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -427,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#时间很短，生活很长"><span class="nav-number">1.</span> <span class="nav-text">时间很短，生活很长</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#life-is-beautiful-like-sunshy"><span class="nav-number">1.0.1.</span> <span class="nav-text">life is beautiful like sunshy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回文数介绍"><span class="nav-number">2.</span> <span class="nav-text">回文数介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回文数程序设计"><span class="nav-number">3.</span> <span class="nav-text">回文数程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通回文数判断"><span class="nav-number">3.1.</span> <span class="nav-text">普通回文数判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回文素数的判断"><span class="nav-number">3.2.</span> <span class="nav-text">回文素数的判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回文数的形成"><span class="nav-number">3.3.</span> <span class="nav-text">回文数的形成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

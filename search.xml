@@ -1,259 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>C语言文件读写总结（二）</title>
-      <link href="/2019/06/30/%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-      <url>/2019/06/30/%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本节接着上一节继续记录…<br>本文参考教程<a href="http://c.biancheng.net/c/file/" target="_blank" rel="noopener">连接</a></p><h4 id="文件的随机读写"><a href="#文件的随机读写" class="headerlink" title="文件的随机读写"></a>文件的随机读写</h4><p>在实际的程序设计中，经常需要从文件的某个指定位置处开始对文件进行选择性的读写操作，这时，首先要把文件的读写位置指针移动到指定处，然后再进行读写，这种读写方式称为对文件的随机读写操作。<br><strong>fseek()函数</strong>：</p><pre><code>int fseek(FI：LE *fp, long offset, int origin);//原函数fseek(fp,10L,SEEK_SET);fseek(fp,10L,SEEK_CUR);fseek(fp,-20L,SEEK_END);     </code></pre><p> <strong>函数功能</strong>：把文件读写指针调整到从 origin 基点开始偏移 offset 处，即把文件读写指针移动到 origin+offset 处。<br>函数参数：<br>1) <strong>origin</strong>：文件读写指针移动的基准点（参考点）。基准位置 origin 有三种常量取值：<br>SEEK_SET、SEEK_CUR 和 SEEK_END，取值依次为 0，1，2。<br><strong>SEEK_SET</strong>:文件开头，即第一个有效数据的起始位置。<br><strong>SEEK_CUR</strong>：当前位置。<br><strong>SEEK_END</strong>:文件结尾，即最后一个有效数据之后的位置。<br><strong><em>注意</em></strong>：此处并不能读取到最后一个有效数据，必须前移一个数据块所占的字节数，使该文件流的读写指针到达最后一个有效数据块的起始位置处。<br>2) <strong>offset</strong>：位置偏移量，为 long 型，当 offset 为正整数时，表示从基准 origin 向后移动 offset 个字节的偏移；若 offset 为负数，表示从基准 origin 向前移动 |offset| 个字节的偏移。<br><strong>返回值</strong>：成功，返回 0；失败，返回 -1。<br>例如，若 fp 为文件指针，则 seek (fp,10L,0); 把读写指针移动到从文件开头向后 10 个字节处。 fSeek(fp,10L,1); 把读写指针移动到从当前位置向后 10 个字节处。 fseek(fp,-20L,2); 把读写指针移动到从文件结尾处向前 20 个字节处。<br><strong>ftell()函数</strong>：    </p><pre><code>ftell (FILE *fp);</code></pre><p><strong>函数功能</strong>：用于获取当前文件读写指针相对于文件头的偏移字节数。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[C语言趣味编程之回文数]]></title>
+    <url>%2F2019%2F06%2F30%2FC%2F</url>
+    <content type="text"><![CDATA[前言&emsp;利用C语言解答一些趣味问题，学一学练一练。 回文数介绍&emsp;回文数指具有对称性质的数字，例如12321,569965等等。回文数不仅是一个C语言的经典题目，也是一个数学上的问题。&emsp;从例子中我们可以看出，有些回文数已经超出了int类型的范围（博主平常在编程时偏好int），因此在这进行程序设计时需要格外注意。 回文数程序设计&emsp;本博文程序题目来自于《C语言趣味编程100例》，代码为本人自己编写。 普通回文数判断问题：打印所有不超过n的其平方具有对称性质的数（即回文数）思路：以12321为例，要想判断它对称，就需要一位一位的将数字单个取出来。1.逆向取数字可以采用不断除以10取余数的方法，得到1、2..2.正向取则需要用原数字除以10的四次方、三次方并取商，从而得到1、2..关键点：怎样得到最高次方数，跳出循环的条件是什么，调出后又需要注意什么。参考书籍中采用了数组的方法，本文没有采用，相对应的，需要注意的点就会多一些。代码： #include&lt;stdio.h&gt; #include &lt;math.h&gt; int juje(long res){ int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//手部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 // printf(&quot;head=%d &quot;,head); // printf(&quot;tail=%d\n&quot;,tail); if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } int main(){ int i=1; for(i=1;i&lt;=256;i++){ if(juje(i*i)){ printf(&quot;%5d&quot;,i); printf(&quot;%8d\n&quot;,i*i); } } return 0; } 结果： &emsp;注释已经说得足够明确，这里就不在过多解释。很显然，正向除法着重取商，逆向除法着重取余。另外size的计算非常重要，决定了次方的计算，因此是逃不掉的。 回文素数的判断问题描述：找出1000以内既是回文数又是素数的数字思路：相比于上一道题，本题就是在上一题的基础上增加了对素数的判断。代码： #include&lt;stdio.h&gt; #include&lt;math.h&gt; int pri(int pri); int juje(long res); int main(){ int i=0; int x=0; int y=0; for(i=11;i&lt;1000;i++){ x=pri(i); if(x==1){ y=juje(i); if(y==1) printf(&quot;%d\n&quot;,i); } } return 0; } int pri(int pri){//判断是否为素数，如果是则返回1 int i=0; for(i=pri-1;i&gt;1;i--){ if(pri%i==0) break; } if(i==1) return 1; else return 0; } int juje(long res){//判断是否为回文数，是则返回1 int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//手部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } 结果：为了防止有过多的计算，上述程序选择在已知是素数的情况下再进行是否回文数的判断。 回文数的形成&emsp;回文数这一行程规则目前还未得到数学上的验证，目前还属于一个猜想，但是可以知道：任取一个整数，将其倒过来后与原来的正整数相加，会得到一个新的正整数，重复这样的步骤，最终会得到一个回文数。有些数字经过几步就可以形成回文数，而有些数字则需要上百个步骤。问题：任选择一个整数，写出其形成回文数的过程。思路：前面的代码中已经有如何判断一个数是回文数的函数了，本题的重点在于，怎样实现将一个数字reverse（倒过来），下面程序中，函数reverse()完成了这个问题。代码： #include&lt;stdio.h&gt; #include&lt;math.h&gt; long reverse(long num); int juje(long res); int main(){ int base=78; int juj=0; int REbase;c/ while(juj==0){ REbase=reverse(base);//得到逆向数 printf(&quot;%d+%d=&quot;,base,REbase); base=base+REbase;//两数相加 printf(&quot;%d\n&quot;,base) ; juj=juje(base); } } long reverse(long num){//计算num倒过来的数字 int size=0; int i=0; int bit=0; int down=0; long reverse=0; long temp=0; temp=num; while(temp&gt;0){//仍然采取除法取数字每一位的思想 temp=temp/10;//因此计算size不能避免 size++; } i=size; for(i=size-1;i&gt;=0;i--){ bit=num%10; num=num/10; // printf(&quot;%3d&quot;,bit); down=pow(10,i); // printf(&quot;%9d\n&quot;,down); reverse=reverse+bit*down;//一边取出一边不断相乘 } return reverse; } int juje(long res){ int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//手部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } 为了防止程序陷入未解数学之谜，这里选择了已知需要四步形成回文数的78，输出如下：后来博主又充满好奇的尝试了一下99：还是比较幸运的，博主在尝试98时，就发现它需要的步骤过多导致溢出了… 小结1.回文数的判断，最简单的可以采用除法取数字位数的方法；2.在利用除法取数字位数时，正向取时计算数字的长度是不可避免的；3.本类问题需要多多注意循环跳出条件；]]></content>
       <categories>
-          
-          <category> 编程语言总结 </category>
-          
-          <category> C语言 </category>
-          
+        <category>编程语言总结</category>
+        <category>C语言</category>
+        <category>趣味编程</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 文件读写 </tag>
-            
-            <tag> 随机读写 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C语言文件读写总结（一）</title>
-      <link href="/2019/06/29/%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1/"/>
-      <url>/2019/06/29/%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1/</url>
-      
-        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;文件读写是C语言基本语法中要求掌握的部分，博主在复习C的时候在这里专门整理一下，以便日后使用时能够快速理解和熟悉。</p><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h5 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h5><p>文件是<strong>操作系统管理数据的基本单位</strong>，这里需要记住它的三个要素：<br><strong>1.</strong>文件路径<br><strong>2.</strong>文件名<br><strong>3.</strong>文件后缀名<br>后两个要素这里不细说，需要注意的是路径的两种写法：</p><pre><code>D:\\WorkSpace\\FileFolder\\file.txtD:/WorkSpace/FileFolder/file.txt</code></pre><p>&emsp;记忆的话就简单记成<strong>除法单杠</strong>就好啦，博主也没想出来什么好一点记忆的顺口称呼。</p><h5 id="流"><a href="#流" class="headerlink" title="流"></a>流</h5><p>&emsp;由于程序交互的I/O终端多种多样，为了提高程序设计效率，标准的I/O系统把任意输入的源端或任意输出的终端，都抽象转换成了概念上的“标准 I/O 设备”或称“标准逻辑设备”，换句话说，在程序访问时，需要考虑的是逻辑结构而非物理结构。<br>&emsp;把物理设备抽象成逻辑设备这个动作，则是由标准I/O系统自动完成的。故从这个意义上，可以认为任意输入的源端和任意输出的终端均对应个“流”。<br>&emsp;按照方向，流分为<strong>输出流</strong>和<strong>输入流</strong>，按照数据形式，又分为<strong>文本流</strong>和<strong>二进制流</strong>。    </p><h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><h5 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h5><pre><code>#include&lt;stdio.h&gt;    //只有这一个</code></pre><h5 id="文件的打开与关闭"><a href="#文件的打开与关闭" class="headerlink" title="文件的打开与关闭"></a>文件的打开与关闭</h5><p>&emsp;在操作前需要记住的是<strong>C语言对任何文件进行操作前，都必须先打开文件，即打开“流”</strong>，在操作结束后，需要关闭流，释放内存。<br><strong>文件打开：fopen()函数</strong>    </p><pre><code>FILE *fp = NULL;  //FILE类型指针变量fp = fopen(&quot;D:/test.txt&quot;, &quot;r&quot;);  //打开成功，fp获得指针变量，否则fp为NULL</code></pre><p>&emsp;博主这里不写函数原型是因为大多数情况函数原型会刚难以理解，反而具体的应用例子能够很快让人上手,只需要记住：<strong><em>一个指针，两个参数</em></strong>，指针是指<strong>成功打开后获得的文件指针</strong>，两个参数是<strong>指文件路径+文件名</strong>和<strong>打开模式</strong>。<br>&emsp;fopen()打开模式中参数有很多选择，博主三年前学C，平常用的不多，这里只记录之前自己用过的：</p><table><thead><tr><th></th></tr></thead><tbody><tr><td><strong>模式</strong></td><td><strong>含义</strong></td><td><strong>说明</strong></td></tr><tr><td>r</td><td>只读</td><td>该模式没有创建文本的能力，因此要求文件必须存在</td></tr><tr><td>w</td><td>只写</td><td>若文件存在，则前清空后重新写；若文件不存在，则会创建文件</td></tr><tr><td>a</td><td>追加读写</td><td>没有创建文本的能力，要求文件必须存在。打开成功则从文件末尾开始写入</td></tr><tr><td>模式b</td><td>二进制</td><td>功能为原模式，但要求为二进制：rb、wb、ab</td></tr><tr><td>模式+</td><td>读写</td><td>原模式基础上追加读或者写：w+、rb+、ab+，其中只有含有w的模式才能应付文件不存在的情况</td></tr></tbody></table><p><strong>文件关闭：fclose()函数</strong>    </p><pre><code>fclose (fp);    //fp为已打开文件的指针</code></pre><p> &emsp;总之文件关闭就是一句话完事儿的事情，参数是<strong>已开文件指针</strong><br> <strong>文件打判断：</strong><br> 这几句基本上是固定好的，为了保证程序健壮性，要求在打开文件之后必须加上：</p><pre><code>if(NULL==fp){    //判断指针是否为空    printf (&quot;Failed to open the file !\n&quot;);    exit (0);    //安全起见，强制程序退出}</code></pre><p> <strong>应用实例：</strong></p><pre><code>#include &lt;stdio.h&gt;int main(){   FILE *fp = NULL;   fp = fopen(&quot;test.txt&quot;, &quot;w+&quot;);   if(NULL==fp){    //判断指针是否为空        printf (&quot;Failed to open the file !\n&quot;);        exit (0);    //安全起见，强制程序退出    }   fclose(fp);}</code></pre><h5 id="文件结束判断"><a href="#文件结束判断" class="headerlink" title="文件结束判断"></a>文件结束判断</h5><p> &emsp;博主把这个放在前面是因为后面会用得到，另外文件的结束判断其实非常重要，有两种方法，不同场合有时候只能用一种方法。<br> &emsp;当以文本方式读写文件时，可以用EOF判断文件是否结尾，因为EOF=-1，而字符的ASCII码不可能为负数。    </p><pre><code>getc(fp)!=EOF</code></pre><p>  &emsp;当以二进制方式读写文件时，只能用feof函数判断，因为二进制读取数值，可能为负。feof不仅适用于二进制打开，文本方式打开也适用</p><pre><code>feof(fp) //当未读到结尾时，返回值为0，读到结尾时，返回值为1</code></pre><p>  <strong>注意</strong>：只有读出所有的数据之后，再读一次，函数feof(fp)的返回值才为真，因此如果想计数TXT中有多少个字符，需要在计数结束之后-1。</p><h5 id="文件顺序读写"><a href="#文件顺序读写" class="headerlink" title="文件顺序读写"></a>文件顺序读写</h5><p> &emsp;文件的顺序读写就是只文件中数据的存放顺序和读出来或者写进去的顺序是一致的。</p><h6 id="单个字符的写入与读出"><a href="#单个字符的写入与读出" class="headerlink" title="单个字符的写入与读出"></a>单个字符的写入与读出</h6><p> <strong>写入一个字符：</strong></p><pre><code>fputc(&apos;a&apos;,fp);    </code></pre><p> <strong>读出一个字符：</strong></p><pre><code>fgetc(fp);        </code></pre><p> <strong>其他关键点</strong>:    </p><pre><code>rewind (fp);      //把 fp 所指向文件中的读写位置重新调整到文件开始处。while(p!=&apos;\0&apos;)    //判断字符串是否结束while(!feof(fp))</code></pre><p> <strong>应用实例</strong>：</p><pre><code>#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;int main (void){    char c,p;    char str[200]=&quot;hello world!&quot;;    int i=0;    FILE *fp=fopen(&quot;test.txt&quot;,&quot;r+&quot;);    if(fp==NULL)        printf(&quot;no test.txt&quot;);    p=str[0];    while(p!=&apos;\0&apos;){         fputc(p,fp);        i++;        p=str[i];    }    rewind (fp);      while(!feof(fp)){          c=fgetc(fp);        printf(&quot;%c&quot;,c);    }    fclose(fp);return 0;}</code></pre><h6 id="字符串的写入与读出"><a href="#字符串的写入与读出" class="headerlink" title="字符串的写入与读出"></a>字符串的写入与读出</h6><p><strong>写入一个字符串</strong>：    </p><pre><code>fputs(“hello world\n”, fp);</code></pre><p><strong>读出一个字符串</strong>：</p><pre><code>fgets(buffer,100,fp); </code></pre><p><strong>函数功能</strong>：从 fp 所指向的文件内，读取若干字符（一行字符串），并在其后自动添加字符串结束标志 ‘\0’ 后，存入 s 所指的缓冲内存空间中（s 可为字符数组名），直到遇到回车换行符或已读取 size-1 个字符或已读到文件结尾为止。该函数读取的字符串最大长度为 size-1。<br><strong>参数fp</strong>: 可以指向磁盘文件或标准输入设备stdin。<br><strong>注意：</strong>fgets()函数在遇到’\0’或者读取到size-1时会自动停止，因此如果想以字符串的形式把文件读完，需要运用<strong><em>循环</em></strong>。    </p><p><strong>字符串屏幕输出：</strong></p><pre><code>//方法1fputs (buffer, stdout);//把字符串输出到屏幕//方法2fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer);</code></pre><p><strong>应用实例：</strong>   </p><pre><code>#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#define MAX_SIZE 30 //字符数组大小int main (void){    char buffer[30]=&quot; &quot;;    char str1[]=&quot;hello wolrd!\n&quot;;    char str2[]=&quot;i love C \n&quot;;        char str3[]=&quot;i love my life\n&quot;;    FILE *fp;    int i;    fp=fopen (&quot;file.txt&quot;, &quot;w+&quot;) ; //&quot;w+&quot;模式：先写入后读出    if(NULL==fp){        printf (&quot;Failed to open the file !\n&quot;);        exit (0);    }    fputs (&quot;我佛了\n&quot;, fp) ;    fputs (str2, fp) ;    fputs (str3, fp) ;    rewind (fp);     while (fgets(buffer,MAX_SIZE,fp) !=NULL)          fputs (buffer, stdout) ;              rewind (fp);     fgets(buffer,100,fp);     printf(&quot;%s&quot;,buffer);    fclose(fp);return 0;}</code></pre>]]></content>
-      
-      
+      <tags>
+        <tag>回文数</tag>
+        <tag>素数</tag>
+        <tag>数字倒置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C语言文件读写总结（二）]]></title>
+    <url>%2F2019%2F06%2F30%2F%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[前言本节接着上一节继续记录…本文参考教程连接 文件的随机读写在实际的程序设计中，经常需要从文件的某个指定位置处开始对文件进行选择性的读写操作，这时，首先要把文件的读写位置指针移动到指定处，然后再进行读写，这种读写方式称为对文件的随机读写操作。fseek()函数： int fseek(FI：LE *fp, long offset, int origin);//原函数 fseek(fp,10L,SEEK_SET); fseek(fp,10L,SEEK_CUR); fseek(fp,-20L,SEEK_END); 函数功能：把文件读写指针调整到从 origin 基点开始偏移 offset 处，即把文件读写指针移动到 origin+offset 处。函数参数：1) origin：文件读写指针移动的基准点（参考点）。基准位置 origin 有三种常量取值：SEEK_SET、SEEK_CUR 和 SEEK_END，取值依次为 0，1，2。SEEK_SET:文件开头，即第一个有效数据的起始位置。SEEK_CUR：当前位置。SEEK_END:文件结尾，即最后一个有效数据之后的位置。注意：此处并不能读取到最后一个有效数据，必须前移一个数据块所占的字节数，使该文件流的读写指针到达最后一个有效数据块的起始位置处。2) offset：位置偏移量，为 long 型，当 offset 为正整数时，表示从基准 origin 向后移动 offset 个字节的偏移；若 offset 为负数，表示从基准 origin 向前移动 |offset| 个字节的偏移。返回值：成功，返回 0；失败，返回 -1。例如，若 fp 为文件指针，则 seek (fp,10L,0); 把读写指针移动到从文件开头向后 10 个字节处。 fSeek(fp,10L,1); 把读写指针移动到从当前位置向后 10 个字节处。 fseek(fp,-20L,2); 把读写指针移动到从文件结尾处向前 20 个字节处。ftell()函数： ftell (FILE *fp); 函数功能：用于获取当前文件读写指针相对于文件头的偏移字节数。]]></content>
       <categories>
-          
-          <category> 编程语言总结 </category>
-          
-          <category> C语言 </category>
-          
+        <category>编程语言总结</category>
+        <category>C语言</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 文件读写 </tag>
-            
-            <tag> 顺序读写 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C语言数据结构之排序算法</title>
-      <link href="/2019/06/29/C%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-2/"/>
-      <url>/2019/06/29/C%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-2/</url>
-      
-        <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解：</p><h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><p><strong>关键词</strong>：<strong><em>双重循环、前后比较、相邻交换</em></strong>；<br><strong>思路：</strong>冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。</p><pre><code>#include&lt;stdio.h&gt; void bubble(int arr[],int len){    int i=0;    int j=0;    int temp=0;    for(i=0;i&lt;len-1;i++){        for(j=i+1;j&lt;len;j++){            if(arr[i]&lt;arr[j]){                   temp=arr[i];                   arr[i]=arr[j];                   arr[j]=temp;             }        }    }}int main(){    int arr[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70};    int len=0;    int i=0;     len=(int)sizeof(arr)/(int)sizeof(arr[0]);    bubble(arr,len);    for(i=0;i&lt;len;i++)        printf(&quot;%3d&quot;,arr[i]);}</code></pre><p><strong>注意：</strong><br>1.数组长度的计算会使用到<strong>sizeo()</strong>函数，由于sizeof这里计算的是所占的字节数，因此还需要除以每个元素的长度；</p><h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><p><strong>关键词</strong>：<strong><em>双重循环、最值挑选，非相邻交换</em></strong><br><strong>思路：</strong>顾名思义，选择排序即不断地在乱序的数组中寻找出最值（最小或最大），然后将它放在数组里。以升序为例，通常思路为：先以乱序数组第一个为最小值，将其与后面每个数字挨个比较，如果发现有更小的，则更新对最小值的记录并记下这个更小值的位置，以此循环直至数组结束。</p><pre><code>#include&lt;stdio.h&gt; void select(int arr[],int len){    int i=0,j=0;    int temp=0;    int min;    int flag=0;    for(i=0;i&lt;len-1;i++){        min=arr[i];        for(j=i+1;j&lt;len;j++){            if(arr[j]&lt;min){                min=arr[j];                flag=j;            }        }        temp=arr[i];        arr[i]=min;        arr[flag]=temp;    } }int main(){    int arr[] = {22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70};    int len=(int)sizeof(arr)/(int)sizeof(arr[0]);    int i=0;    select(arr,len);    for(i=0;i&lt;len;i++)        printf(&quot;%3d&quot;,arr[i]);return 0;}</code></pre><p><strong>注意</strong>：<br>1.为了避免频繁的使用数组交换，可以将当前最小值存放在一个变量中，另外需要flag记下位置，在遍历完所有乱序数字后再进行位置交换，这样一个长度为n的数组最多交换n次。</p><h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p><strong>关键词</strong>：<strong><em>双重循环、前后比较、挪位、相邻交换</em></strong><br><strong>思路</strong>：插入排序需要记住的最大特点就在于，它会出现大量的元素向前或者向后挪位，这取决于乱序数组的数据结构，一般来讲如果不是链表，那么这样的重复操作就不能省去了。<br>另外一个需要记忆的地方就是，它的大循环是从左到右的正循环，但是子循环则是以大循环为起始点的逆向扫描，因此大循环不能从0开始，需要从1开始。<br>本代码在编写过程中，选择采用了一次对比一次交换的方法，严格意义上这不是插入操作，但最终效果时相同的。    </p><pre><code>#include&lt;stdio.h&gt; void insert1(int arr[],int len){    int i=0,j=0;    int temp;    for(i=1;i&lt;len;i++){        for(j=i;j&gt;=1 &amp;&amp; arr[j-1]&lt;arr[j];j--){//要求后面小于签一个才能开始进行插入操作             temp=arr[j-1];//这里是交换操作，但最终效果等价于插入操作             arr[j-1]=arr[j];            arr[j]=temp;        }    }} void insert2(int arr[],int len){    int i=1,j=0,k=1,flag=0;//这里需要格外注意初始值赋值     int temp=arr[0];    for(i=1;i&lt;len;i++){        j=i;        while(j&gt;0 &amp; arr[j-1]&gt;arr[i])            j=j-1;        flag=j;//找到插入点         temp=arr[i];//保存向后移动时的最后一个元素         k=i;//起始挪动位置         while(k&gt;=flag){            arr[k]=arr[k-1];//以此挪动覆盖             k--;        }        arr[flag]=temp;//最后一个覆盖插入点     }}int main(){    int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 };    int len = (int) sizeof(arr) / sizeof(*arr);    int i=0;    insert2(arr,len);    for(i=0;i&lt;len;i++){        printf(&quot;%3d&quot;,arr[i]);    }return 0;}</code></pre><p><strong>注意</strong>：<br>1.上面的排序算法中，并没有严格遵守插入操作的定义。按照插入的思想，应该是在多次对比结束后进行数组元素依次移动并插入，而不是<strong>insert1()</strong>函数中的比较一次插入一次。博主在完成上面的代码之后也尝试了先比较再挪动插入的算法<strong>insert2()</strong>，亲测代码体验极差：虽然减少了赋值的次数，但是编写起来却不简单。另外，如果想要少操作，那么这里肯定就需要更多的变量了，因此这两种算法在性能上不是一眼就能分出高低的，个人推荐使用<strong>insert1()</strong>。<br>2.博主亲测，这种算法需要格外注意父循环和子循环的上下界。</p><h5 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h5><p><strong>关键词</strong>：<strong><em>下标、递归、左小右大</em></strong><br><strong>思路</strong>：快速排序是众多排序算法中及其重要和优秀的算法，尤其适用于对大数据的排序，但是其逻辑和程序编写也相对要复杂一些，因为会涉及到递归或者迭代。<br>快速排序采用了分而治之的思想：<br>1.以一个数为基准，将序列中的<br>其他数往它两边扔，例如将所有小于的都扔到左边，大于的扔到右边，至于扔过去之后左右两边是否是有序则暂且不管。<br>2.对于“扔”这个动作，这里采用的是交换，而不是插入。因为对于数组来说，插入是它不擅长的工作。<br>3.1-2步骤完成之后，接下来就是将分好的两组继续按照上述步骤进行折半“扔”的操作，这里一般采用递归比较好理解。<br>以下是源代码，博主这里参考了一篇教程，附上<a href="http://c.biancheng.net/view/198.html" target="_blank" rel="noopener">链接</a>    </p><pre><code># include &lt;stdio.h&gt;//递归算法 void Swap(int *p, int *q);  //交换函数 void QuickSort(int *a, int low, int high);  int main(void){    int i;      int a[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70};    int len=(int)sizeof(a)/(int)sizeof(a[0]);    QuickSort(a, 0, len-1);    for (i=0; i&lt;len; ++i)        printf(&quot;%d &quot;, a[i]);return 0;}void Swap(int *p, int *q){    int temp;    temp = *p;    *p = *q;    *q = temp;}void QuickSort(int *a, int low, int high){//数组、数组起始下标、数组结尾下标     int i = low;    int j = high;    int key = a[low];//初始化以第一个为关键数字     if (low &gt;= high){  //递归结束条件         return ;    }     while (low &lt; high){//循环一次，比较一轮         while (low &lt; high &amp;&amp; key &lt;= a[high]){        --high; //下标前移         }        if (key &gt; a[high]){//大的扔到右边             Swap(&amp;a[low], &amp;a[high]);            ++low;        }        while (low &lt; high &amp;&amp; key &gt;= a[low]){             ++low;  //下标后移          }        if (key &lt; a[low]){//小的扔到左边             Swap(&amp;a[low], &amp;a[high]);               --high;        }       }    QuickSort(a, i, low-1);  //左递归     QuickSort(a, low+1, j);  //右递归 }</code></pre><h5 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h5><p><strong>关键词</strong>：<strong><em>步长、插入排序、不稳定</em></strong><br><strong>思路</strong>：讲真这里博主并不想介绍它的思路，因为相对于其他算法，该算法确实要更难一些，但是它却是首个突破n^2的排序算法。<br>1.将整个乱序数组切割为若干个子序列（通过规定好的步长，隔几个数字选一个，最终得到若干个子序列）；<br>2.对这几个子序列分别直接进行插入排序；<br>3.缩小步长（又称增量），重复1-2步骤，直到步长足够小，这个是哦户序列中的圆度基本有序；<br>4.对全体元素进行一次直接插入排序；<br>以下实现代码来自于<a href="https://www.runoob.com/cprogramming/c-sort-algorithm.html" target="_blank" rel="noopener">菜鸟教程</a></p><pre><code>#include&lt;stdio.h&gt; void shell_sort(int arr[], int len) {    int gap=len, i, j;        int temp;    for (gap = len&gt;&gt;2; gap &gt; 0; gap = gap&gt;&gt;2)        for (i = gap; i &lt; len; i++) {            temp = arr[i];            for (j = i - gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j -= gap)                arr[j + gap] = arr[j];            arr[j + gap] = temp;        }}int main(){    int i=0;    int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 };    int len = (int) sizeof(arr) / sizeof(*arr);    shell_sort(arr, len);    for(i=0;i&lt;len;i++)        printf(&quot;%3d&quot;,arr[i]);    printf(&quot;\n&quot;); }</code></pre>]]></content>
-      
-      
+      <tags>
+        <tag>文件读写</tag>
+        <tag>随机读写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C语言数据结构之排序算法]]></title>
+    <url>%2F2019%2F06%2F29%2FC%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-2%2F</url>
+    <content type="text"><![CDATA[前言这一期介绍C语言编写的各种排序算法，有些算法有可能并没有实现很好的移植性，主要还是在于复习和理解： 正文冒泡排序关键词：双重循环、前后比较、相邻交换；思路：冒泡的核心思想其实只需要记住：两个for循环，数组前后比较，按照需求进行位置对调就可以。博主每次并不实际记忆什么条件下进行交换，因为只要查看输出结果，就可以知道什么条件下是升序什么情况下是降序。 #include&lt;stdio.h&gt; void bubble(int arr[],int len){ int i=0; int j=0; int temp=0; for(i=0;i&lt;len-1;i++){ for(j=i+1;j&lt;len;j++){ if(arr[i]&lt;arr[j]){ temp=arr[i]; arr[i]=arr[j]; arr[j]=temp; } } } } int main(){ int arr[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70}; int len=0; int i=0; len=(int)sizeof(arr)/(int)sizeof(arr[0]); bubble(arr,len); for(i=0;i&lt;len;i++) printf(&quot;%3d&quot;,arr[i]); } 注意：1.数组长度的计算会使用到sizeo()函数，由于sizeof这里计算的是所占的字节数，因此还需要除以每个元素的长度； 选择排序关键词：双重循环、最值挑选，非相邻交换思路：顾名思义，选择排序即不断地在乱序的数组中寻找出最值（最小或最大），然后将它放在数组里。以升序为例，通常思路为：先以乱序数组第一个为最小值，将其与后面每个数字挨个比较，如果发现有更小的，则更新对最小值的记录并记下这个更小值的位置，以此循环直至数组结束。 #include&lt;stdio.h&gt; void select(int arr[],int len){ int i=0,j=0; int temp=0; int min; int flag=0; for(i=0;i&lt;len-1;i++){ min=arr[i]; for(j=i+1;j&lt;len;j++){ if(arr[j]&lt;min){ min=arr[j]; flag=j; } } temp=arr[i]; arr[i]=min; arr[flag]=temp; } } int main(){ int arr[] = {22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70}; int len=(int)sizeof(arr)/(int)sizeof(arr[0]); int i=0; select(arr,len); for(i=0;i&lt;len;i++) printf(&quot;%3d&quot;,arr[i]); return 0; } 注意：1.为了避免频繁的使用数组交换，可以将当前最小值存放在一个变量中，另外需要flag记下位置，在遍历完所有乱序数字后再进行位置交换，这样一个长度为n的数组最多交换n次。 插入排序关键词：双重循环、前后比较、挪位、相邻交换思路：插入排序需要记住的最大特点就在于，它会出现大量的元素向前或者向后挪位，这取决于乱序数组的数据结构，一般来讲如果不是链表，那么这样的重复操作就不能省去了。另外一个需要记忆的地方就是，它的大循环是从左到右的正循环，但是子循环则是以大循环为起始点的逆向扫描，因此大循环不能从0开始，需要从1开始。本代码在编写过程中，选择采用了一次对比一次交换的方法，严格意义上这不是插入操作，但最终效果时相同的。 #include&lt;stdio.h&gt; void insert1(int arr[],int len){ int i=0,j=0; int temp; for(i=1;i&lt;len;i++){ for(j=i;j&gt;=1 &amp;&amp; arr[j-1]&lt;arr[j];j--){//要求后面小于签一个才能开始进行插入操作 temp=arr[j-1];//这里是交换操作，但最终效果等价于插入操作 arr[j-1]=arr[j]; arr[j]=temp; } } } void insert2(int arr[],int len){ int i=1,j=0,k=1,flag=0;//这里需要格外注意初始值赋值 int temp=arr[0]; for(i=1;i&lt;len;i++){ j=i; while(j&gt;0 &amp; arr[j-1]&gt;arr[i]) j=j-1; flag=j;//找到插入点 temp=arr[i];//保存向后移动时的最后一个元素 k=i;//起始挪动位置 while(k&gt;=flag){ arr[k]=arr[k-1];//以此挪动覆盖 k--; } arr[flag]=temp;//最后一个覆盖插入点 } } int main(){ int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 }; int len = (int) sizeof(arr) / sizeof(*arr); int i=0; insert2(arr,len); for(i=0;i&lt;len;i++){ printf(&quot;%3d&quot;,arr[i]); } return 0; } 注意：1.上面的排序算法中，并没有严格遵守插入操作的定义。按照插入的思想，应该是在多次对比结束后进行数组元素依次移动并插入，而不是insert1()函数中的比较一次插入一次。博主在完成上面的代码之后也尝试了先比较再挪动插入的算法insert2()，亲测代码体验极差：虽然减少了赋值的次数，但是编写起来却不简单。另外，如果想要少操作，那么这里肯定就需要更多的变量了，因此这两种算法在性能上不是一眼就能分出高低的，个人推荐使用insert1()。2.博主亲测，这种算法需要格外注意父循环和子循环的上下界。 快速排序关键词：下标、递归、左小右大思路：快速排序是众多排序算法中及其重要和优秀的算法，尤其适用于对大数据的排序，但是其逻辑和程序编写也相对要复杂一些，因为会涉及到递归或者迭代。快速排序采用了分而治之的思想：1.以一个数为基准，将序列中的其他数往它两边扔，例如将所有小于的都扔到左边，大于的扔到右边，至于扔过去之后左右两边是否是有序则暂且不管。2.对于“扔”这个动作，这里采用的是交换，而不是插入。因为对于数组来说，插入是它不擅长的工作。3.1-2步骤完成之后，接下来就是将分好的两组继续按照上述步骤进行折半“扔”的操作，这里一般采用递归比较好理解。以下是源代码，博主这里参考了一篇教程，附上链接 # include &lt;stdio.h&gt; //递归算法 void Swap(int *p, int *q); //交换函数 void QuickSort(int *a, int low, int high); int main(void) { int i; int a[] = {22, 34, 3, 32, 82, 55, 89,50, 37, 5, 64, 35, 9, 70}; int len=(int)sizeof(a)/(int)sizeof(a[0]); QuickSort(a, 0, len-1); for (i=0; i&lt;len; ++i) printf(&quot;%d &quot;, a[i]); return 0; } void Swap(int *p, int *q) { int temp; temp = *p; *p = *q; *q = temp; } void QuickSort(int *a, int low, int high){//数组、数组起始下标、数组结尾下标 int i = low; int j = high; int key = a[low];//初始化以第一个为关键数字 if (low &gt;= high){ //递归结束条件 return ; } while (low &lt; high){//循环一次，比较一轮 while (low &lt; high &amp;&amp; key &lt;= a[high]){ --high; //下标前移 } if (key &gt; a[high]){//大的扔到右边 Swap(&amp;a[low], &amp;a[high]); ++low; } while (low &lt; high &amp;&amp; key &gt;= a[low]){ ++low; //下标后移 } if (key &lt; a[low]){//小的扔到左边 Swap(&amp;a[low], &amp;a[high]); --high; } } QuickSort(a, i, low-1); //左递归 QuickSort(a, low+1, j); //右递归 } 希尔排序关键词：步长、插入排序、不稳定思路：讲真这里博主并不想介绍它的思路，因为相对于其他算法，该算法确实要更难一些，但是它却是首个突破n^2的排序算法。1.将整个乱序数组切割为若干个子序列（通过规定好的步长，隔几个数字选一个，最终得到若干个子序列）；2.对这几个子序列分别直接进行插入排序；3.缩小步长（又称增量），重复1-2步骤，直到步长足够小，这个是哦户序列中的圆度基本有序；4.对全体元素进行一次直接插入排序；以下实现代码来自于菜鸟教程 #include&lt;stdio.h&gt; void shell_sort(int arr[], int len) { int gap=len, i, j; int temp; for (gap = len&gt;&gt;2; gap &gt; 0; gap = gap&gt;&gt;2) for (i = gap; i &lt; len; i++) { temp = arr[i]; for (j = i - gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j -= gap) arr[j + gap] = arr[j]; arr[j + gap] = temp; } } int main(){ int i=0; int arr[] = { 22, 34, 3, 32, 82, 55, 89, 50, 37, 5, 64, 35, 9, 70 }; int len = (int) sizeof(arr) / sizeof(*arr); shell_sort(arr, len); for(i=0;i&lt;len;i++) printf(&quot;%3d&quot;,arr[i]); printf(&quot;\n&quot;); }]]></content>
       <categories>
-          
-          <category> 编程语言总结 </category>
-          
-          <category> C语言 </category>
-          
+        <category>编程语言总结</category>
+        <category>C语言</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 数据结构 </tag>
-            
-            <tag> 排序算法 </tag>
-            
-            <tag> 快速排序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>网站使用之poj</title>
-      <link href="/2019/06/29/%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%B9%8Bpoj/"/>
-      <url>/2019/06/29/%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%B9%8Bpoj/</url>
-      
-        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>博主为了提升自己的算法能力，决定空闲时间刷一刷算法题，关于算法题的题库和练习网站，之前在“一些好玩又有用的网站”这篇博文里面有提到过，可以选择在力扣或者北大的poj上面进行练习，博主本次选择了poj进行尝试。另外，由于poj更多提供的是检测，因此博主是现在dev C++上写好程序之后再复制上去提交的。</p><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p><strong>检测系统:</strong> 北大poj<br><strong>开发环境:</strong> dev C++</p><h3 id="使用过程"><a href="#使用过程" class="headerlink" title="使用过程"></a>使用过程</h3><h5 id="dev-C"><a href="#dev-C" class="headerlink" title="dev C++"></a>dev C++</h5><p>关于dev的安装和使用这里就不再多说了，各位编程的朋友们首先肯定擅长各种软件的安装，语言的话dev是提供中文，不过这里需要说明一下，在调试的过程中注意不要对同一个程序打开试图打开两个调试窗口，这个之前博主常用的CodeBlocks有很大的区别。一旦上一个程序调试的黑框框没有关掉还继续进行编译运行，那么是会出错的。博主初次使用时没有注意，也是反应了很长时间才找到原因。</p><h5 id="北大poj"><a href="#北大poj" class="headerlink" title="北大poj"></a>北大poj</h5><p><strong>北京大学程序在线评测系统</strong>，这里不再多做介绍，博主主要使用C语言进行题目答案提交，答题者需要注册一个账号。<br><img src="\images\blog2019-6\poj.pn" alt></p><h6 id="test之1000题"><a href="#test之1000题" class="headerlink" title="test之1000题"></a>test之1000题</h6><p>一般来讲，初次使用该系统都会直接复制第一题进行系统熟悉，具体题目就是一个简单的加法题，不过在提交的时候注意一定要选对语言，针对于C语言，在编译语言里面可以选择GCC或者C：<br><img src="\images\blog2019-6\submit.pn" alt></p><p><strong>值得注意</strong>的是，poj系统非常严格（或者说对于输入考虑不周），多一个空格都会报错，博主在重复提交的时候命名选对了语言敲对了代码但是就是报错，后来才发现是因为在题号后面多跟了一个空格……<br>提交完成之后就可以看到自己的提交状态了：<br><img src="\images\blog2019-6\res.pn" alt></p><h6 id="实战之1003题"><a href="#实战之1003题" class="headerlink" title="实战之1003题"></a>实战之1003题</h6><p>在完成了对系统的初步测试和熟悉之后，就可以来进行题目解答和提交啦！</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>利用Hexo Admin发布博文</title>
-      <link href="/2019/06/28/%E4%BD%95%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E6%96%87/"/>
-      <url>/2019/06/28/%E4%BD%95%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E6%96%87/</url>
-      
-        <content type="html"><![CDATA[<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起<br>结果在激动的连发三片博文之后的一个月内就再也没了动静…<br>终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）<br><img src="\images\blog2019-6\beiwei.jpg" alt><br>于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑）    </p><h5 id="发布工具"><a href="#发布工具" class="headerlink" title="发布工具"></a>发布工具</h5><p>博主的发布工具为Hexo-Admin，详情可以参考它的<a href="https://jaredforsyth.com/hexo-admin/" target="_blank" rel="noopener">官方网站</a><br>Admin并不是一开始自带的，因此在搭建好之后，需要单独再去卸载安装，不要嫌麻烦，毕竟后面发博客用它还是很方便的，至于安装教程，博主懒得写，大家可以自行搜索，有很多大神有教程的</p><h5 id="界面介绍"><a href="#界面介绍" class="headerlink" title="界面介绍"></a>界面介绍</h5><p>打开admin主页后事这样的：<br><img src="\images\blog2019-6\zhuye.png" alt><br>这里介绍一下各个选项：</p><pre><code>Post：博客文章的列表，包括已经发布的和尚未发布仍是草稿状态的Pages：对词云图、归档等的管理，有兴趣的朋友可以去博主的about看看About：这是关于admin插件从说明Deploy：可以直接部署到github上去Settings：这里可以设置admin登录密码，当然还有其他的一些配置</code></pre><h5 id="博文发布"><a href="#博文发布" class="headerlink" title="博文发布"></a>博文发布</h5><p>好！到目前为止基本重新熟悉了环境，那么现在设想你打开电脑，决定进行博文，编写，应该如何去做呢？</p><h6 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h6><p>首先需要在存放博文的文件夹下右键打开Git Bash Here，需要强调的是，这个文件夹不是存放Hexo下载和安装的文件夹，而是那个专门存放blog的文件夹，比如博主安装Hexo的文件夹名为“Hexo”，而存放博客的文件夹就叫“blog”。博主在重返个人博客的第一天，竟然大脑空空的在Hexo安装文件夹下调试了很久…<br><img src="\images\blog2019-6\naozi.jpg" alt></p><h6 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h6><p>首先需要将本机上的服务器打开，否则你打开admin主页时看到的就是美丽的404<br>输入命令：</p><pre><code>hexo server -d</code></pre><p>这回服务器运行起来了，现在就阔以打开进行博文编写和发布啦</p><h6 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h6><p>在博文编写结束之后，可以先看一下效果，如果没有问题，就可以上传到服务器上了。这里需要输入命令：</p><pre><code>hexo g &amp;&amp; hexo d  </code></pre><p>当然输入这条语句的前提是你之前得在github和这上面输入过自己的账号，这样之后就可以在固定的位置进行发布了。</p><h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><p>总之，本博文的目的主要还是在于让博主本人不要忘了怎么发博文，里面省去了很多的细节部分，如果各位朋友想对admin-Hexo了解更多，可以去看我在写此篇博客是的<a href="https://www.jianshu.com/p/68e727dda16d" target="_blank" rel="noopener">参考博文</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>数据结构</tag>
+        <tag>排序算法</tag>
+        <tag>快速排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C语言文件读写总结（一）]]></title>
+    <url>%2F2019%2F06%2F29%2F%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1%2F</url>
+    <content type="text"><![CDATA[前言&emsp;文件读写是C语言基本语法中要求掌握的部分，博主在复习C的时候在这里专门整理一下，以便日后使用时能够快速理解和熟悉。 基本概念文件文件是操作系统管理数据的基本单位，这里需要记住它的三个要素：1.文件路径2.文件名3.文件后缀名后两个要素这里不细说，需要注意的是路径的两种写法： D:\\WorkSpace\\FileFolder\\file.txt D:/WorkSpace/FileFolder/file.txt &emsp;记忆的话就简单记成除法单杠就好啦，博主也没想出来什么好一点记忆的顺口称呼。 流&emsp;由于程序交互的I/O终端多种多样，为了提高程序设计效率，标准的I/O系统把任意输入的源端或任意输出的终端，都抽象转换成了概念上的“标准 I/O 设备”或称“标准逻辑设备”，换句话说，在程序访问时，需要考虑的是逻辑结构而非物理结构。&emsp;把物理设备抽象成逻辑设备这个动作，则是由标准I/O系统自动完成的。故从这个意义上，可以认为任意输入的源端和任意输出的终端均对应个“流”。&emsp;按照方向，流分为输出流和输入流，按照数据形式，又分为文本流和二进制流。 具体操作头文件#include&lt;stdio.h&gt; //只有这一个 文件的打开与关闭&emsp;在操作前需要记住的是C语言对任何文件进行操作前，都必须先打开文件，即打开“流”，在操作结束后，需要关闭流，释放内存。文件打开：fopen()函数 FILE *fp = NULL; //FILE类型指针变量 fp = fopen(&quot;D:/test.txt&quot;, &quot;r&quot;); //打开成功，fp获得指针变量，否则fp为NULL &emsp;博主这里不写函数原型是因为大多数情况函数原型会刚难以理解，反而具体的应用例子能够很快让人上手,只需要记住：一个指针，两个参数，指针是指成功打开后获得的文件指针，两个参数是指文件路径+文件名和打开模式。&emsp;fopen()打开模式中参数有很多选择，博主三年前学C，平常用的不多，这里只记录之前自己用过的： 模式 含义 说明 r 只读 该模式没有创建文本的能力，因此要求文件必须存在 w 只写 若文件存在，则前清空后重新写；若文件不存在，则会创建文件 a 追加读写 没有创建文本的能力，要求文件必须存在。打开成功则从文件末尾开始写入 模式b 二进制 功能为原模式，但要求为二进制：rb、wb、ab 模式+ 读写 原模式基础上追加读或者写：w+、rb+、ab+，其中只有含有w的模式才能应付文件不存在的情况 文件关闭：fclose()函数 fclose (fp); //fp为已打开文件的指针 &emsp;总之文件关闭就是一句话完事儿的事情，参数是已开文件指针 文件打判断： 这几句基本上是固定好的，为了保证程序健壮性，要求在打开文件之后必须加上： if(NULL==fp){ //判断指针是否为空 printf (&quot;Failed to open the file !\n&quot;); exit (0); //安全起见，强制程序退出 } 应用实例： #include &lt;stdio.h&gt; int main() { FILE *fp = NULL; fp = fopen(&quot;test.txt&quot;, &quot;w+&quot;); if(NULL==fp){ //判断指针是否为空 printf (&quot;Failed to open the file !\n&quot;); exit (0); //安全起见，强制程序退出 } fclose(fp); } 文件结束判断 &emsp;博主把这个放在前面是因为后面会用得到，另外文件的结束判断其实非常重要，有两种方法，不同场合有时候只能用一种方法。 &emsp;当以文本方式读写文件时，可以用EOF判断文件是否结尾，因为EOF=-1，而字符的ASCII码不可能为负数。 getc(fp)!=EOF &emsp;当以二进制方式读写文件时，只能用feof函数判断，因为二进制读取数值，可能为负。feof不仅适用于二进制打开，文本方式打开也适用 feof(fp) //当未读到结尾时，返回值为0，读到结尾时，返回值为1 注意：只有读出所有的数据之后，再读一次，函数feof(fp)的返回值才为真，因此如果想计数TXT中有多少个字符，需要在计数结束之后-1。 文件顺序读写 &emsp;文件的顺序读写就是只文件中数据的存放顺序和读出来或者写进去的顺序是一致的。 单个字符的写入与读出 写入一个字符： fputc(&apos;a&apos;,fp); 读出一个字符： fgetc(fp); 其他关键点: rewind (fp); //把 fp 所指向文件中的读写位置重新调整到文件开始处。 while(p!=&apos;\0&apos;) //判断字符串是否结束 while(!feof(fp)) 应用实例： #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main (void){ char c,p; char str[200]=&quot;hello world!&quot;; int i=0; FILE *fp=fopen(&quot;test.txt&quot;,&quot;r+&quot;); if(fp==NULL) printf(&quot;no test.txt&quot;); p=str[0]; while(p!=&apos;\0&apos;){ fputc(p,fp); i++; p=str[i]; } rewind (fp); while(!feof(fp)){ c=fgetc(fp); printf(&quot;%c&quot;,c); } fclose(fp); return 0; } 字符串的写入与读出写入一个字符串： fputs(“hello world\n”, fp); 读出一个字符串： fgets(buffer,100,fp); 函数功能：从 fp 所指向的文件内，读取若干字符（一行字符串），并在其后自动添加字符串结束标志 ‘\0’ 后，存入 s 所指的缓冲内存空间中（s 可为字符数组名），直到遇到回车换行符或已读取 size-1 个字符或已读到文件结尾为止。该函数读取的字符串最大长度为 size-1。参数fp: 可以指向磁盘文件或标准输入设备stdin。注意：fgets()函数在遇到’\0’或者读取到size-1时会自动停止，因此如果想以字符串的形式把文件读完，需要运用循环。 字符串屏幕输出： //方法1 fputs (buffer, stdout);//把字符串输出到屏幕 //方法2 fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer); 应用实例： #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #define MAX_SIZE 30 //字符数组大小 int main (void) { char buffer[30]=&quot; &quot;; char str1[]=&quot;hello wolrd!\n&quot;; char str2[]=&quot;i love C \n&quot;; char str3[]=&quot;i love my life\n&quot;; FILE *fp; int i; fp=fopen (&quot;file.txt&quot;, &quot;w+&quot;) ; //&quot;w+&quot;模式：先写入后读出 if(NULL==fp){ printf (&quot;Failed to open the file !\n&quot;); exit (0); } fputs (&quot;我佛了\n&quot;, fp) ; fputs (str2, fp) ; fputs (str3, fp) ; rewind (fp); while (fgets(buffer,MAX_SIZE,fp) !=NULL) fputs (buffer, stdout) ; rewind (fp); fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer); fclose(fp); return 0; }]]></content>
       <categories>
-          
-          <category> Hexo操作汇总记录 </category>
-          
+        <category>编程语言总结</category>
+        <category>C语言</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 博文发布 </tag>
-            
-            <tag> Hexo-Admin </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于Hexo里RSS的添加和取消</title>
-      <link href="/2019/05/19/%E5%85%B3%E4%BA%8EHexo%E9%87%8CRSS%E7%9A%84%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%8F%96%E6%B6%88/"/>
-      <url>/2019/05/19/%E5%85%B3%E4%BA%8EHexo%E9%87%8CRSS%E7%9A%84%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%8F%96%E6%B6%88/</url>
-      
-        <content type="html"><![CDATA[<p>博主在搭建好博客之后心血来潮添加了RSS订阅，后来有发现与主题不符导致界面不美观又找了许多经验贴才去掉…(no zuo no die)，这里整理一下RSS的添加和取消。</p><h3 id="RSS添加"><a href="#RSS添加" class="headerlink" title="RSS添加"></a>RSS添加</h3><h5 id="1-feed插件安装"><a href="#1-feed插件安装" class="headerlink" title="1.feed插件安装"></a>1.feed插件安装</h5><p>1.首先在blog所在目录下运行Git Bash Here<br>2.输入指令进行插件安装：     </p><pre><code>npm install hexo-generator-feed</code></pre><h5 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h5><p>打开站点配置文件_config.yml,在Extension下方添加：   </p><pre><code>#Extensions plugins:     hexo-generator-feed#Feed Atomfeed:    type: atom    path: atom.xml    limit: 20    </code></pre><p> 打开主题配置文件_config.yml，搜索rss，在后面追加：</p><pre><code>rss: /atom.xml</code></pre><h3 id="RSS取消"><a href="#RSS取消" class="headerlink" title="RSS取消"></a>RSS取消</h3><h5 id="1-配置文件删除"><a href="#1-配置文件删除" class="headerlink" title="1.配置文件删除"></a>1.配置文件删除</h5><p>首先将添加RSS时配置的文件代码都删去</p><h5 id="2-卸载feed插件"><a href="#2-卸载feed插件" class="headerlink" title="2.卸载feed插件"></a>2.卸载feed插件</h5><p>按理来说将配置的代码删去之后页面就不会再显示了，但是博主在删去之后发现RSS仍然顽强的存在，进行了debug调试和服务器重启都没有用<br>最后博主发现在卸载feed插件之后页面上的RSS才消失    </p><h6 id="注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载"><a href="#注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载" class="headerlink" title="注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载"></a>注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载</h6><p>同样在根目录下启动Git Bash Here：    </p><pre><code>npm uninstall hexo-generator-feed</code></pre><p> 卸载之后就可以发现页面山已经没有RSS的标志啦！</p>]]></content>
-      
-      
+      <tags>
+        <tag>文件读写</tag>
+        <tag>顺序读写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网站使用之poj]]></title>
+    <url>%2F2019%2F06%2F29%2F%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%B9%8Bpoj%2F</url>
+    <content type="text"><![CDATA[前言博主为了提升自己的算法能力，决定空闲时间刷一刷算法题，关于算法题的题库和练习网站，之前在“一些好玩又有用的网站”这篇博文里面有提到过，可以选择在力扣或者北大的poj上面进行练习，博主本次选择了poj进行尝试。另外，由于poj更多提供的是检测，因此博主是现在dev C++上写好程序之后再复制上去提交的。 环境检测系统: 北大poj开发环境: dev C++ 使用过程dev C++关于dev的安装和使用这里就不再多说了，各位编程的朋友们首先肯定擅长各种软件的安装，语言的话dev是提供中文，不过这里需要说明一下，在调试的过程中注意不要对同一个程序打开试图打开两个调试窗口，这个之前博主常用的CodeBlocks有很大的区别。一旦上一个程序调试的黑框框没有关掉还继续进行编译运行，那么是会出错的。博主初次使用时没有注意，也是反应了很长时间才找到原因。 北大poj北京大学程序在线评测系统，这里不再多做介绍，博主主要使用C语言进行题目答案提交，答题者需要注册一个账号。 test之1000题一般来讲，初次使用该系统都会直接复制第一题进行系统熟悉，具体题目就是一个简单的加法题，不过在提交的时候注意一定要选对语言，针对于C语言，在编译语言里面可以选择GCC或者C： 值得注意的是，poj系统非常严格（或者说对于输入考虑不周），多一个空格都会报错，博主在重复提交的时候命名选对了语言敲对了代码但是就是报错，后来才发现是因为在题号后面多跟了一个空格……提交完成之后就可以看到自己的提交状态了： 实战之1003题在完成了对系统的初步测试和熟悉之后，就可以来进行题目解答和提交啦！]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[利用Hexo Admin发布博文]]></title>
+    <url>%2F2019%2F06%2F28%2F%E4%BD%95%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E6%96%87%2F</url>
+    <content type="text"><![CDATA[前言博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起结果在激动的连发三片博文之后的一个月内就再也没了动静…终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑） 发布工具博主的发布工具为Hexo-Admin，详情可以参考它的官方网站Admin并不是一开始自带的，因此在搭建好之后，需要单独再去卸载安装，不要嫌麻烦，毕竟后面发博客用它还是很方便的，至于安装教程，博主懒得写，大家可以自行搜索，有很多大神有教程的 界面介绍打开admin主页后事这样的：这里介绍一下各个选项： Post：博客文章的列表，包括已经发布的和尚未发布仍是草稿状态的 Pages：对词云图、归档等的管理，有兴趣的朋友可以去博主的about看看 About：这是关于admin插件从说明 Deploy：可以直接部署到github上去 Settings：这里可以设置admin登录密码，当然还有其他的一些配置 博文发布好！到目前为止基本重新熟悉了环境，那么现在设想你打开电脑，决定进行博文，编写，应该如何去做呢？ step 1首先需要在存放博文的文件夹下右键打开Git Bash Here，需要强调的是，这个文件夹不是存放Hexo下载和安装的文件夹，而是那个专门存放blog的文件夹，比如博主安装Hexo的文件夹名为“Hexo”，而存放博客的文件夹就叫“blog”。博主在重返个人博客的第一天，竟然大脑空空的在Hexo安装文件夹下调试了很久… step 2首先需要将本机上的服务器打开，否则你打开admin主页时看到的就是美丽的404输入命令： hexo server -d 这回服务器运行起来了，现在就阔以打开进行博文编写和发布啦 step 3在博文编写结束之后，可以先看一下效果，如果没有问题，就可以上传到服务器上了。这里需要输入命令： hexo g &amp;&amp; hexo d 当然输入这条语句的前提是你之前得在github和这上面输入过自己的账号，这样之后就可以在固定的位置进行发布了。 小结总之，本博文的目的主要还是在于让博主本人不要忘了怎么发博文，里面省去了很多的细节部分，如果各位朋友想对admin-Hexo了解更多，可以去看我在写此篇博客是的参考博文]]></content>
       <categories>
-          
-          <category> 汇总记录 </category>
-          
+        <category>Hexo操作汇总记录</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> RSS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>不蒜子文章阅读量显示的问题</title>
-      <link href="/2019/05/18/hexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1/"/>
-      <url>/2019/05/18/hexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1/</url>
-      
-        <content type="html"><![CDATA[<p>博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。</p><p>于是博主按照网上教程，将文章阅读量这一行改为true：<br>路径为:</p><pre><code>/themes/next/_config.yml</code></pre><p>将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛：    </p><pre><code>busuanzi_count:  enable: true  #这里需要改为true    site_uv: true  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt;  site_uv_footer:# 本站总访问量次数    site_pv: false   site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;  site_pv_footer:  page_pv: true  #这里博主改为了true        page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye  page_pv_footer:</code></pre><p>修改完之后发现它竟然竟然显示不在一行，如图：<br><img src="/images/busuanzi.png" alt><br>于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。<br>有兴趣的朋友可以看一下官网的通知：<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子统计官网</a><br>想直接解决的朋友可以不用看官网，简单点就是更新域名的问题：</p><h6 id="修改办法："><a href="#修改办法：" class="headerlink" title="修改办法："></a>修改办法：</h6><p>打开不蒜子的统计文件，路径为：</p><pre><code>/theme/next/layout/_third-party/analytics/busuanzi-counter.swig</code></pre><p>你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了：</p><pre><code>&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;</code></pre><p>   在修改后进行调试：<br>   <img src="/images/busuanzi2.png" alt><br>   问题解决！这是参考的博客连接：<br>   <a href="https://www.jianshu.com/p/fd3accaa2ae0" target="_blank" rel="noopener">hexo博客解决不蒜子统计无法显示问题</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+        <tag>博文发布</tag>
+        <tag>Hexo-Admin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于Hexo里RSS的添加和取消]]></title>
+    <url>%2F2019%2F05%2F19%2F%E5%85%B3%E4%BA%8EHexo%E9%87%8CRSS%E7%9A%84%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%8F%96%E6%B6%88%2F</url>
+    <content type="text"><![CDATA[博主在搭建好博客之后心血来潮添加了RSS订阅，后来有发现与主题不符导致界面不美观又找了许多经验贴才去掉…(no zuo no die)，这里整理一下RSS的添加和取消。 RSS添加1.feed插件安装1.首先在blog所在目录下运行Git Bash Here2.输入指令进行插件安装： npm install hexo-generator-feed 2.配置文件打开站点配置文件_config.yml,在Extension下方添加： #Extensions plugins: hexo-generator-feed #Feed Atom feed: type: atom path: atom.xml limit: 20 打开主题配置文件_config.yml，搜索rss，在后面追加： rss: /atom.xml RSS取消1.配置文件删除首先将添加RSS时配置的文件代码都删去 2.卸载feed插件按理来说将配置的代码删去之后页面就不会再显示了，但是博主在删去之后发现RSS仍然顽强的存在，进行了debug调试和服务器重启都没有用最后博主发现在卸载feed插件之后页面上的RSS才消失 注意：如果完成第一步时RSS就已经消失的朋友不建议再进行卸载同样在根目录下启动Git Bash Here： npm uninstall hexo-generator-feed 卸载之后就可以发现页面山已经没有RSS的标志啦！]]></content>
       <categories>
-          
-          <category> 汇总记录 </category>
-          
+        <category>汇总记录</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 不蒜子 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo+GitHub+域名搭建的心路历程</title>
-      <link href="/2019/05/18/hexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
-      <url>/2019/05/18/hexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/</url>
-      
-        <content type="html"><![CDATA[<h6 id="本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功"><a href="#本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功" class="headerlink" title="本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功"></a>本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功</h6><p>   大概花了一天时间，又重新摸索着在网上学习怎么利用hexo配合GitHub搭建个人博客。博主这方面一片空白，也是东边学一点西边学一点，所以本文不提供系统的怎么搭建的过程，只是记录一下中间出现的问题和解决办法。</p><h5 id="基础环境安装"><a href="#基础环境安装" class="headerlink" title="基础环境安装"></a>基础环境安装</h5><p>   这一方面其实博主本人到现在为止都不知道是做什么的，只知道都安装好就能搭成博客，至于怎么安装，还是参考其他技术大牛们的教程吧。但是这里有需要提醒的：<br>   安装的内容有：<br>       1.git<br>       2.node.js<br>       3.hexo<br>    三者的顺序一般hexo在最后，前两个根据具体教程来<br>    注意hexo文件夹和blog文件夹不是一个东西<br>    安装完之后可以先去申请注册一个GitHub账号，然后按照教程创建一个仓库</p><h5 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h5><p>   博主一开始根据教程很快搭好了博客，但是发现主题theme是默认的landscape，因此想换一下，但是问题就在于，博主已经按照教程在landscape的基础上对页面进行了很多的修改，之后突然将主题更换，导致网站直接崩塌(…)因此这里提醒大家，想要什么主题早早找好，然后在网上找对口的教程。由于博主技术不精，所以选择了使用最多的NexT主题，因为相关教程多嘛(捂脸)</p><h5 id="博文编写"><a href="#博文编写" class="headerlink" title="博文编写"></a>博文编写</h5><p>   博主在一开始打好博客之后也激动了好一会，然后突然发现了一个问题：以后想写心得博客怎么办？难道创建一篇心得博客都需要代码创建吗？当然这个问题很快就能解决，博主最后采用了hexo-admin，因为它目前使用起来还算比较顺手，管理的时候也比较方便，具体如何安装以及设置密码请移步其他大佬的技术博客。</p><h5 id="域名设置"><a href="#域名设置" class="headerlink" title="域名设置"></a>域名设置</h5><p>   强烈建议在前面安装基础环境的时候就在网上提前买好域名，否则就会像博主这样在万事俱备只欠域名的情况下猴急猴急的等待域名实名认证通过和GitHub的配置。博主的域名是在阿里云购买的，大家可以根据自己的喜好来。<br>   有几点是需要注意的：<br>   1.有的域名购买需要认证，因此不会购买之后立刻就能用；<br>   2.域名的控制台那里解析的ip，就是你github仓库的ip地址，可以在cmd命令行里面ping一下进行查看；<br>   3.GitHub仓库的settings里面也是需要配置域名的，写上你申请到的域名就可以，例如“xxxx.top”，记得前面不要私自加www，反正我的没有加没有出错；<br>   4.blog/source文件夹下是需要创建一个名为CNAME并且没有后缀名的文件，里面写上自己的域名，这里是需要在前面加上“www”的；<br>   5.在域名这些设置都配置好之后，就可以通过域名在公网上对博客进行访问了，不过刚配置完不要慌(真的这些可以在搭建之前配好，免得后面坐在电脑前静静等待…)，一般过几分钟之后就可以看到自己搭建好的博客和信发布的文章啦！</p><h5 id="后期编写博客和发布"><a href="#后期编写博客和发布" class="headerlink" title="后期编写博客和发布"></a>后期编写博客和发布</h5><p>   前面已经写到，博主使用的的是hexo-admin，一般在自己的本地进行编辑之后，觉得博文没有问题，直接在blog根目录下输入：    </p><pre><code>hexo g &amp;&amp; hexo d        </code></pre><p> 然后在黑色的命令框里就能看到输出的一堆东西，一般第一次进行这样的GitHub更新，是需要和GitHub上进行ssh设置的，在之后就不需要了。在命令框中显示上传成功之后，博客更新的工作也就完成了。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+        <tag>RSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[不蒜子文章阅读量显示的问题]]></title>
+    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1%2F</url>
+    <content type="text"><![CDATA[博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。 于是博主按照网上教程，将文章阅读量这一行改为true：路径为: /themes/next/_config.yml 将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛： busuanzi_count: enable: true #这里需要改为true site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; site_uv_footer:# 本站总访问量次数 site_pv: false site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; site_pv_footer: page_pv: true #这里博主改为了true page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye page_pv_footer: 修改完之后发现它竟然竟然显示不在一行，如图：于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。有兴趣的朋友可以看一下官网的通知：不蒜子统计官网想直接解决的朋友可以不用看官网，简单点就是更新域名的问题： 修改办法：打开不蒜子的统计文件，路径为： /theme/next/layout/_third-party/analytics/busuanzi-counter.swig 你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了： &quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot; 在修改后进行调试： 问题解决！这是参考的博客连接： hexo博客解决不蒜子统计无法显示问题]]></content>
       <categories>
-          
-          <category> 汇总记录 </category>
-          
+        <category>汇总记录</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-            <tag> 经验 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>一些好玩又有用的网站</title>
-      <link href="/2019/05/18/%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E6%B1%87%E9%9B%86/"/>
-      <url>/2019/05/18/%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E6%B1%87%E9%9B%86/</url>
-      
-        <content type="html"><![CDATA[<p>这里集合很多好玩又冷门的网站，各具特色，包括图片转换到计算机学习，博主持续更新中…</p><h2 id="图表icon类"><a href="#图表icon类" class="headerlink" title="图表icon类"></a>图表icon类</h2><h4 id="easyicon"><a href="#easyicon" class="headerlink" title="easyicon"></a>easyicon</h4><p>  网站提供大量的图标，还提供在线的图片-图标转换。<br>  <a href="https://www.easyicon.net/" target="_blank" rel="noopener">快速访问</a></p><h4 id="阿里巴巴矢量图标库"><a href="#阿里巴巴矢量图标库" class="headerlink" title="阿里巴巴矢量图标库"></a>阿里巴巴矢量图标库</h4><p>   这是由阿里巴巴提供的图标库，在这里可以搜索到大量的图标，不过有些有可能并不免费。<br>   <a href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2" target="_blank" rel="noopener">快速访问</a></p><h2 id="计算机学习类"><a href="#计算机学习类" class="headerlink" title="计算机学习类"></a>计算机学习类</h2><h4 id="VisuAlgo"><a href="#VisuAlgo" class="headerlink" title="VisuAlgo"></a>VisuAlgo</h4><p>  网站提供很多数据结构与算法的实现动画，可以很形象的先输出内部的实现过程，可以帮助加深理解。<br>  <a href="https://visualgo.net/en" target="_blank" rel="noopener">快速访问</a></p><h4 id="力扣题库"><a href="#力扣题库" class="headerlink" title="力扣题库"></a>力扣题库</h4><p>力扣其实不仅仅是算法与编程的题库，但是目前博主更多使用的是它的题库功能，里面有<strong>算法</strong>、<strong>数据库</strong>、<strong>shell</strong>，题目又会按照难度进行级别划分，而且还可以在网页上进行代码编写，对于想刷算法题的朋友们来说非常实用了。<a href="https://leetcode-cn.com/problemset/algorithms/" target="_blank" rel="noopener">快速访问</a></p><h4 id="poj-org"><a href="#poj-org" class="headerlink" title="poj.org"></a>poj.org</h4><p>这也是一个算法题库，里面提供代码提交和检查，有过ACM经历的朋友都知道。该网站是北大的，题目众多，可以注册一个账号在上面进行算法练习，另外有可能它们的检查和通过会比较严格<a href="http://poj.org/" target="_blank" rel="noopener">快速访问</a></p><h2 id="电影电视剧资源类"><a href="#电影电视剧资源类" class="headerlink" title="电影电视剧资源类"></a>电影电视剧资源类</h2><h4 id="疯狂影视搜"><a href="#疯狂影视搜" class="headerlink" title="疯狂影视搜"></a>疯狂影视搜</h4><p>是一个影视资源搜索网站，搜索返回的结果众多，而且界面干净美观（当然有可能是因为我用了广告弹窗拦截），这里不多做介绍，朋友们自己去看就知道了<a href="http://ifkdy.com/" target="_blank" rel="noopener">快速访问</a></p><h2 id="插件类"><a href="#插件类" class="headerlink" title="插件类"></a>插件类</h2><h4 id="AdBlock"><a href="#AdBlock" class="headerlink" title="AdBlock"></a>AdBlock</h4><p>这是一个浏览器广告拦截插件。博主使用的是360极速浏览器，不知道其他浏览器上有没有AdBlock，但是感觉很多浏览器都能找到的。博主本人真的强推这个插件，过滤效果真的太好，而且还可以选择性对默认不过滤无害但是看上去就不顺眼的地方进行拦截，实在是网页浏览的好伙伴。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Hexo</tag>
+        <tag>不蒜子</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo+GitHub+域名搭建的心路历程]]></title>
+    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功 大概花了一天时间，又重新摸索着在网上学习怎么利用hexo配合GitHub搭建个人博客。博主这方面一片空白，也是东边学一点西边学一点，所以本文不提供系统的怎么搭建的过程，只是记录一下中间出现的问题和解决办法。 基础环境安装 这一方面其实博主本人到现在为止都不知道是做什么的，只知道都安装好就能搭成博客，至于怎么安装，还是参考其他技术大牛们的教程吧。但是这里有需要提醒的： 安装的内容有： 1.git 2.node.js 3.hexo 三者的顺序一般hexo在最后，前两个根据具体教程来 注意hexo文件夹和blog文件夹不是一个东西 安装完之后可以先去申请注册一个GitHub账号，然后按照教程创建一个仓库 主题设置 博主一开始根据教程很快搭好了博客，但是发现主题theme是默认的landscape，因此想换一下，但是问题就在于，博主已经按照教程在landscape的基础上对页面进行了很多的修改，之后突然将主题更换，导致网站直接崩塌(…)因此这里提醒大家，想要什么主题早早找好，然后在网上找对口的教程。由于博主技术不精，所以选择了使用最多的NexT主题，因为相关教程多嘛(捂脸) 博文编写 博主在一开始打好博客之后也激动了好一会，然后突然发现了一个问题：以后想写心得博客怎么办？难道创建一篇心得博客都需要代码创建吗？当然这个问题很快就能解决，博主最后采用了hexo-admin，因为它目前使用起来还算比较顺手，管理的时候也比较方便，具体如何安装以及设置密码请移步其他大佬的技术博客。 域名设置 强烈建议在前面安装基础环境的时候就在网上提前买好域名，否则就会像博主这样在万事俱备只欠域名的情况下猴急猴急的等待域名实名认证通过和GitHub的配置。博主的域名是在阿里云购买的，大家可以根据自己的喜好来。 有几点是需要注意的： 1.有的域名购买需要认证，因此不会购买之后立刻就能用； 2.域名的控制台那里解析的ip，就是你github仓库的ip地址，可以在cmd命令行里面ping一下进行查看； 3.GitHub仓库的settings里面也是需要配置域名的，写上你申请到的域名就可以，例如“xxxx.top”，记得前面不要私自加www，反正我的没有加没有出错； 4.blog/source文件夹下是需要创建一个名为CNAME并且没有后缀名的文件，里面写上自己的域名，这里是需要在前面加上“www”的； 5.在域名这些设置都配置好之后，就可以通过域名在公网上对博客进行访问了，不过刚配置完不要慌(真的这些可以在搭建之前配好，免得后面坐在电脑前静静等待…)，一般过几分钟之后就可以看到自己搭建好的博客和信发布的文章啦！ 后期编写博客和发布 前面已经写到，博主使用的的是hexo-admin，一般在自己的本地进行编辑之后，觉得博文没有问题，直接在blog根目录下输入： hexo g &amp;&amp; hexo d 然后在黑色的命令框里就能看到输出的一堆东西，一般第一次进行这样的GitHub更新，是需要和GitHub上进行ssh设置的，在之后就不需要了。在命令框中显示上传成功之后，博客更新的工作也就完成了。]]></content>
       <categories>
-          
-          <category> 持续更新 </category>
-          
+        <category>汇总记录</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 网站汇总 </tag>
-            
-            <tag> 快速访问 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2019/05/17/hello-world/"/>
-      <url>/2019/05/17/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="创建一篇新的博客"><a href="#创建一篇新的博客" class="headerlink" title="创建一篇新的博客"></a>创建一篇新的博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>Hexo</tag>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[一些好玩又有用的网站]]></title>
+    <url>%2F2019%2F05%2F18%2F%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E6%B1%87%E9%9B%86%2F</url>
+    <content type="text"><![CDATA[这里集合很多好玩又冷门的网站，各具特色，包括图片转换到计算机学习，博主持续更新中… 图表icon类easyicon 网站提供大量的图标，还提供在线的图片-图标转换。 快速访问 阿里巴巴矢量图标库 这是由阿里巴巴提供的图标库，在这里可以搜索到大量的图标，不过有些有可能并不免费。 快速访问 计算机学习类VisuAlgo 网站提供很多数据结构与算法的实现动画，可以很形象的先输出内部的实现过程，可以帮助加深理解。 快速访问 力扣题库力扣其实不仅仅是算法与编程的题库，但是目前博主更多使用的是它的题库功能，里面有算法、数据库、shell，题目又会按照难度进行级别划分，而且还可以在网页上进行代码编写，对于想刷算法题的朋友们来说非常实用了。快速访问 poj.org这也是一个算法题库，里面提供代码提交和检查，有过ACM经历的朋友都知道。该网站是北大的，题目众多，可以注册一个账号在上面进行算法练习，另外有可能它们的检查和通过会比较严格快速访问 电影电视剧资源类疯狂影视搜是一个影视资源搜索网站，搜索返回的结果众多，而且界面干净美观（当然有可能是因为我用了广告弹窗拦截），这里不多做介绍，朋友们自己去看就知道了快速访问 插件类AdBlock这是一个浏览器广告拦截插件。博主使用的是360极速浏览器，不知道其他浏览器上有没有AdBlock，但是感觉很多浏览器都能找到的。博主本人真的强推这个插件，过滤效果真的太好，而且还可以选择性对默认不过滤无害但是看上去就不顺眼的地方进行拦截，实在是网页浏览的好伙伴。]]></content>
+      <categories>
+        <category>持续更新</category>
+      </categories>
+      <tags>
+        <tag>网站汇总</tag>
+        <tag>快速访问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F05%2F17%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. 快速启动创建一篇新的博客1$ hexo new "My New Post" More info: Writing 启动服务器1$ hexo server More info: Server 生成静态文件1$ hexo generate More info: Generating 部署1$ hexo deploy More info: Deployment]]></content>
+  </entry>
 </search>
