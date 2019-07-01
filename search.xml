@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C语言数据结构之链表（二）]]></title>
+    <url>%2F2019%2F07%2F01%2FC%E8%AF%AD%E8%A8%80%2F</url>
+    <content type="text"><![CDATA[前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点； *代码： //p为原链表，elem表示新数据元素，add表示新元素要插入的位置 link * insertElem(link * p,int elem,int add){ link * temp=p;//创建临时结点temp for (int i=1; i&lt;add; i++) {//利用循环找到插入位置 if (temp==NULL) {//判断插入位置是否有效 printf(&quot;插入位置无效\n&quot;); return p;//立刻返回原来的链表 } temp=temp-&gt;next;//结点不断后移 } link * c=(link*)malloc(sizeof(link));//创建插入结点c c-&gt;elem=elem;//确定数据域 //向链表中插入结点 c-&gt;next=temp-&gt;next;//让新结点指向后面的链条 temp-&gt;next=c;//让前面的结点指向新的结点 return p; } 注意：在循环找插入位置时，一定要先判断一下是否已经超出链表长度 元素删除 链表删除其实就是让前一个结点的指针域直接指向后一个的后一个，值得注意的是，对于已经删除的结点，一定要记得释放空间，步骤如下： 1.指针向后移动两个结点； 2.对删除的结点进行释放； //p为原链表，add为要删除元素的值 link * delElem(link * p,int add){ link * temp=p;//temp指向被删除结点的上一个结点 for (int i=1; i&lt;add; i++) {//循环找到删除位置 temp=temp-&gt;next; } link * del=temp-&gt;next;//单独设置一个指针指向被删除结点，以防丢失 temp-&gt;next=temp-&gt;next-&gt;next;//删除某个结点的方法就是更改前一个结点的指针域 free(del);//释放内存 return p;//返回删除结点后的链表 } 元素查找元素查找的思路其实就是挨个一个一个对比，如果有要查找的元素，那么就返回位置，否则就返回NULL表示没有找到，步骤：代码： //p为原链表，elem表示被查找元素、 int selectElem(link * p,int elem){ //新建一个指针t，初始化为头指针 p link * t=p; int i=1; //由于头节点的存在，因此while中的判断为t-&gt;next while (t-&gt;next) { t=t-&gt;next;//指针后移 if (t-&gt;elem==elem) { return i; } i++; } //程序执行至此处，表示查找失败 return -1; } 元素更新这一操作的思路也很简单，只要找到位置，并对结点内的数据域进行修改就可以了。代码： //更新函数，其中，add 表示更改结点在链表中的位置，newElem 为新的数据域的值 link *amendElem(link * p,int add,int newElem){ link * temp=p; temp=temp-&gt;next;//在遍历之前，temp指向首元结点 //遍历到被删除结点 for (int i=1; i&lt;add; i++) { temp=temp-&gt;next; } temp-&gt;elem=newElem; return p; } 小结 在上述的所有代码中，我们会发现，最常见的操作就是下面这行代码： temp=temp-&gt;next; 类似这种更改指针的语言，其实我们可以发现，在链表的查插删改操作中，最重要的就是指针操作了，因此需要格外注意这一点。]]></content>
+      <categories>
+        <category>编程语言总结</category>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C语言数据结构之链表（一）]]></title>
     <url>%2F2019%2F07%2F01%2FC%2F</url>
     <content type="text"><![CDATA[前言本节开始讲解链表，参考教程：连接 基本结构头指针单纯的一个指针，其特点在于永远指向链表的第一个节点的位置，便于后期找到链表并使用表中的数据； 节点链表的每一个节点由两部分组成：1.数据域：每个节点的元素本身；2.指针域：每个节点存放下一个节点地址的部分，指向后继元素；代码： typedef struct Link{ char elem; //数据域 struct Link * next; //指针域 }link; 这样的话就创建出了节点的结构体； 头结点&emsp;其实就是一个不存任何数据的空节点，通常作为链表的第一个节点,一般里面存储的是链表的长度。对于链表来说，头节点不是必须的，它的作用只是为了方便解决某些实际问题； 创建链表步骤：1.获得一个头指针；2.不断创建多个节点，并且将他们前后相连形成逻辑前后关系；代码： link * initLink(){ link * p=NULL;//获得头指针 link * temp = (link*)malloc(sizeof(link));//创建首元节点 //首元节点先初始化 temp-&gt;elem = 1; temp-&gt;next = NULL; p = temp;//头指针指向首元节点 //从第二个节点开始创建 for (int i=2; i&lt;5; i++) { //创建一个新节点并初始化 link *a=(link*)malloc(sizeof(link)); a-&gt;elem=i; a-&gt;next=NULL; //将temp节点与新建立的a节点建立逻辑关系 temp-&gt;next=a; //指针temp每次都指向新链表的最后一个节点 temp=temp-&gt;next; //temp=a;//这一句和上一句一个意思 } //返回建立的节点，只返回头指针 p即可，通过头指针即可找到整个链表 return p; } 上述代码创建了一个存储了{1,2,3,4}且没有头结点的链表，有头结点的链表如下： link * initLink(){ link * p=(link*)malloc(sizeof(link));//创建一个头结点 link * temp=p;//声明一个指针指向头结点， //生成链表 for (int i=1; i&lt;5; i++) { link *a=(link*)malloc(sizeof(link)); a-&gt;elem=i; a-&gt;next=NULL; temp-&gt;next=a; temp=temp-&gt;next; } return p; } 链表输出void display(link *p){ link* temp=p;//将temp指针重新指向头结点 //只要temp指针指向的结点的next不是Null，就执行输出语句。 while (temp-&gt;next) { temp=temp-&gt;next; printf(&quot;%d&quot;,temp-&gt;elem); } printf(&quot;\n&quot;); }]]></content>
@@ -37,21 +50,6 @@
       <tags>
         <tag>数据结构</tag>
         <tag>顺序表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C语言趣味编程之回文数]]></title>
-    <url>%2F2019%2F06%2F30%2FC%2F</url>
-    <content type="text"><![CDATA[前言&emsp;利用C语言解答一些趣味问题，学一学练一练。 回文数介绍&emsp;回文数指具有对称性质的数字，例如12321,569965等等。回文数不仅是一个C语言的经典题目，也是一个数学上的问题。&emsp;从例子中我们可以看出，有些回文数已经超出了int类型的范围（博主平常在编程时偏好int），因此在这进行程序设计时需要格外注意。 回文数程序设计&emsp;本博文程序题目来自于《C语言趣味编程100例》，代码为本人自己编写。 普通回文数判断问题：打印所有不超过n的其平方具有对称性质的数（即回文数）思路：以12321为例，要想判断它对称，就需要一位一位的将数字单个取出来。1.逆向取数字可以采用不断除以10取余数的方法，得到1、2..2.正向取则需要用原数字除以10的四次方、三次方并取商，从而得到1、2..关键点：怎样得到最高次方数，跳出循环的条件是什么，调出后又需要注意什么。参考书籍中采用了数组的方法，本文没有采用，相对应的，需要注意的点就会多一些。代码： #include&lt;stdio.h&gt; #include &lt;math.h&gt; int juje(long res){ int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//首部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 // printf(&quot;head=%d &quot;,head); // printf(&quot;tail=%d\n&quot;,tail); if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } int main(){ int i=1; for(i=1;i&lt;=256;i++){ if(juje(i*i)){ printf(&quot;%5d&quot;,i); printf(&quot;%8d\n&quot;,i*i); } } return 0; } 结果： &emsp;注释已经说得足够明确，这里就不在过多解释。很显然，正向除法着重取商，逆向除法着重取余。另外size的计算非常重要，决定了次方的计算，因此是逃不掉的。 回文素数的判断问题描述：找出1000以内既是回文数又是素数的数字思路：相比于上一道题，本题就是在上一题的基础上增加了对素数的判断。代码： #include&lt;stdio.h&gt; #include&lt;math.h&gt; int pri(int pri); int juje(long res); int main(){ int i=0; int x=0; int y=0; for(i=11;i&lt;1000;i++){ x=pri(i); if(x==1){ y=juje(i); if(y==1) printf(&quot;%d\n&quot;,i); } } return 0; } int pri(int pri){//判断是否为素数，如果是则返回1 int i=0; for(i=pri-1;i&gt;1;i--){ if(pri%i==0) break; } if(i==1) return 1; else return 0; } int juje(long res){//判断是否为回文数，是则返回1 int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//首部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } 结果：为了防止有过多的计算，上述程序选择在已知是素数的情况下再进行是否回文数的判断。 回文数的形成&emsp;回文数这一行程规则目前还未得到数学上的验证，目前还属于一个猜想，但是可以知道：任取一个整数，将其倒过来后与原来的正整数相加，会得到一个新的正整数，重复这样的步骤，最终会得到一个回文数。有些数字经过几步就可以形成回文数，而有些数字则需要上百个步骤。问题：任选择一个整数，写出其形成回文数的过程。思路：前面的代码中已经有如何判断一个数是回文数的函数了，本题的重点在于，怎样实现将一个数字reverse（倒过来），下面程序中，函数reverse()完成了这个问题。代码： #include&lt;stdio.h&gt; #include&lt;math.h&gt; long reverse(long num); int juje(long res); int main(){ int base=78; int juj=0; int REbase;c/ while(juj==0){ REbase=reverse(base);//得到逆向数 printf(&quot;%d+%d=&quot;,base,REbase); base=base+REbase;//两数相加 printf(&quot;%d\n&quot;,base) ; juj=juje(base); } } long reverse(long num){//计算num倒过来的数字 int size=0; int i=0; int bit=0; int down=0; long reverse=0; long temp=0; temp=num; while(temp&gt;0){//仍然采取除法取数字每一位的思想 temp=temp/10;//因此计算size不能避免 size++; } i=size; for(i=size-1;i&gt;=0;i--){ bit=num%10; num=num/10; // printf(&quot;%3d&quot;,bit); down=pow(10,i); // printf(&quot;%9d\n&quot;,down); reverse=reverse+bit*down;//一边取出一边不断相乘 } return reverse; } int juje(long res){ int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//首部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } 为了防止程序陷入未解数学之谜，这里选择了已知需要四步形成回文数的78，输出如下：后来博主又充满好奇的尝试了一下99：还是比较幸运的，博主在尝试98时，就发现它需要的步骤过多导致溢出了… 小结1.回文数的判断，最简单的可以采用除法取数字位数的方法；2.在利用除法取数字位数时，正向取时计算数字的长度是不可避免的；3.本类问题需要多多注意循环跳出条件；]]></content>
-      <categories>
-        <category>编程语言总结</category>
-        <category>C语言</category>
-        <category>趣味编程</category>
-      </categories>
-      <tags>
-        <tag>回文数</tag>
-        <tag>素数</tag>
-        <tag>数字倒置</tag>
       </tags>
   </entry>
   <entry>

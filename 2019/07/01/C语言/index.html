@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,博文发布,Hexo-Admin,">
+  <meta name="keywords" content="数据结构,链表,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="前言博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起结果在激动的连发三片博文之后的一个月内就再也没了动静…终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑）     发布工具博主的发布工具为Hexo-Admin，详情可以参考它的官方网站Admin并">
-<meta name="keywords" content="Hexo,博文发布,Hexo-Admin">
+<meta name="description" content="前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；     *代码">
+<meta name="keywords" content="数据结构,链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用Hexo Admin发布博文">
-<meta property="og:url" content="http://yoursite.com/2019/06/28/何发布自己的博文/index.html">
+<meta property="og:title" content="C语言数据结构之链表（二）">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/C语言/index.html">
 <meta property="og:site_name" content="Carsel的个人博客">
-<meta property="og:description" content="前言博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起结果在激动的连发三片博文之后的一个月内就再也没了动静…终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑）     发布工具博主的发布工具为Hexo-Admin，详情可以参考它的官方网站Admin并">
+<meta property="og:description" content="前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；     *代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/blog2019-6/beiwei.jpg">
-<meta property="og:image" content="http://yoursite.com/images/blog2019-6/zhuye.png">
-<meta property="og:image" content="http://yoursite.com/images/blog2019-6/naozi.jpg">
-<meta property="og:updated_time" content="2019-06-28T07:04:39.213Z">
+<meta property="og:updated_time" content="2019-07-01T16:02:55.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用Hexo Admin发布博文">
-<meta name="twitter:description" content="前言博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起结果在激动的连发三片博文之后的一个月内就再也没了动静…终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑）     发布工具博主的发布工具为Hexo-Admin，详情可以参考它的官方网站Admin并">
-<meta name="twitter:image" content="http://yoursite.com/images/blog2019-6/beiwei.jpg">
+<meta name="twitter:title" content="C语言数据结构之链表（二）">
+<meta name="twitter:description" content="前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；     *代码">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/28/何发布自己的博文/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/C语言/">
 
 
 
 
 
-  <title>利用Hexo Admin发布博文 | Carsel的个人博客</title>
+  <title>C语言数据结构之链表（二） | Carsel的个人博客</title>
   
 
 
@@ -299,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/何发布自己的博文/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/C语言/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Carsel">
@@ -316,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利用Hexo Admin发布博文</h1>
+          <h1 class="post-title" itemprop="name headline">C语言数据结构之链表（二）</h1>
         
 
         <div class="post-meta">
@@ -328,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T13:58:00+08:00">
-                2019-06-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T16:57:00+08:00">
+                2019-07-01
               </time>
             
 
@@ -351,8 +347,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo操作汇总记录/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo操作汇总记录</span>
+                  <a href="/categories/编程语言总结/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言总结</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言总结/C语言/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
                   </a>
                 </span>
 
@@ -395,23 +402,73 @@
         
 
       
-        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>博主上个月终于成功搭建出来了自己的个人博客，可以说开心到飞起<br>结果在激动的连发三片博文之后的一个月内就再也没了动静…<br>终于前些日子有了时间可以发博文，结果发现了一件灰常重要的事情，那就是，博主忘记怎么发博客了（我可真是厉害死了）<br><img src="\images\blog2019-6\beiwei.jpg" alt><br>于是，博主突然明白了回归第一天的博文是什么了，就是记录一下怎么发博文（手动微笑）    </p>
-<h5 id="发布工具"><a href="#发布工具" class="headerlink" title="发布工具"></a>发布工具</h5><p>博主的发布工具为Hexo-Admin，详情可以参考它的<a href="https://jaredforsyth.com/hexo-admin/" target="_blank" rel="noopener">官方网站</a><br>Admin并不是一开始自带的，因此在搭建好之后，需要单独再去卸载安装，不要嫌麻烦，毕竟后面发博客用它还是很方便的，至于安装教程，博主懒得写，大家可以自行搜索，有很多大神有教程的</p>
-<h5 id="界面介绍"><a href="#界面介绍" class="headerlink" title="界面介绍"></a>界面介绍</h5><p>打开admin主页后事这样的：<br><img src="\images\blog2019-6\zhuye.png" alt><br>这里介绍一下各个选项：</p>
-<pre><code>Post：博客文章的列表，包括已经发布的和尚未发布仍是草稿状态的
-Pages：对词云图、归档等的管理，有兴趣的朋友可以去博主的about看看
-About：这是关于admin插件从说明
-Deploy：可以直接部署到github上去
-Settings：这里可以设置admin登录密码，当然还有其他的一些配置
-</code></pre><h5 id="博文发布"><a href="#博文发布" class="headerlink" title="博文发布"></a>博文发布</h5><p>好！到目前为止基本重新熟悉了环境，那么现在设想你打开电脑，决定进行博文，编写，应该如何去做呢？</p>
-<h6 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h6><p>首先需要在存放博文的文件夹下右键打开Git Bash Here，需要强调的是，这个文件夹不是存放Hexo下载和安装的文件夹，而是那个专门存放blog的文件夹，比如博主安装Hexo的文件夹名为“Hexo”，而存放博客的文件夹就叫“blog”。博主在重返个人博客的第一天，竟然大脑空空的在Hexo安装文件夹下调试了很久…<br><img src="\images\blog2019-6\naozi.jpg" alt></p>
-<h6 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h6><p>首先需要将本机上的服务器打开，否则你打开admin主页时看到的就是美丽的404<br>输入命令：</p>
-<pre><code>hexo server -d
-</code></pre><p>这回服务器运行起来了，现在就阔以打开进行博文编写和发布啦</p>
-<h6 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h6><p>在博文编写结束之后，可以先看一下效果，如果没有问题，就可以上传到服务器上了。这里需要输入命令：</p>
-<pre><code>hexo g &amp;&amp; hexo d  
-</code></pre><p>当然输入这条语句的前提是你之前得在github和这上面输入过自己的账号，这样之后就可以在固定的位置进行发布了。</p>
-<h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><p>总之，本博文的目的主要还是在于让博主本人不要忘了怎么发博文，里面省去了很多的细节部分，如果各位朋友想对admin-Hexo了解更多，可以去看我在写此篇博客是的<a href="https://www.jianshu.com/p/68e727dda16d" target="_blank" rel="noopener">参考博文</a></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程<a href="http://data.biancheng.net/view/161.html" target="_blank" rel="noopener">跳转</a></p>
+<h3 id="链表操作"><a href="#链表操作" class="headerlink" title="链表操作"></a>链表操作</h3><p>链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除；</p>
+<h5 id="元素插入"><a href="#元素插入" class="headerlink" title="元素插入"></a>元素插入</h5><p>插入元素有三种：<br>1.首部插入；<br>2.尾部插入；<br>3.中间插入；<br><strong>步骤</strong>：<br>1.找到插入的位置；<br>2.让新节点的指针域指向位置的后继元素；<br>3.让位置前的指针域指向新的结点的地址；<br>注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；    </p>
+<p>*<em>代码</em>：    </p>
+<pre><code>//p为原链表，elem表示新数据元素，add表示新元素要插入的位置
+link * insertElem(link * p,int elem,int add){
+    link * temp=p;//创建临时结点temp
+    for (int i=1; i&lt;add; i++) {//利用循环找到插入位置
+        if (temp==NULL) {//判断插入位置是否有效
+            printf(&quot;插入位置无效\n&quot;);
+            return p;//立刻返回原来的链表
+        }
+        temp=temp-&gt;next;//结点不断后移
+    }   
+
+    link * c=(link*)malloc(sizeof(link));//创建插入结点c
+    c-&gt;elem=elem;//确定数据域
+    //向链表中插入结点
+    c-&gt;next=temp-&gt;next;//让新结点指向后面的链条
+    temp-&gt;next=c;//让前面的结点指向新的结点
+    return  p;
+}
+</code></pre><p>  <strong>注意</strong>：在循环找插入位置时，一定要先判断一下是否已经超出链表长度</p>
+<h5 id="元素删除"><a href="#元素删除" class="headerlink" title="元素删除"></a>元素删除</h5><p>  链表删除其实就是让前一个结点的指针域直接指向后一个的后一个，值得注意的是，对于已经删除的结点，一定要记得释放空间，步骤如下：<br>  1.指针向后移动两个结点；<br>  2.对删除的结点进行释放；</p>
+<pre><code>//p为原链表，add为要删除元素的值
+link * delElem(link * p,int add){
+    link * temp=p;//temp指向被删除结点的上一个结点
+    for (int i=1; i&lt;add; i++) {//循环找到删除位置
+        temp=temp-&gt;next;
+    }
+    link * del=temp-&gt;next;//单独设置一个指针指向被删除结点，以防丢失
+    temp-&gt;next=temp-&gt;next-&gt;next;//删除某个结点的方法就是更改前一个结点的指针域
+    free(del);//释放内存
+    return p;//返回删除结点后的链表
+}
+</code></pre><h5 id="元素查找"><a href="#元素查找" class="headerlink" title="元素查找"></a>元素查找</h5><p>元素查找的思路其实就是挨个一个一个对比，如果有要查找的元素，那么就返回位置，否则就返回NULL表示没有找到，步骤：<br><strong>代码</strong>：</p>
+<pre><code>//p为原链表，elem表示被查找元素、
+int selectElem(link * p,int elem){
+//新建一个指针t，初始化为头指针 p
+    link * t=p;
+    int i=1;
+    //由于头节点的存在，因此while中的判断为t-&gt;next
+    while (t-&gt;next) {
+        t=t-&gt;next;//指针后移
+        if (t-&gt;elem==elem) {
+            return i;
+        }
+        i++;
+    }
+    //程序执行至此处，表示查找失败
+    return -1;
+}
+</code></pre><h5 id="元素更新"><a href="#元素更新" class="headerlink" title="元素更新"></a>元素更新</h5><p>这一操作的思路也很简单，只要找到位置，并对结点内的数据域进行修改就可以了。<br><strong>代码</strong>：    </p>
+<pre><code>//更新函数，其中，add 表示更改结点在链表中的位置，newElem 为新的数据域的值
+link *amendElem(link * p,int add,int newElem){
+    link * temp=p;
+    temp=temp-&gt;next;//在遍历之前，temp指向首元结点
+    //遍历到被删除结点
+    for (int i=1; i&lt;add; i++) {
+        temp=temp-&gt;next;
+    }
+    temp-&gt;elem=newElem;
+    return p;
+}
+</code></pre><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>  在上述的所有代码中，我们会发现，最常见的操作就是下面这行代码：    </p>
+<pre><code>temp=temp-&gt;next;
+</code></pre><p>类似这种更改指针的语言，其实我们可以发现，在链表的查插删改操作中，最重要的就是指针操作了，因此需要格外注意这一点。</p>
 
       
     </div>
@@ -440,11 +497,9 @@ Settings：这里可以设置admin登录密码，当然还有其他的一些配�
         
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
           
-            <a href="/tags/博文发布/" rel="tag"><i class="fa fa-tag"></i> 博文发布</a>
-          
-            <a href="/tags/Hexo-Admin/" rel="tag"><i class="fa fa-tag"></i> Hexo-Admin</a>
+            <a href="/tags/链表/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
           
         </div>
       
@@ -457,8 +512,8 @@ Settings：这里可以设置admin登录密码，当然还有其他的一些配�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/19/关于Hexo里RSS的添加和取消/" rel="next" title="关于Hexo里RSS的添加和取消">
-                <i class="fa fa-chevron-left"></i> 关于Hexo里RSS的添加和取消
+              <a href="/2019/07/01/C/" rel="next" title="C语言数据结构之链表（一）">
+                <i class="fa fa-chevron-left"></i> C语言数据结构之链表（一）
               </a>
             
           </div>
@@ -466,10 +521,6 @@ Settings：这里可以设置admin登录密码，当然还有其他的一些配�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/29/网站使用之poj/" rel="prev" title="网站使用之poj">
-                网站使用之poj <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +654,7 @@ Settings：这里可以设置admin登录密码，当然还有其他的一些配�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发布工具"><span class="nav-number">2.</span> <span class="nav-text">发布工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#界面介绍"><span class="nav-number">3.</span> <span class="nav-text">界面介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#博文发布"><span class="nav-number">4.</span> <span class="nav-text">博文发布</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#step-1"><span class="nav-number">4.1.</span> <span class="nav-text">step 1</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#step-2"><span class="nav-number">4.2.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#step-3"><span class="nav-number">4.3.</span> <span class="nav-text">step 3</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表操作"><span class="nav-number">2.</span> <span class="nav-text">链表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#元素插入"><span class="nav-number">2.0.1.</span> <span class="nav-text">元素插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素删除"><span class="nav-number">2.0.2.</span> <span class="nav-text">元素删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素查找"><span class="nav-number">2.0.3.</span> <span class="nav-text">元素查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素更新"><span class="nav-number">2.0.4.</span> <span class="nav-text">元素更新</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></div>
             
 
           </div>
