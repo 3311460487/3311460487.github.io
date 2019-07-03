@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C语言趣味编程之约瑟夫环]]></title>
+    <url>%2F2019%2F07%2F03%2FUntitled%2F</url>
+    <content type="text"><![CDATA[前言由于之前写了之后发现没有发出去，因此这里只展示代码：]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[C语言趣味编程之回文数]]></title>
+    <url>%2F2019%2F07%2F03%2FC%E8%AF%AD%E8%A8%80%E8%B6%A3%E5%91%B3%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%9B%9E%E6%96%87%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[前言由于之前写好之后没有保存，这里就不再重写，直接上代码： 回文数#include&lt;stdio.h&gt; #include &lt;math.h&gt; int juje(long res){ int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//手部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 // printf(&quot;head=%d &quot;,head); // printf(&quot;tail=%d\n&quot;,tail); if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } int main(){ int i=1; for(i=1;i&lt;=256;i++){ if(juje(i*i)){ printf(&quot;%5d&quot;,i); printf(&quot;%8d\n&quot;,i*i); } } return 0; } 回文素数#include&lt;stdio.h&gt; #include&lt;math.h&gt; int pri(int pri); int juje(long res); int main(){ int i=0; int x=0; int y=0; for(i=11;i&lt;1000;i++){ x=pri(i); if(x==1){ y=juje(i); if(y==1) printf(&quot;%10d\n&quot;,i); } } return 0; } int pri(int pri){//判断是否为素数，如果是则返回1 int i=0; for(i=pri-1;i&gt;1;i--){ if(pri%i==0) break; } if(i==1) return 1; else return 0; } int juje(long res){//判断是否为回文数，是则返回1 int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//手部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; } 回文数的产生#include&lt;stdio.h&gt; #include&lt;math.h&gt; long reverse(long num); int juje(long res); int main(){ int base=99; int juj=0; int REbase; while(juj==0){ REbase=reverse(base);//得到逆向数 printf(&quot;%d+%d=&quot;,base,REbase); base=base+REbase;//两数相加 printf(&quot;%d\n&quot;,base) ; juj=juje(base); } } long reverse(long num){ int size=0; int i=0; int bit=0; int down=0; long reverse=0; long temp=0; temp=num; while(temp&gt;0){ temp=temp/10; size++; } i=size; for(i=size-1;i&gt;=0;i--){ bit=num%10; num=num/10; // printf(&quot;%3d&quot;,bit); down=pow(10,i); // printf(&quot;%9d\n&quot;,down); reverse=reverse+bit*down; } return reverse; } int juje(long res){ int size=0;//记录长度 int i=0;//循环比较 long resT=res;//尾部逆向扫描 long resH=res;//手部正向扫描 int tail=0;//逆向取值 int head=0; //正向取值 long down=0;//正向取值时的除数 resH=res;//初始化赋值 resT=res; while(res&gt;=10){//计算数字有几位，实际上有size+1位 size++; res=res/10; } for(i=size;i&gt;=0;i--){ tail=resT%10;//逆向取余数 resT=resT/10;//逆向保存商 down=pow(10,i); head=resH/down;//正向取商 resH=resH%down;//正向保存余数 if(tail!=head)//如果不相等就跳出 break; } if(i==-1)//说明前后对称 return 1; else return 0; }]]></content>
+      <categories>
+        <category>编程语言总结</category>
+        <category>C语言</category>
+        <category>趣味数字</category>
+      </categories>
+      <tags>
+        <tag>回文数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C语言数据结构之链表（二）]]></title>
     <url>%2F2019%2F07%2F01%2FC%E8%AF%AD%E8%A8%80%2F</url>
     <content type="text"><![CDATA[前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点； *代码： //p为原链表，elem表示新数据元素，add表示新元素要插入的位置 link * insertElem(link * p,int elem,int add){ link * temp=p;//创建临时结点temp for (int i=1; i&lt;add; i++) {//利用循环找到插入位置 if (temp==NULL) {//判断插入位置是否有效 printf(&quot;插入位置无效\n&quot;); return p;//立刻返回原来的链表 } temp=temp-&gt;next;//结点不断后移 } link * c=(link*)malloc(sizeof(link));//创建插入结点c c-&gt;elem=elem;//确定数据域 //向链表中插入结点 c-&gt;next=temp-&gt;next;//让新结点指向后面的链条 temp-&gt;next=c;//让前面的结点指向新的结点 return p; } 注意：在循环找插入位置时，一定要先判断一下是否已经超出链表长度 元素删除 链表删除其实就是让前一个结点的指针域直接指向后一个的后一个，值得注意的是，对于已经删除的结点，一定要记得释放空间，步骤如下： 1.指针向后移动两个结点； 2.对删除的结点进行释放； //p为原链表，add为要删除元素的值 link * delElem(link * p,int add){ link * temp=p;//temp指向被删除结点的上一个结点 for (int i=1; i&lt;add; i++) {//循环找到删除位置 temp=temp-&gt;next; } link * del=temp-&gt;next;//单独设置一个指针指向被删除结点，以防丢失 temp-&gt;next=temp-&gt;next-&gt;next;//删除某个结点的方法就是更改前一个结点的指针域 free(del);//释放内存 return p;//返回删除结点后的链表 } 元素查找元素查找的思路其实就是挨个一个一个对比，如果有要查找的元素，那么就返回位置，否则就返回NULL表示没有找到，步骤：代码： //p为原链表，elem表示被查找元素、 int selectElem(link * p,int elem){ //新建一个指针t，初始化为头指针 p link * t=p; int i=1; //由于头节点的存在，因此while中的判断为t-&gt;next while (t-&gt;next) { t=t-&gt;next;//指针后移 if (t-&gt;elem==elem) { return i; } i++; } //程序执行至此处，表示查找失败 return -1; } 元素更新这一操作的思路也很简单，只要找到位置，并对结点内的数据域进行修改就可以了。代码： //更新函数，其中，add 表示更改结点在链表中的位置，newElem 为新的数据域的值 link *amendElem(link * p,int add,int newElem){ link * temp=p; temp=temp-&gt;next;//在遍历之前，temp指向首元结点 //遍历到被删除结点 for (int i=1; i&lt;add; i++) { temp=temp-&gt;next; } temp-&gt;elem=newElem; return p; } 小结 在上述的所有代码中，我们会发现，最常见的操作就是下面这行代码： temp=temp-&gt;next; 类似这种更改指针的语言，其实我们可以发现，在链表的查插删改操作中，最重要的就是指针操作了，因此需要格外注意这一点。]]></content>
@@ -40,19 +58,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[C语言数据结构之顺序表（一）]]></title>
-    <url>%2F2019%2F07%2F01%2FUntitled%2F</url>
-    <content type="text"><![CDATA[前言&emsp;顺序表是最简单的线性表，顺序表和数组时不一样的。顺序表需要程序设计者自己定义结构体，并且在顺序表中，是有存储顺序表长度的。不过有很明显的相同点就在于，顺序表同样也需要下标进行索引。本文代码参考：连接 结构体定义一个顺序表的三元素包括：1.专门用来指元素的指针；2.顺序表的长度； 3.顺序表的大小； typedef struct Table{ int * head; int length; int size; }table; 注意：head 是我们声明的一个未初始化的动态数组，不要只把它看做是普通的指针。 初始化table initTable(int Size){//初始化函数，其实就是创建一个实例 table t; //创建一个顺序表实例 t.head=(int*)malloc(Size*sizeof(int)); //按照要求分配长度 if (!t.head){ //检验申请是否成功，提高程序健壮性 printf(&quot;初始化失败&quot;); exit(0); } t.length=0; //初始化为0 t.size=Size; //存储记录线性表长度 return t; // 完成创建步骤，返回创建好的实例 } 注意：一定要养成检查空间是否成功分配的良好习惯！ 顺序表显示 //输出顺序表中元素的函数 void displayTable(table t){ int i=0; for (i=0;i&lt;t.length;i++) { printf(&quot;%3d&quot;,t.head[i]);//通过偏移进行定位 } printf(&quot;\n&quot;); } 在上面这段代买中我们就能看出，顺序表在这里其实和数组非常相似，他们也依靠下标索引进行元素查找。 整体代码#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; typedef struct Table{ int * head; int length; int size; }table; table initTable(int Size){//初始化函数，其实就是创建一个实例 table t; //创建一个顺序表实例 t.head=(int*)malloc(Size*sizeof(int)); //按照要求分配长度 if (!t.head){ //检验申请是否成功，提高程序健壮性 printf(&quot;初始化失败&quot;); exit(0); } t.length=0; //初始化为0 t.size=Size; //存储记录线性表长度 return t; // 完成创建步骤，返回创建好的实例 } //输出顺序表中元素的函数 void displayTable(table t){ int i=0; for (i=0;i&lt;t.length;i++) { printf(&quot;%3d&quot;,t.head[i]);//通过偏移进行定位 } printf(&quot;\n&quot;); } int main(){ int i=0; int Size=6; table t=initTable(Size); //向顺序表中添加元素 for (i=1; i&lt;=Size; i++) { t.head[i-1]=i; t.length++;//相应的长度要加一 } printf(&quot;顺序表中存储的元素分别是：\n&quot;); displayTable(t);//显示所有的元素 return 0; } 上述代码中可以将Size封装到init函数中，这样就可以在初始化时直接添加好元素。]]></content>
-      <categories>
-        <category>编程语言总结</category>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-        <tag>顺序表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[C语言文件读写总结（二）]]></title>
     <url>%2F2019%2F06%2F30%2F%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[前言本节接着上一节继续记录…本文参考教程连接 文件的随机读写在实际的程序设计中，经常需要从文件的某个指定位置处开始对文件进行选择性的读写操作，这时，首先要把文件的读写位置指针移动到指定处，然后再进行读写，这种读写方式称为对文件的随机读写操作。fseek()函数： int fseek(FI：LE *fp, long offset, int origin);//原函数 fseek(fp,10L,SEEK_SET); fseek(fp,10L,SEEK_CUR); fseek(fp,-20L,SEEK_END); 函数功能：把文件读写指针调整到从 origin 基点开始偏移 offset 处，即把文件读写指针移动到 origin+offset 处。函数参数：1) origin：文件读写指针移动的基准点（参考点）。基准位置 origin 有三种常量取值：SEEK_SET、SEEK_CUR 和 SEEK_END，取值依次为 0，1，2。SEEK_SET:文件开头，即第一个有效数据的起始位置。SEEK_CUR：当前位置。SEEK_END:文件结尾，即最后一个有效数据之后的位置。注意：此处并不能读取到最后一个有效数据，必须前移一个数据块所占的字节数，使该文件流的读写指针到达最后一个有效数据块的起始位置处。2) offset：位置偏移量，为 long 型，当 offset 为正整数时，表示从基准 origin 向后移动 offset 个字节的偏移；若 offset 为负数，表示从基准 origin 向前移动 |offset| 个字节的偏移。返回值：成功，返回 0；失败，返回 -1。例如，若 fp 为文件指针，则 seek (fp,10L,0); 把读写指针移动到从文件开头向后 10 个字节处。 fSeek(fp,10L,1); 把读写指针移动到从当前位置向后 10 个字节处。 fseek(fp,-20L,2); 把读写指针移动到从文件结尾处向前 20 个字节处。ftell()函数： ftell (FILE *fp); 函数功能：用于获取当前文件读写指针相对于文件头的偏移字节数。]]></content>
@@ -63,6 +68,19 @@
       <tags>
         <tag>文件读写</tag>
         <tag>随机读写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C语言文件读写总结（一）]]></title>
+    <url>%2F2019%2F06%2F29%2F%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1%2F</url>
+    <content type="text"><![CDATA[前言&emsp;文件读写是C语言基本语法中要求掌握的部分，博主在复习C的时候在这里专门整理一下，以便日后使用时能够快速理解和熟悉。 基本概念文件文件是操作系统管理数据的基本单位，这里需要记住它的三个要素：1.文件路径2.文件名3.文件后缀名后两个要素这里不细说，需要注意的是路径的两种写法： D:\\WorkSpace\\FileFolder\\file.txt D:/WorkSpace/FileFolder/file.txt &emsp;记忆的话就简单记成除法单杠就好啦，博主也没想出来什么好一点记忆的顺口称呼。 流&emsp;由于程序交互的I/O终端多种多样，为了提高程序设计效率，标准的I/O系统把任意输入的源端或任意输出的终端，都抽象转换成了概念上的“标准 I/O 设备”或称“标准逻辑设备”，换句话说，在程序访问时，需要考虑的是逻辑结构而非物理结构。&emsp;把物理设备抽象成逻辑设备这个动作，则是由标准I/O系统自动完成的。故从这个意义上，可以认为任意输入的源端和任意输出的终端均对应个“流”。&emsp;按照方向，流分为输出流和输入流，按照数据形式，又分为文本流和二进制流。 具体操作头文件#include&lt;stdio.h&gt; //只有这一个 文件的打开与关闭&emsp;在操作前需要记住的是C语言对任何文件进行操作前，都必须先打开文件，即打开“流”，在操作结束后，需要关闭流，释放内存。文件打开：fopen()函数 FILE *fp = NULL; //FILE类型指针变量 fp = fopen(&quot;D:/test.txt&quot;, &quot;r&quot;); //打开成功，fp获得指针变量，否则fp为NULL &emsp;博主这里不写函数原型是因为大多数情况函数原型会刚难以理解，反而具体的应用例子能够很快让人上手,只需要记住：一个指针，两个参数，指针是指成功打开后获得的文件指针，两个参数是指文件路径+文件名和打开模式。&emsp;fopen()打开模式中参数有很多选择，博主三年前学C，平常用的不多，这里只记录之前自己用过的： 模式 含义 说明 r 只读 该模式没有创建文本的能力，因此要求文件必须存在 w 只写 若文件存在，则前清空后重新写；若文件不存在，则会创建文件 a 追加读写 没有创建文本的能力，要求文件必须存在。打开成功则从文件末尾开始写入 模式b 二进制 功能为原模式，但要求为二进制：rb、wb、ab 模式+ 读写 原模式基础上追加读或者写：w+、rb+、ab+，其中只有含有w的模式才能应付文件不存在的情况 文件关闭：fclose()函数 fclose (fp); //fp为已打开文件的指针 &emsp;总之文件关闭就是一句话完事儿的事情，参数是已开文件指针 文件打判断： 这几句基本上是固定好的，为了保证程序健壮性，要求在打开文件之后必须加上： if(NULL==fp){ //判断指针是否为空 printf (&quot;Failed to open the file !\n&quot;); exit (0); //安全起见，强制程序退出 } 应用实例： #include &lt;stdio.h&gt; int main() { FILE *fp = NULL; fp = fopen(&quot;test.txt&quot;, &quot;w+&quot;); if(NULL==fp){ //判断指针是否为空 printf (&quot;Failed to open the file !\n&quot;); exit (0); //安全起见，强制程序退出 } fclose(fp); } 文件结束判断 &emsp;博主把这个放在前面是因为后面会用得到，另外文件的结束判断其实非常重要，有两种方法，不同场合有时候只能用一种方法。 &emsp;当以文本方式读写文件时，可以用EOF判断文件是否结尾，因为EOF=-1，而字符的ASCII码不可能为负数。 getc(fp)!=EOF &emsp;当以二进制方式读写文件时，只能用feof函数判断，因为二进制读取数值，可能为负。feof不仅适用于二进制打开，文本方式打开也适用 feof(fp) //当未读到结尾时，返回值为0，读到结尾时，返回值为1 注意：只有读出所有的数据之后，再读一次，函数feof(fp)的返回值才为真，因此如果想计数TXT中有多少个字符，需要在计数结束之后-1。 文件顺序读写 &emsp;文件的顺序读写就是只文件中数据的存放顺序和读出来或者写进去的顺序是一致的。 单个字符的写入与读出 写入一个字符： fputc(&apos;a&apos;,fp); 读出一个字符： fgetc(fp); 其他关键点: rewind (fp); //把 fp 所指向文件中的读写位置重新调整到文件开始处。 while(p!=&apos;\0&apos;) //判断字符串是否结束 while(!feof(fp)) 应用实例： #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main (void){ char c,p; char str[200]=&quot;hello world!&quot;; int i=0; FILE *fp=fopen(&quot;test.txt&quot;,&quot;r+&quot;); if(fp==NULL) printf(&quot;no test.txt&quot;); p=str[0]; while(p!=&apos;\0&apos;){ fputc(p,fp); i++; p=str[i]; } rewind (fp); while(!feof(fp)){ c=fgetc(fp); printf(&quot;%c&quot;,c); } fclose(fp); return 0; } 字符串的写入与读出写入一个字符串： fputs(“hello world\n”, fp); 读出一个字符串： fgets(buffer,100,fp); 函数功能：从 fp 所指向的文件内，读取若干字符（一行字符串），并在其后自动添加字符串结束标志 ‘\0’ 后，存入 s 所指的缓冲内存空间中（s 可为字符数组名），直到遇到回车换行符或已读取 size-1 个字符或已读到文件结尾为止。该函数读取的字符串最大长度为 size-1。参数fp: 可以指向磁盘文件或标准输入设备stdin。注意：fgets()函数在遇到’\0’或者读取到size-1时会自动停止，因此如果想以字符串的形式把文件读完，需要运用循环。 字符串屏幕输出： //方法1 fputs (buffer, stdout);//把字符串输出到屏幕 //方法2 fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer); 应用实例： #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #define MAX_SIZE 30 //字符数组大小 int main (void) { char buffer[30]=&quot; &quot;; char str1[]=&quot;hello wolrd!\n&quot;; char str2[]=&quot;i love C \n&quot;; char str3[]=&quot;i love my life\n&quot;; FILE *fp; int i; fp=fopen (&quot;file.txt&quot;, &quot;w+&quot;) ; //&quot;w+&quot;模式：先写入后读出 if(NULL==fp){ printf (&quot;Failed to open the file !\n&quot;); exit (0); } fputs (&quot;我佛了\n&quot;, fp) ; fputs (str2, fp) ; fputs (str3, fp) ; rewind (fp); while (fgets(buffer,MAX_SIZE,fp) !=NULL) fputs (buffer, stdout) ; rewind (fp); fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer); fclose(fp); return 0; }]]></content>
+      <categories>
+        <category>编程语言总结</category>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>文件读写</tag>
+        <tag>顺序读写</tag>
       </tags>
   </entry>
   <entry>
@@ -77,19 +95,6 @@
         <tag>数据结构</tag>
         <tag>排序算法</tag>
         <tag>快速排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C语言文件读写总结（一）]]></title>
-    <url>%2F2019%2F06%2F29%2F%E8%AF%AD%E8%A8%80%E8%81%94%E7%B3%BB%E4%B9%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1%2F</url>
-    <content type="text"><![CDATA[前言&emsp;文件读写是C语言基本语法中要求掌握的部分，博主在复习C的时候在这里专门整理一下，以便日后使用时能够快速理解和熟悉。 基本概念文件文件是操作系统管理数据的基本单位，这里需要记住它的三个要素：1.文件路径2.文件名3.文件后缀名后两个要素这里不细说，需要注意的是路径的两种写法： D:\\WorkSpace\\FileFolder\\file.txt D:/WorkSpace/FileFolder/file.txt &emsp;记忆的话就简单记成除法单杠就好啦，博主也没想出来什么好一点记忆的顺口称呼。 流&emsp;由于程序交互的I/O终端多种多样，为了提高程序设计效率，标准的I/O系统把任意输入的源端或任意输出的终端，都抽象转换成了概念上的“标准 I/O 设备”或称“标准逻辑设备”，换句话说，在程序访问时，需要考虑的是逻辑结构而非物理结构。&emsp;把物理设备抽象成逻辑设备这个动作，则是由标准I/O系统自动完成的。故从这个意义上，可以认为任意输入的源端和任意输出的终端均对应个“流”。&emsp;按照方向，流分为输出流和输入流，按照数据形式，又分为文本流和二进制流。 具体操作头文件#include&lt;stdio.h&gt; //只有这一个 文件的打开与关闭&emsp;在操作前需要记住的是C语言对任何文件进行操作前，都必须先打开文件，即打开“流”，在操作结束后，需要关闭流，释放内存。文件打开：fopen()函数 FILE *fp = NULL; //FILE类型指针变量 fp = fopen(&quot;D:/test.txt&quot;, &quot;r&quot;); //打开成功，fp获得指针变量，否则fp为NULL &emsp;博主这里不写函数原型是因为大多数情况函数原型会刚难以理解，反而具体的应用例子能够很快让人上手,只需要记住：一个指针，两个参数，指针是指成功打开后获得的文件指针，两个参数是指文件路径+文件名和打开模式。&emsp;fopen()打开模式中参数有很多选择，博主三年前学C，平常用的不多，这里只记录之前自己用过的： 模式 含义 说明 r 只读 该模式没有创建文本的能力，因此要求文件必须存在 w 只写 若文件存在，则前清空后重新写；若文件不存在，则会创建文件 a 追加读写 没有创建文本的能力，要求文件必须存在。打开成功则从文件末尾开始写入 模式b 二进制 功能为原模式，但要求为二进制：rb、wb、ab 模式+ 读写 原模式基础上追加读或者写：w+、rb+、ab+，其中只有含有w的模式才能应付文件不存在的情况 文件关闭：fclose()函数 fclose (fp); //fp为已打开文件的指针 &emsp;总之文件关闭就是一句话完事儿的事情，参数是已开文件指针 文件打判断： 这几句基本上是固定好的，为了保证程序健壮性，要求在打开文件之后必须加上： if(NULL==fp){ //判断指针是否为空 printf (&quot;Failed to open the file !\n&quot;); exit (0); //安全起见，强制程序退出 } 应用实例： #include &lt;stdio.h&gt; int main() { FILE *fp = NULL; fp = fopen(&quot;test.txt&quot;, &quot;w+&quot;); if(NULL==fp){ //判断指针是否为空 printf (&quot;Failed to open the file !\n&quot;); exit (0); //安全起见，强制程序退出 } fclose(fp); } 文件结束判断 &emsp;博主把这个放在前面是因为后面会用得到，另外文件的结束判断其实非常重要，有两种方法，不同场合有时候只能用一种方法。 &emsp;当以文本方式读写文件时，可以用EOF判断文件是否结尾，因为EOF=-1，而字符的ASCII码不可能为负数。 getc(fp)!=EOF &emsp;当以二进制方式读写文件时，只能用feof函数判断，因为二进制读取数值，可能为负。feof不仅适用于二进制打开，文本方式打开也适用 feof(fp) //当未读到结尾时，返回值为0，读到结尾时，返回值为1 注意：只有读出所有的数据之后，再读一次，函数feof(fp)的返回值才为真，因此如果想计数TXT中有多少个字符，需要在计数结束之后-1。 文件顺序读写 &emsp;文件的顺序读写就是只文件中数据的存放顺序和读出来或者写进去的顺序是一致的。 单个字符的写入与读出 写入一个字符： fputc(&apos;a&apos;,fp); 读出一个字符： fgetc(fp); 其他关键点: rewind (fp); //把 fp 所指向文件中的读写位置重新调整到文件开始处。 while(p!=&apos;\0&apos;) //判断字符串是否结束 while(!feof(fp)) 应用实例： #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; int main (void){ char c,p; char str[200]=&quot;hello world!&quot;; int i=0; FILE *fp=fopen(&quot;test.txt&quot;,&quot;r+&quot;); if(fp==NULL) printf(&quot;no test.txt&quot;); p=str[0]; while(p!=&apos;\0&apos;){ fputc(p,fp); i++; p=str[i]; } rewind (fp); while(!feof(fp)){ c=fgetc(fp); printf(&quot;%c&quot;,c); } fclose(fp); return 0; } 字符串的写入与读出写入一个字符串： fputs(“hello world\n”, fp); 读出一个字符串： fgets(buffer,100,fp); 函数功能：从 fp 所指向的文件内，读取若干字符（一行字符串），并在其后自动添加字符串结束标志 ‘\0’ 后，存入 s 所指的缓冲内存空间中（s 可为字符数组名），直到遇到回车换行符或已读取 size-1 个字符或已读到文件结尾为止。该函数读取的字符串最大长度为 size-1。参数fp: 可以指向磁盘文件或标准输入设备stdin。注意：fgets()函数在遇到’\0’或者读取到size-1时会自动停止，因此如果想以字符串的形式把文件读完，需要运用循环。 字符串屏幕输出： //方法1 fputs (buffer, stdout);//把字符串输出到屏幕 //方法2 fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer); 应用实例： #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #define MAX_SIZE 30 //字符数组大小 int main (void) { char buffer[30]=&quot; &quot;; char str1[]=&quot;hello wolrd!\n&quot;; char str2[]=&quot;i love C \n&quot;; char str3[]=&quot;i love my life\n&quot;; FILE *fp; int i; fp=fopen (&quot;file.txt&quot;, &quot;w+&quot;) ; //&quot;w+&quot;模式：先写入后读出 if(NULL==fp){ printf (&quot;Failed to open the file !\n&quot;); exit (0); } fputs (&quot;我佛了\n&quot;, fp) ; fputs (str2, fp) ; fputs (str3, fp) ; rewind (fp); while (fgets(buffer,MAX_SIZE,fp) !=NULL) fputs (buffer, stdout) ; rewind (fp); fgets(buffer,100,fp); printf(&quot;%s&quot;,buffer); fclose(fp); return 0; }]]></content>
-      <categories>
-        <category>编程语言总结</category>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>文件读写</tag>
-        <tag>顺序读写</tag>
       </tags>
   </entry>
   <entry>
@@ -123,18 +128,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[不蒜子文章阅读量显示的问题]]></title>
-    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1%2F</url>
-    <content type="text"><![CDATA[博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。 于是博主按照网上教程，将文章阅读量这一行改为true：路径为: /themes/next/_config.yml 将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛： busuanzi_count: enable: true #这里需要改为true site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; site_uv_footer:# 本站总访问量次数 site_pv: false site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; site_pv_footer: page_pv: true #这里博主改为了true page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye page_pv_footer: 修改完之后发现它竟然竟然显示不在一行，如图：于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。有兴趣的朋友可以看一下官网的通知：不蒜子统计官网想直接解决的朋友可以不用看官网，简单点就是更新域名的问题： 修改办法：打开不蒜子的统计文件，路径为： /theme/next/layout/_third-party/analytics/busuanzi-counter.swig 你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了： &quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot; 在修改后进行调试： 问题解决！这是参考的博客连接： hexo博客解决不蒜子统计无法显示问题]]></content>
-      <categories>
-        <category>汇总记录</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>不蒜子</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[hexo+GitHub+域名搭建的心路历程]]></title>
     <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功 大概花了一天时间，又重新摸索着在网上学习怎么利用hexo配合GitHub搭建个人博客。博主这方面一片空白，也是东边学一点西边学一点，所以本文不提供系统的怎么搭建的过程，只是记录一下中间出现的问题和解决办法。 基础环境安装 这一方面其实博主本人到现在为止都不知道是做什么的，只知道都安装好就能搭成博客，至于怎么安装，还是参考其他技术大牛们的教程吧。但是这里有需要提醒的： 安装的内容有： 1.git 2.node.js 3.hexo 三者的顺序一般hexo在最后，前两个根据具体教程来 注意hexo文件夹和blog文件夹不是一个东西 安装完之后可以先去申请注册一个GitHub账号，然后按照教程创建一个仓库 主题设置 博主一开始根据教程很快搭好了博客，但是发现主题theme是默认的landscape，因此想换一下，但是问题就在于，博主已经按照教程在landscape的基础上对页面进行了很多的修改，之后突然将主题更换，导致网站直接崩塌(…)因此这里提醒大家，想要什么主题早早找好，然后在网上找对口的教程。由于博主技术不精，所以选择了使用最多的NexT主题，因为相关教程多嘛(捂脸) 博文编写 博主在一开始打好博客之后也激动了好一会，然后突然发现了一个问题：以后想写心得博客怎么办？难道创建一篇心得博客都需要代码创建吗？当然这个问题很快就能解决，博主最后采用了hexo-admin，因为它目前使用起来还算比较顺手，管理的时候也比较方便，具体如何安装以及设置密码请移步其他大佬的技术博客。 域名设置 强烈建议在前面安装基础环境的时候就在网上提前买好域名，否则就会像博主这样在万事俱备只欠域名的情况下猴急猴急的等待域名实名认证通过和GitHub的配置。博主的域名是在阿里云购买的，大家可以根据自己的喜好来。 有几点是需要注意的： 1.有的域名购买需要认证，因此不会购买之后立刻就能用； 2.域名的控制台那里解析的ip，就是你github仓库的ip地址，可以在cmd命令行里面ping一下进行查看； 3.GitHub仓库的settings里面也是需要配置域名的，写上你申请到的域名就可以，例如“xxxx.top”，记得前面不要私自加www，反正我的没有加没有出错； 4.blog/source文件夹下是需要创建一个名为CNAME并且没有后缀名的文件，里面写上自己的域名，这里是需要在前面加上“www”的； 5.在域名这些设置都配置好之后，就可以通过域名在公网上对博客进行访问了，不过刚配置完不要慌(真的这些可以在搭建之前配好，免得后面坐在电脑前静静等待…)，一般过几分钟之后就可以看到自己搭建好的博客和信发布的文章啦！ 后期编写博客和发布 前面已经写到，博主使用的的是hexo-admin，一般在自己的本地进行编辑之后，觉得博文没有问题，直接在blog根目录下输入： hexo g &amp;&amp; hexo d 然后在黑色的命令框里就能看到输出的一堆东西，一般第一次进行这样的GitHub更新，是需要和GitHub上进行ssh设置的，在之后就不需要了。在命令框中显示上传成功之后，博客更新的工作也就完成了。]]></content>
@@ -144,6 +137,18 @@
       <tags>
         <tag>Hexo</tag>
         <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[不蒜子文章阅读量显示的问题]]></title>
+    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1%2F</url>
+    <content type="text"><![CDATA[博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。 于是博主按照网上教程，将文章阅读量这一行改为true：路径为: /themes/next/_config.yml 将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛： busuanzi_count: enable: true #这里需要改为true site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; site_uv_footer:# 本站总访问量次数 site_pv: false site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; site_pv_footer: page_pv: true #这里博主改为了true page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye page_pv_footer: 修改完之后发现它竟然竟然显示不在一行，如图：于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。有兴趣的朋友可以看一下官网的通知：不蒜子统计官网想直接解决的朋友可以不用看官网，简单点就是更新域名的问题： 修改办法：打开不蒜子的统计文件，路径为： /theme/next/layout/_third-party/analytics/busuanzi-counter.swig 你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了： &quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot; 在修改后进行调试： 问题解决！这是参考的博客连接： hexo博客解决不蒜子统计无法显示问题]]></content>
+      <categories>
+        <category>汇总记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>不蒜子</tag>
       </tags>
   </entry>
   <entry>
