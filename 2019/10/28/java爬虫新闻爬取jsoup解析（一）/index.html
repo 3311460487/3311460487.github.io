@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="网页爬取,HTML解析,坑,">
 
 
 
@@ -79,16 +79,23 @@
 
 
 
-<meta name="description" content="Carsel write life here">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Carsel的个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/随机读写/index.html">
+<meta name="description" content="Java爬虫+jsoup解析（一）前言博主最近有一个APP开发的项目（其实就是期末作业），作为一个有梦想的学生，本人雄赳赳气昂昂的选择了做一个新闻浏览的APP。既然涉及到新闻浏览，肯定要爬取那些大型新闻网站的新闻撒，而且是先爬取所有信息列表，再爬取详细内容，这样功能才比较全面。但是博主在利用爬虫进行爬取的时候也是费劲巴拉的，本人爬虫小白，只能从网上找代码直接copy，于是问题就出现了。本篇博客主要">
+<meta name="keywords" content="网页爬取,HTML解析,坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java爬虫新闻爬取jsoup解析（一）">
+<meta property="og:url" content="http://yoursite.com/2019/10/28/java爬虫新闻爬取jsoup解析（一）/index.html">
 <meta property="og:site_name" content="Carsel的个人博客">
-<meta property="og:description" content="Carsel write life here">
+<meta property="og:description" content="Java爬虫+jsoup解析（一）前言博主最近有一个APP开发的项目（其实就是期末作业），作为一个有梦想的学生，本人雄赳赳气昂昂的选择了做一个新闻浏览的APP。既然涉及到新闻浏览，肯定要爬取那些大型新闻网站的新闻撒，而且是先爬取所有信息列表，再爬取详细内容，这样功能才比较全面。但是博主在利用爬虫进行爬取的时候也是费劲巴拉的，本人爬虫小白，只能从网上找代码直接copy，于是问题就出现了。本篇博客主要">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-10/Spyder1.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-10/Spyder2.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-10/photo.jpg">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-10/Spyder3.png">
+<meta property="og:updated_time" content="2019-10-28T13:37:38.732Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Carsel的个人博客">
-<meta name="twitter:description" content="Carsel write life here">
+<meta name="twitter:title" content="java爬虫新闻爬取jsoup解析（一）">
+<meta name="twitter:description" content="Java爬虫+jsoup解析（一）前言博主最近有一个APP开发的项目（其实就是期末作业），作为一个有梦想的学生，本人雄赳赳气昂昂的选择了做一个新闻浏览的APP。既然涉及到新闻浏览，肯定要爬取那些大型新闻网站的新闻撒，而且是先爬取所有信息列表，再爬取详细内容，这样功能才比较全面。但是博主在利用爬虫进行爬取的时候也是费劲巴拉的，本人爬虫小白，只能从网上找代码直接copy，于是问题就出现了。本篇博客主要">
+<meta name="twitter:image" content="http://yoursite.com/images/blog2019-10/Spyder1.png">
 
 
 
@@ -118,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/随机读写/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/28/java爬虫新闻爬取jsoup解析（一）/">
 
 
 
 
 
-  <title>标签: 随机读写 | Carsel的个人博客</title>
+  <title>java爬虫新闻爬取jsoup解析（一） | Carsel的个人博客</title>
   
 
 
@@ -143,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,52 +286,208 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>随机读写<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/28/java爬虫新闻爬取jsoup解析（一）/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carsel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carsel的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/30/言联系之排序算法/" itemprop="url">
-              
-                <span itemprop="name">C语言文件读写总结（二）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">java爬虫新闻爬取jsoup解析（一）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-30T16:20:00+08:00" content="2019-06-30">
-          06-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T20:41:00+08:00">
+                2019-10-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Jsoup/" itemprop="url" rel="index">
+                    <span itemprop="name">Jsoup</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+        
+
+      
+        <h3 id="Java爬虫-jsoup解析（一）"><a href="#Java爬虫-jsoup解析（一）" class="headerlink" title="Java爬虫+jsoup解析（一）"></a>Java爬虫+jsoup解析（一）</h3><h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>博主最近有一个APP开发的项目（其实就是期末作业），作为一个有梦想的学生，本人雄赳赳气昂昂的选择了做一个新闻浏览的APP。<br>既然涉及到新闻浏览，肯定要爬取那些大型新闻网站的新闻撒，而且是先爬取所有信息列表，再爬取详细内容，这样功能才比较全面。<br>但是博主在利用爬虫进行爬取的时候也是费劲巴拉的，本人爬虫小白，只能从网上找代码直接copy，于是问题就出现了。本篇博客主要意义不在于记录爬虫代码和解析技术，而在于记录一个爬虫的坑。</p>
+<h5 id="确定网站"><a href="#确定网站" class="headerlink" title="确定网站"></a>确定网站</h5><p>首先肯定要想好爬取什么网站的新闻，博主一开始选择了<em>腾讯新闻</em>科技板块的<em>区块链</em>部分按照爬虫流程，先利用代码得到HTML文档：</p>
+<p><img src="\images\blog2019-10\Spyder1.png" alt="upload successful"><br>短短几行就得到了目标网站的HTML文档了，是不是很简单呢？接下来按照博主上次的博客指导，通过抽取元素，获取每一条新闻的标题和图片，于是就完成了APP中的一小步！</p>
+<h5 id="分析目标网站"><a href="#分析目标网站" class="headerlink" title="分析目标网站"></a>分析目标网站</h5><p>在目标网站处按下F12查看元素进行网页分析，找到想要得到的标题列表部分，博主在这愉快的发现它们是table格式，也就是说在后面解析的时候会比较方便（毕竟之前有过代码）：<br><img src="\images\blog2019-10\Spyder2.png" alt="upload successful"></p>
+<h5 id="发现问题及记录"><a href="#发现问题及记录" class="headerlink" title="发现问题及记录"></a>发现问题及记录</h5><p>问题就是在解析HTML的时候出现的，每次博主通过代码在HTML里面想要获取到那个关键的list时，总会出现各种各样的问题，要么输出null，要么干脆有什么都没有，于是博主本人开始了漫长的网上冲浪过程，具体过程包括：到处找其他的办法解析HTML；找其他的方法获取元素；自习阅读jsoup中文文档，找到第那里出了问题；换其他的大型网站，比如网易、新浪等等。<br>于是就这样过去了三个小时……<br>最终问题在博主成功运行了一个爬取龙腾网的源代码之后，突然想起来了什么：<br><img src="\images\blog2019-10\photo.jpg" alt="upload successful"><br>博主对这两个网页进行查看源代码操作，于是发现……<br><img src="\images\blog2019-10\Spyder3.png" alt="upload successful"><br>怎么会这样！左边是腾讯新闻的源代码，右边是龙腾网的源代码，可以通过右边的滚动条长度看到连个网页背后哪一个是满满的内容啊！<br>我真的一把辛酸泪，三个小时搞得我眼睛和心疼。</p>
+<h5 id="原因及解决"><a href="#原因及解决" class="headerlink" title="原因及解决"></a>原因及解决</h5><p>通过上面的对比，可以对爬虫有一个新的了解，博主目前没有具体去学习相关原因，但是之前记得有提到过jsoup解析的是静态页面，因此对于左边这种需要动态去不断获取的，只能获得源代码这样很短的HTML文档，当然也有可能是腾讯网不想让你这么容易获得他们的新闻（弟弟行为）。<br>解决方案当然在知道问题后就比较好处理了，博主果断放弃了爬取新闻这个想法，既然能爬取龙腾网的内容，那它做翻译的话我们就业跟着改成新闻翻译APP吧（是的你没看错）。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>鉴于博主目前爬虫小白，因此想写出来一个更厉害的爬虫来爬取腾讯新闻肯定现在是没有的，不过这里经过一个坑可以总结一个经验：利用jsoup爬取网页的时候，最好先看一下背后的源代码是怎样的，要不然那个弯路走的哟……</p>
 
       
     </div>
+    <div>
+        
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">—————————————本文结束—————————————</div>
+    
+</div>
+         
+    </div>
+    
+    
+    
+     
+    
 
+    
+
+    
+     
+    <footer class="post-footer">
+      
+        
+        
+        <div class="post-tags">
+          
+            <a href="/tags/网页爬取/" rel="tag"><i class="fa fa-tag"></i> 网页爬取</a>
+          
+            <a href="/tags/HTML解析/" rel="tag"><i class="fa fa-tag"></i> HTML解析</a>
+          
+            <a href="/tags/坑/" rel="tag"><i class="fa fa-tag"></i> 坑</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/30/Java之用jsoup分析HTML/" rel="next" title="Java之用Jsoup分析HTML">
+                <i class="fa fa-chevron-left"></i> Java之用Jsoup分析HTML
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +495,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -352,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -415,6 +591,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java爬虫-jsoup解析（一）"><span class="nav-number">1.</span> <span class="nav-text">Java爬虫+jsoup解析（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.0.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#确定网站"><span class="nav-number">1.0.2.</span> <span class="nav-text">确定网站</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析目标网站"><span class="nav-number">1.0.3.</span> <span class="nav-text">分析目标网站</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发现问题及记录"><span class="nav-number">1.0.4.</span> <span class="nav-text">发现问题及记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#原因及解决"><span class="nav-number">1.0.5.</span> <span class="nav-text">原因及解决</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">1.0.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -601,6 +793,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
