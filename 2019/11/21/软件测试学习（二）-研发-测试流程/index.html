@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,链表,">
+  <meta name="keywords" content="软件测试,">
 
 
 
@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；     *代码">
-<meta name="keywords" content="数据结构,链表">
+<meta name="description" content="前言&amp;emsp;&amp;emsp;本节是视频课程中的最后一部分，接着上一部分进行记录，这一节主要讲述了软件测试的流程。 参考资料&amp;emsp;&amp;emsp;本节内容对应的是下面第二条网课中的第二节。  所有资料来源： 如何从零开始学习软件测试     本节课程资源来源：02软件研发模型和测试流程 博客所使用的思维导图为：凹脑图  正文本节思维导图 &amp;emsp;&amp;emsp;下面的流程是目前绝大多数公司所采用的">
+<meta name="keywords" content="软件测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言数据结构之链表（二）">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/C语言/index.html">
+<meta property="og:title" content="软件测试学习（二）&lt;研发-测试流程&gt;">
+<meta property="og:url" content="http://yoursite.com/2019/11/21/软件测试学习（二）-研发-测试流程/index.html">
 <meta property="og:site_name" content="Carsel的个人博客">
-<meta property="og:description" content="前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；     *代码">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;本节是视频课程中的最后一部分，接着上一部分进行记录，这一节主要讲述了软件测试的流程。 参考资料&amp;emsp;&amp;emsp;本节内容对应的是下面第二条网课中的第二节。  所有资料来源： 如何从零开始学习软件测试     本节课程资源来源：02软件研发模型和测试流程 博客所使用的思维导图为：凹脑图  正文本节思维导图 &amp;emsp;&amp;emsp;下面的流程是目前绝大多数公司所采用的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-01T16:02:55.459Z">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-11/model+test.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-11/APP.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-11/Mooc2.png">
+<meta property="og:image" content="http://yoursite.com/images/blog2019-11/Mooc1.png">
+<meta property="og:updated_time" content="2019-11-21T15:10:25.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言数据结构之链表（二）">
-<meta name="twitter:description" content="前言接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程跳转 链表操作链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除； 元素插入插入元素有三种：1.首部插入；2.尾部插入；3.中间插入；步骤：1.找到插入的位置；2.让新节点的指针域指向位置的后继元素；3.让位置前的指针域指向新的结点的地址；注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；     *代码">
+<meta name="twitter:title" content="软件测试学习（二）&lt;研发-测试流程&gt;">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;本节是视频课程中的最后一部分，接着上一部分进行记录，这一节主要讲述了软件测试的流程。 参考资料&amp;emsp;&amp;emsp;本节内容对应的是下面第二条网课中的第二节。  所有资料来源： 如何从零开始学习软件测试     本节课程资源来源：02软件研发模型和测试流程 博客所使用的思维导图为：凹脑图  正文本节思维导图 &amp;emsp;&amp;emsp;下面的流程是目前绝大多数公司所采用的">
+<meta name="twitter:image" content="http://yoursite.com/images/blog2019-11/model+test.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/C语言/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/21/软件测试学习（二）-研发-测试流程/">
 
 
 
 
 
-  <title>C语言数据结构之链表（二） | Carsel的个人博客</title>
+  <title>软件测试学习（二）<研发-测试流程> | Carsel的个人博客</研发-测试流程></title>
   
 
 
@@ -295,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/C语言/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/软件测试学习（二）-研发-测试流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Carsel">
@@ -312,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C语言数据结构之链表（二）</h1>
+          <h1 class="post-title" itemprop="name headline">软件测试学习（二）<研发-测试流程></研发-测试流程></h1>
         
 
         <div class="post-meta">
@@ -324,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T16:57:00+08:00">
-                2019-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T22:35:00+08:00">
+                2019-11-21
               </time>
             
 
@@ -347,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程语言总结/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言总结</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -358,8 +363,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程语言总结/C语言/" itemprop="url" rel="index">
-                    <span itemprop="name">C语言</span>
+                  <a href="/categories/学习笔记/软件测试/" itemprop="url" rel="index">
+                    <span itemprop="name">软件测试</span>
                   </a>
                 </span>
 
@@ -402,73 +407,24 @@
         
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>接上一节链表的讲解，下文中操作均在已创建好的链表基础上，参考教程<a href="http://data.biancheng.net/view/161.html" target="_blank" rel="noopener">跳转</a></p>
-<h3 id="链表操作"><a href="#链表操作" class="headerlink" title="链表操作"></a>链表操作</h3><p>链表操作主要也是“插查删改”，相对于顺序表，链表跟擅长插入和删除；</p>
-<h5 id="元素插入"><a href="#元素插入" class="headerlink" title="元素插入"></a>元素插入</h5><p>插入元素有三种：<br>1.首部插入；<br>2.尾部插入；<br>3.中间插入；<br><strong>步骤</strong>：<br>1.找到插入的位置；<br>2.让新节点的指针域指向位置的后继元素；<br>3.让位置前的指针域指向新的结点的地址；<br>注意要让新结点先指向后面的链表之后才能让原来的结点指向新结点；    </p>
-<p>*<em>代码</em>：    </p>
-<pre><code>//p为原链表，elem表示新数据元素，add表示新元素要插入的位置
-link * insertElem(link * p,int elem,int add){
-    link * temp=p;//创建临时结点temp
-    for (int i=1; i&lt;add; i++) {//利用循环找到插入位置
-        if (temp==NULL) {//判断插入位置是否有效
-            printf(&quot;插入位置无效\n&quot;);
-            return p;//立刻返回原来的链表
-        }
-        temp=temp-&gt;next;//结点不断后移
-    }   
-
-    link * c=(link*)malloc(sizeof(link));//创建插入结点c
-    c-&gt;elem=elem;//确定数据域
-    //向链表中插入结点
-    c-&gt;next=temp-&gt;next;//让新结点指向后面的链条
-    temp-&gt;next=c;//让前面的结点指向新的结点
-    return  p;
-}
-</code></pre><p>  <strong>注意</strong>：在循环找插入位置时，一定要先判断一下是否已经超出链表长度</p>
-<h5 id="元素删除"><a href="#元素删除" class="headerlink" title="元素删除"></a>元素删除</h5><p>  链表删除其实就是让前一个结点的指针域直接指向后一个的后一个，值得注意的是，对于已经删除的结点，一定要记得释放空间，步骤如下：<br>  1.指针向后移动两个结点；<br>  2.对删除的结点进行释放；</p>
-<pre><code>//p为原链表，add为要删除元素的值
-link * delElem(link * p,int add){
-    link * temp=p;//temp指向被删除结点的上一个结点
-    for (int i=1; i&lt;add; i++) {//循环找到删除位置
-        temp=temp-&gt;next;
-    }
-    link * del=temp-&gt;next;//单独设置一个指针指向被删除结点，以防丢失
-    temp-&gt;next=temp-&gt;next-&gt;next;//删除某个结点的方法就是更改前一个结点的指针域
-    free(del);//释放内存
-    return p;//返回删除结点后的链表
-}
-</code></pre><h5 id="元素查找"><a href="#元素查找" class="headerlink" title="元素查找"></a>元素查找</h5><p>元素查找的思路其实就是挨个一个一个对比，如果有要查找的元素，那么就返回位置，否则就返回NULL表示没有找到，步骤：<br><strong>代码</strong>：</p>
-<pre><code>//p为原链表，elem表示被查找元素、
-int selectElem(link * p,int elem){
-//新建一个指针t，初始化为头指针 p
-    link * t=p;
-    int i=1;
-    //由于头节点的存在，因此while中的判断为t-&gt;next
-    while (t-&gt;next) {
-        t=t-&gt;next;//指针后移
-        if (t-&gt;elem==elem) {
-            return i;
-        }
-        i++;
-    }
-    //程序执行至此处，表示查找失败
-    return -1;
-}
-</code></pre><h5 id="元素更新"><a href="#元素更新" class="headerlink" title="元素更新"></a>元素更新</h5><p>这一操作的思路也很简单，只要找到位置，并对结点内的数据域进行修改就可以了。<br><strong>代码</strong>：    </p>
-<pre><code>//更新函数，其中，add 表示更改结点在链表中的位置，newElem 为新的数据域的值
-link *amendElem(link * p,int add,int newElem){
-    link * temp=p;
-    temp=temp-&gt;next;//在遍历之前，temp指向首元结点
-    //遍历到被删除结点
-    for (int i=1; i&lt;add; i++) {
-        temp=temp-&gt;next;
-    }
-    temp-&gt;elem=newElem;
-    return p;
-}
-</code></pre><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>  在上述的所有代码中，我们会发现，最常见的操作就是下面这行代码：    </p>
-<pre><code>temp=temp-&gt;next;
-</code></pre><p>类似这种更改指针的语言，其实我们可以发现，在链表的查插删改操作中，最重要的就是指针操作了，因此需要格外注意这一点。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;本节是视频课程中的最后一部分，接着上一部分进行记录，这一节主要讲述了软件测试的流程。</p>
+<h6 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h6><p>&emsp;&emsp;本节内容对应的是下面第二条网课中的第二节。</p>
+<ol>
+<li>所有资料来源： <a href="https://zhuanlan.zhihu.com/p/32505591" target="_blank" rel="noopener">如何从零开始学习软件测试</a>    </li>
+<li>本节课程资源来源：<a href="https://www.bilibili.com/video/av57464686?p=2" target="_blank" rel="noopener">02软件研发模型和测试流程</a></li>
+<li>博客所使用的思维导图为：<a href="https://aonaotu.com/home" target="_blank" rel="noopener">凹脑图</a></li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h6 id="本节思维导图"><a href="#本节思维导图" class="headerlink" title="本节思维导图"></a>本节思维导图</h6><p><img src="\images\blog2019-11\model+test.png" alt="upload successful"></p>
+<p>&emsp;&emsp;下面的流程是目前绝大多数公司所采用的流程</p>
+<h6 id="一、需求分析阶段"><a href="#一、需求分析阶段" class="headerlink" title="一、需求分析阶段"></a>一、需求分析阶段</h6><p>需求分析主要做以下事情：<br><strong>1.需求分析</strong><br>&emsp;&emsp;想要写好需求分析，首先要明白什么是需求。（另，需求分析其实就是在做第2——4点的事情。）<br>&emsp;&emsp;一般来讲，需求有三种表现形式：<br>&emsp;&emsp;<strong>a</strong>. 需求文档<br>&emsp;&emsp;&emsp;产品经理在拿到需求过后，会将需求整理成文档，对软件的功能进行描述，包括表现形式和要求等等。<br>&emsp;&emsp;<strong>b</strong>. 产品原型<br>&emsp;&emsp;&emsp;以<a href="https://modao.cc/" target="_blank" rel="noopener">墨刀</a>为例，它会画出产品具体的样子，让开发人员能够有一个直观的感受，并且其中的页面是可以进行点击的。一般产品原型由产品经理来画,如下图：<br><img src="\images\blog2019-11\APP.png" alt="upload successful"><br>&emsp;&emsp;<strong>c</strong>. 口述<br>&emsp;&emsp;&emsp;常见但是最低效的方式。<br><strong>2.学习业务流程</strong><br>&emsp;&emsp;对于测试人员来说，首先要知道软件的功能和流程，明白它是要做什么。上面图画中的软件相对于来说要简单一些，不过如果涉及到比较专业的领域，如银行金融业、会计专业测试等等，不过一般有的公司会对开发人员进行相关领域的知识进行培训，以让开发人员明白应该怎么测试，如果去面试的话了解这些，那么都一般是加分项。<br><strong>3.提取功能点</strong><br>&emsp;&emsp;就是从打到小把一个软件的功能提取出来，然后写清楚。以慕课APP为例，见下图：<br><img src="\images\blog2019-11\Mooc2.png" alt="upload successful"><br>&emsp;&emsp;根据图中的展示，首先可以分为“首页”、“发现”、“下载”、“我的”。其次，再将每个页面进行细化，例如不同的区域、模块等等，在完成这一步之后，继续进行划分，最终找到最小的功能点——就是无法再继续划分的功能。<br>&emsp;&emsp;将上述步骤完成之后，能够画出一个树状图来，就称之为“提取功能点”，见下图：<br><img src="\images\blog2019-11\Mooc1.png" alt="upload successful"><br>&emsp;&emsp;在功能点提取出来之后需要备注描述，以说明该功能点具体要实现的效果和具体要求。例如，在注册时，要求昵称里面只能包含数字、字母等等；哔哩哔哩网站在输入密码的时候旁边的漫画形象会有所变化等等。<br><strong>4.编写需求分析说明书</strong><br>&emsp;&emsp;该阶段就是把第3点中的树形图转化为文档，Excel和Word不限。</p>
+<p>注意：需求文档是产品经理写的，需求分析说明书是测试工程师写的。<br><strong>没有需求怎么办？</strong><br>&emsp;&emsp;参考市面上已经成熟的同类型的产品的实现。例如，你要做一个购物商城，可以去参考侧面上已经成熟的购物APP的实现。这里的参考不是去参考他们的页面布局，而是里面的流程和逻辑，例如昵称注册要求等等。    </p>
+<h6 id="二、测试设计阶段"><a href="#二、测试设计阶段" class="headerlink" title="二、测试设计阶段"></a>二、测试设计阶段</h6><p>&emsp;&emsp;在需求阶段完成之后就进入了测试设计阶段，本阶段又称为文档阶段，其内容包括：<br><strong>1.测试计划</strong><br>&emsp;&emsp;重点内容是时间和人员、以及资源的安排分配。<br><strong>2.测试方案</strong><br>&emsp;&emsp;其内容重点在于：<br>&emsp;&emsp;<strong>a</strong>. 针对每个测试内容如何开展测试；<br>&emsp;&emsp;<strong>b</strong>. 采用什么测试计划；<br>&emsp;&emsp;<strong>c</strong>. 什么测试工具；<br><strong>3.测试策略：</strong><br>&emsp;&emsp;<strong>a</strong>. 那些测试先测试；<br>&emsp;&emsp;<strong>b</strong>. 那些测试后测试；<br>&emsp;&emsp;<strong>c</strong>. 开始测试和结束测试的标注是什么；<br>注意：以上三点都可以采用5W1H方法进行编写，且在更多情况下，这三点会被合并成一个文档，合并之后的文档就称为测试计划说明书。实际工作中，一般这些文档的编写套模板即可。<br><strong>4.测试用例</strong><br>&emsp;&emsp;要求每一个测试人员必须会写。其他三项一般由测试组长或测试经理来进行编写。<br><strong>优秀的测试养成攻略</strong>        </p>
+<ol>
+<li>测试能力    </li>
+<li>文档能力    </li>
+<li>编程能力<br>以上三种能力缺一不可，其中文档能力是测试人员非常重要的能力。        </li>
+</ol>
+<h6 id="最后两个阶段"><a href="#最后两个阶段" class="headerlink" title="最后两个阶段"></a>最后两个阶段</h6><p>测试执行阶段和测试总结阶段不是本节内容，这里不再进行讲解。</p>
 
       
     </div>
@@ -497,9 +453,7 @@ link *amendElem(link * p,int add,int newElem){
         
         <div class="post-tags">
           
-            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
-          
-            <a href="/tags/链表/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
+            <a href="/tags/软件测试/" rel="tag"><i class="fa fa-tag"></i> 软件测试</a>
           
         </div>
       
@@ -512,19 +466,15 @@ link *amendElem(link * p,int add,int newElem){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/C/" rel="next" title="C语言数据结构之链表（一）">
-                <i class="fa fa-chevron-left"></i> C语言数据结构之链表（一）
-              </a>
+              <a href="/2019/11/21/软件测试学习（二）-测试流程/" rel="next" title="软件测试学习（二）<研发-测试模型>">
+                <i class="fa fa-chevron-left"></i> 软件测试学习（二）<研发-测试模型>
+              </研发-测试模型></a>
             
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/03/C语言趣味编程之回文数/" rel="prev" title="C语言趣味编程之回文数">
-                C语言趣味编程之回文数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -658,7 +608,7 @@ link *amendElem(link * p,int add,int newElem){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表操作"><span class="nav-number">2.</span> <span class="nav-text">链表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#元素插入"><span class="nav-number">2.0.1.</span> <span class="nav-text">元素插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素删除"><span class="nav-number">2.0.2.</span> <span class="nav-text">元素删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素查找"><span class="nav-number">2.0.3.</span> <span class="nav-text">元素查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元素更新"><span class="nav-number">2.0.4.</span> <span class="nav-text">元素更新</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#参考资料"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#本节思维导图"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">本节思维导图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#一、需求分析阶段"><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">一、需求分析阶段</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二、测试设计阶段"><span class="nav-number">2.0.0.0.3.</span> <span class="nav-text">二、测试设计阶段</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最后两个阶段"><span class="nav-number">2.0.0.0.4.</span> <span class="nav-text">最后两个阶段</span></a></li></ol></li></div>
             
 
           </div>
