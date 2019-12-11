@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[软件测试学习（四）]]></title>
+    <url>%2F2019%2F12%2F11%2F%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89-%E6%B5%8B%E8%AF%95%E5%BA%94%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[前言&emsp;&emsp;测试分为APP测试和WEB测试，二者区别在于要不要安装客户端，这里首先补充一个内容。 测试应用一、软件结构：&emsp;&emsp;无论网站还是APP，都是通过获得服务器的数据才能正常运行，其二者的区别就在于，二者APP需要安装，那么相应的APP测试就多了一个安装的测试步骤。&emsp;1. B/S：brower&emsp;&emsp;就是目前我们浏览的网站，都是B/S结构&emsp;2. C/S：client&emsp;&emsp;就是目前我们所使用的APP，都是C/S结构。优势在于不联网也能使用，但是目前都要用网所以没什么区别。 二、APP测试&emsp;相对于web测试，多了以下几个步骤：&emsp;1. 安装、卸载、更新&emsp;&emsp;最基本的APP测试&emsp;2. 消息推送&emsp;&emsp;有些APP需要进行消息推送。&emsp;3. 弱网测试&emsp;&emsp;2G2/3G/4G。。。&emsp;4. 场景交互测试&emsp;&emsp;a. 来电话&emsp;&emsp;b. 正在听音乐&emsp;&emsp;c. 调用相机&emsp;&emsp;d. 强行后台退出&emsp;&emsp;e. 前后台的切换&emsp;5. 权限测试&emsp;&emsp;a. 如果某项权限被拒接，其他功能能否正常使用？&emsp;6. 离线测试&emsp;&emsp;a. 断网之后，能否正常打开，界面能否正常显示等等。&emsp;以上内容又称为APP专项测试，是因为这些测试内容web是没有的。其他要测试的内容二者都有的。 测试报告一、对工作的总结&emsp;&emsp;经过……的努力，我们……测试人员，做出了……的付出，我们终于圆满的完成了领导交代的任务，完成了测试工作……（有模板的，可以套话）&emsp;&emsp;（就是表达一下自己多辛苦，完成了什么工作，多优秀，哪些地方有不足，需要怎么改进等等） 二、对BUG的统计分析&emsp;在BUG管理平台上，一个模块就可以提出来很多个BUG。这些平台提供统计表功能，其统计口径有以下几种：&emsp;1. 测试人员&emsp;2. 开发人员&emsp;3. 软件模块&emsp;4. 等级&emsp;5. 解决的时间&emsp;6. 版本&emsp;7. 状态 三、对被测软件的质量评估&emsp;如何判断一个软件质量合格可以交付了？&emsp;1. 一二级的BUG全部都被关闭了&emsp;2. 三级 BUG关闭了80%&emsp;3. 四级的BUG无所谓&emsp;有些公司对软件的要求较高，会规定一二三级BUG全部关闭，四级的BUG关闭大部分才可以交付。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[软件测试学习（三）]]></title>
     <url>%2F2019%2F12%2F11%2F%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89-BUG%E7%9A%84%E7%AE%A1%E7%90%86%2F</url>
     <content type="text"><![CDATA[前言&emsp;&emsp;BUG的管理包括：BUG的管理平台、BUG的六要素、BUG的生命周期、BUG的状态、BUG的等级。 整体导图 正文一、BUG的管理平台&emsp;&emsp;在测试过程中，发现BUG之后肯定是要记录BUG的，这些BUG的记录是有一些平台的。常见的BUG管理软件/工具：&emsp;&emsp;1. 禅道；&emsp;&emsp;2. BUGFree&emsp;&emsp;3. ALM/QC&emsp;&emsp;4. Testlink&emsp;&emsp;5. Bugzilla&emsp;&emsp;6. JIRA&emsp;&emsp;老师的评价为，以上的BUG管理工具，核心内涵都是一样的，都是差不多的，区别在于页面不一样，长得不一样等，其他基本的逻辑都是差不多的。 二、BUG的六要素&emsp;&emsp;一般在提BUG的时候，是需要对其详细信息进行记录的，这就涉及到的BUG的六要素，包括：BUG的编号、BUG的名称、BUG的优先级、BUG的严重级别、BUG的复现步骤、附件。&emsp;1. BUG的编号&emsp;&emsp;编号是绝对唯一的。如果用禅道，那么会自动生成编号。如果是Excel文档，则需要自己进行编号。&emsp;2. BUG名称&emsp;&emsp;言简意赅，看到题目就知道是什么问题。&emsp;3. 优先级&emsp;&emsp;根据实际情况，该BUG是否需要优先解决。优先级分为高、中、低三级&emsp;4. BUG的等级&emsp;&emsp;BUG的等级又分为四级：&emsp;&emsp;a. 致命的/一级/A：&emsp;&emsp;&emsp;影响产品的核心流程的正常使用；&emsp;&emsp;&emsp;导致软件挂了、闪退、崩溃；&emsp;&emsp;&emsp;和钱有关；&emsp;&emsp;b. 严重的/二级/B：&emsp;&emsp;&emsp;导致了功能无法正常使用。&emsp;&emsp;c. 一般的/三级/C：&emsp;&emsp;&emsp;功能的某些异常场景问题（例如在注册界面，用户注册了已经存在的账号但是也成功了）&emsp;&emsp;&emsp;“严重的”和“一般的”划分的时候比较主观，二者有时候会比较模糊。&emsp;&emsp;d. 轻微的/四级/D：&emsp;&emsp;&emsp;建议性的东西，用户体验的、UI上的问题等等。&emsp;5. BUG的复现步骤：&emsp;&emsp;a. 操作步骤（可以把用例的步骤复制过来）&emsp;&emsp;b. 预期结果&emsp;&emsp;c. 实际结果&emsp;6. 附件&emsp;&emsp;附件是用于佐证该BUG确实存在。找BUG是找开发的问题，如果没有证据的话有可能会不被认可。附件可能是：&emsp;&emsp;a. 截图&emsp;&emsp;b. 日志&emsp;&emsp;c. 操作小视频 三、BUG的生命周期当测试人员提交了BUG起，一个BUG就诞生了，并开始了自己的声明周期。 四、BUG的状态 新建/new 打开/激活/open 已确认 已解决 拒绝 重新打开/reopen 关闭/closed 延期处理 重复BUG]]></content>
@@ -200,18 +205,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[不蒜子文章阅读量显示的问题]]></title>
-    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1%2F</url>
-    <content type="text"><![CDATA[博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。 于是博主按照网上教程，将文章阅读量这一行改为true：路径为: /themes/next/_config.yml 将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛： busuanzi_count: enable: true #这里需要改为true site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; site_uv_footer:# 本站总访问量次数 site_pv: false site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; site_pv_footer: page_pv: true #这里博主改为了true page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye page_pv_footer: 修改完之后发现它竟然竟然显示不在一行，如图：于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。有兴趣的朋友可以看一下官网的通知：不蒜子统计官网想直接解决的朋友可以不用看官网，简单点就是更新域名的问题： 修改办法：打开不蒜子的统计文件，路径为： /theme/next/layout/_third-party/analytics/busuanzi-counter.swig 你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了： &quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot; 在修改后进行调试： 问题解决！这是参考的博客连接： hexo博客解决不蒜子统计无法显示问题]]></content>
-      <categories>
-        <category>汇总记录</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>不蒜子</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[hexo+GitHub+域名搭建的心路历程]]></title>
     <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[本文不是教程，只是博主搭建完博客后的一点点总结和经验，但是阅读后会帮助大家在搭建过程中少一些障碍，尽量一次性搭建成功 大概花了一天时间，又重新摸索着在网上学习怎么利用hexo配合GitHub搭建个人博客。博主这方面一片空白，也是东边学一点西边学一点，所以本文不提供系统的怎么搭建的过程，只是记录一下中间出现的问题和解决办法。 基础环境安装 这一方面其实博主本人到现在为止都不知道是做什么的，只知道都安装好就能搭成博客，至于怎么安装，还是参考其他技术大牛们的教程吧。但是这里有需要提醒的： 安装的内容有： 1.git 2.node.js 3.hexo 三者的顺序一般hexo在最后，前两个根据具体教程来 注意hexo文件夹和blog文件夹不是一个东西 安装完之后可以先去申请注册一个GitHub账号，然后按照教程创建一个仓库 主题设置 博主一开始根据教程很快搭好了博客，但是发现主题theme是默认的landscape，因此想换一下，但是问题就在于，博主已经按照教程在landscape的基础上对页面进行了很多的修改，之后突然将主题更换，导致网站直接崩塌(…)因此这里提醒大家，想要什么主题早早找好，然后在网上找对口的教程。由于博主技术不精，所以选择了使用最多的NexT主题，因为相关教程多嘛(捂脸) 博文编写 博主在一开始打好博客之后也激动了好一会，然后突然发现了一个问题：以后想写心得博客怎么办？难道创建一篇心得博客都需要代码创建吗？当然这个问题很快就能解决，博主最后采用了hexo-admin，因为它目前使用起来还算比较顺手，管理的时候也比较方便，具体如何安装以及设置密码请移步其他大佬的技术博客。 域名设置 强烈建议在前面安装基础环境的时候就在网上提前买好域名，否则就会像博主这样在万事俱备只欠域名的情况下猴急猴急的等待域名实名认证通过和GitHub的配置。博主的域名是在阿里云购买的，大家可以根据自己的喜好来。 有几点是需要注意的： 1.有的域名购买需要认证，因此不会购买之后立刻就能用； 2.域名的控制台那里解析的ip，就是你github仓库的ip地址，可以在cmd命令行里面ping一下进行查看； 3.GitHub仓库的settings里面也是需要配置域名的，写上你申请到的域名就可以，例如“xxxx.top”，记得前面不要私自加www，反正我的没有加没有出错； 4.blog/source文件夹下是需要创建一个名为CNAME并且没有后缀名的文件，里面写上自己的域名，这里是需要在前面加上“www”的； 5.在域名这些设置都配置好之后，就可以通过域名在公网上对博客进行访问了，不过刚配置完不要慌(真的这些可以在搭建之前配好，免得后面坐在电脑前静静等待…)，一般过几分钟之后就可以看到自己搭建好的博客和信发布的文章啦！ 后期编写博客和发布 前面已经写到，博主使用的的是hexo-admin，一般在自己的本地进行编辑之后，觉得博文没有问题，直接在blog根目录下输入： hexo g &amp;&amp; hexo d 然后在黑色的命令框里就能看到输出的一堆东西，一般第一次进行这样的GitHub更新，是需要和GitHub上进行ssh设置的，在之后就不需要了。在命令框中显示上传成功之后，博客更新的工作也就完成了。]]></content>
@@ -221,6 +214,18 @@
       <tags>
         <tag>Hexo</tag>
         <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[不蒜子文章阅读量显示的问题]]></title>
+    <url>%2F2019%2F05%2F18%2Fhexo-GitHub-%E5%9F%9F%E5%90%8D%E6%90%AD%E5%BB%BA%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B-1%2F</url>
+    <content type="text"><![CDATA[博主前段时间千辛万苦终于搭好了博客，最后在优化的时候想给每篇文章加一个阅读数量。一般的统计方法有LeanCloud和不蒜子，博主这里选用的不蒜子，因为它修改起来比较快，不需要其他的操作。 于是博主按照网上教程，将文章阅读量这一行改为true：路径为: /themes/next/_config.yml 将文章阅览数修改为true，一般默认的图标为文件，博主在这里改为了眼睛： busuanzi_count: enable: true #这里需要改为true site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; site_uv_footer:# 本站总访问量次数 site_pv: false site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; site_pv_footer: page_pv: true #这里博主改为了true page_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;#图标更换为eye page_pv_footer: 修改完之后发现它竟然竟然显示不在一行，如图：于是博主：喵喵喵？在网上查了一下，原来是不蒜子的统计域名过期了。有兴趣的朋友可以看一下官网的通知：不蒜子统计官网想直接解决的朋友可以不用看官网，简单点就是更新域名的问题： 修改办法：打开不蒜子的统计文件，路径为： /theme/next/layout/_third-party/analytics/busuanzi-counter.swig 你会在里面发现有一个链接地址，不用管它，直接把它用下面的连接更换掉就好了： &quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot; 在修改后进行调试： 问题解决！这是参考的博客连接： hexo博客解决不蒜子统计无法显示问题]]></content>
+      <categories>
+        <category>汇总记录</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>不蒜子</tag>
       </tags>
   </entry>
   <entry>
